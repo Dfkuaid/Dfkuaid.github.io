@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 题解 | Dfkuaid的博客</title>
+  <title>[算法入门]快速幂取余 | Dfkuaid的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dfkuaid的博客">
-<meta property="og:url" content="http://yoursite.com/tags/%E9%A2%98%E8%A7%A3/index.html">
+  <meta name="description" content="简介快速幂取余，其实就是$a^b \mod c$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[算法入门]快速幂取余">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/index.html">
 <meta property="og:site_name" content="Dfkuaid的博客">
+<meta property="og:description" content="简介快速幂取余，其实就是$a^b \mod c$">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-25T03:32:07.000Z">
+<meta property="article:modified_time" content="2020-06-25T03:33:00.328Z">
 <meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Dfkuaid的博客" type="application/atom+xml">
@@ -150,60 +155,187 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-算法入门-快速幂取余" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/" class="archive-article-date">
-  	<time datetime="2020-06-25T02:28:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/">[题解]洛谷P1434滑雪</a>
+    <h1 class="article-title" itemprop="name">
+      [算法入门]快速幂取余
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/25/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/" class="archive-article-date">
+  	<time datetime="2020-06-25T03:32:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>快速幂取余，其实就是$a^b \mod c$</p>
+<a id="more"></a>
+
+
+
+<h1 id="算法1"><a href="#算法1" class="headerlink" title="算法1."></a><strong>算法1.</strong></h1><p>首先直接地来设计这个算法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>  ans=<span class="number">1</span>, i;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=b;i++)</span><br><span class="line">    ans*=a;</span><br><span class="line">ans%=c;</span><br></pre></td></tr></table></figure>
+<p>这个算法的时间复杂度体现在for循环中，为$O(b)$.</p>
+<p>这个算法存在着明显的问题,如果a和b过大，很容易就会溢出。</p>
+<p>那么，我们先来看看第一个改进方案：在讲这个方案之前，要先有这样一个公式：<br>$a^b \mod c=(a \mod c)^b$<br><strong>引理：</strong><br><strong>$(a \times b) \mod c =[ ( a \mod c ) \times (b \mod c) ] \mod c$ ;</strong><br><strong>证明：</strong><br>$\  \  \  \  \  \  设 a \mod c = d,b \mod c = e;$<br>$\  \  \  \  \  \  则：a=t \times c+d;$<br>$\  \  \  \  \  \  b = k \times c+e;$<br>$\  \  \  \  \  \     (a \times b) \mod c=(t \times c+d)(k \times c+e)$<br>$\  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  =(t \times k c^2 + ( t \times e+d \times k) \times c+d \times e) \mod c$<br>$\  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  \  =d \times e \mod c$<br><strong>即积的取余等于取余的积的取余.<br>$a^b \mod c$ 由上述公式迭代即可得到 $(a \mod c)^b$</strong><br>证明了以上的公式以后，我们可以<strong>先让a关于c取余</strong>，这样可以大大减少a的大小，于是不用思考的进行了改进：   </p>
+<h1 id="算法2："><a href="#算法2：" class="headerlink" title="算法2："></a><strong>算法2：</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ans = <span class="number">1</span> , i ;  </span><br><span class="line"> a = a % c; <span class="comment">//加上这一句 </span></span><br><span class="line"> <span class="keyword">for</span> ( i = <span class="number">1</span>;i&lt;=b;i++) </span><br><span class="line">     ans = ans * a;  </span><br><span class="line"> ans = ans % c;</span><br></pre></td></tr></table></figure>
+<p>既然某个因子取余之后相乘再取余保持余数不变，那么新算得的ans也可以进行取余，所以得到比较良好的改进版本。 </p>
+<h1 id="算法3："><a href="#算法3：" class="headerlink" title="算法3："></a><strong>算法3：</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>  ans = <span class="number">1</span> ,i ;  </span><br><span class="line">a = a % c;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;=b;i++) </span><br><span class="line">    ans = (ans * a) % c; <span class="comment">//这里再取了一次余 </span></span><br><span class="line">ans = ans % c;</span><br></pre></td></tr></table></figure>
+<p>这个算法在时间复杂度上没有改进，仍为O(b)，不过已经好很多的，但是在c过大的条件下，还是很有可能超时，所以，我们推出以下的快速幂算法。 </p>
+<p>快速幂取余依赖于以下公式:<br><strong>$a^b \bmod c=((a^2)^{\frac{b}{2}}) \bmod c$，$b$是偶数</strong><br><strong>$a^b \bmod c=((a^2)^{\frac{b}{2}} \times a) \bmod c$，$b$是奇数</strong><br>有了上述两个公式后，我们可以得到以下结论：<br>1.如果$b$是偶数，我们可以记$k=a^2 \bmod c$，那么求$k^{\frac{b}{2}} \bmod c$；<br>2.如果$b$是奇数，我们也可以记$k=a^2 \bmod c$，那么求$(k^{\frac{b}{2}} \bmod c \times a) \bmod c$就可以了。<br>于是我们得到以下算法：   </p>
+<h1 id="算法4："><a href="#算法4：" class="headerlink" title="算法4："></a><strong>算法4：</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span>  ans = <span class="number">1</span> ，i ; </span><br><span class="line">a = a % c; </span><br><span class="line"><span class="keyword">if</span> (b%<span class="number">2</span>==<span class="number">1</span>)  </span><br><span class="line">ans = (ans * a) mod c; <span class="comment">//如果是奇数，要多求一步， </span></span><br><span class="line">                    <span class="comment">//可以提前算到 ans 中。</span></span><br><span class="line">k = (a*a) % c;  <span class="comment">//我们取a^2 而不是a </span></span><br><span class="line"><span class="keyword">for</span>( i = <span class="number">1</span>;i&lt;=b/<span class="number">2</span>;i++) </span><br><span class="line">    ans = (ans * k) % c;  </span><br><span class="line">ans = ans % c;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到，我们把时间复杂度变成了O(b/2).<br>当然，这样子治标不治本。<br>但我们可以看到，当我们令$k=(a\times a) \bmod c$时，状态已经发生了变化，我们所要求的最终结果即为$k^{\frac{b}{2}} \bmod c$<br>而不是原来的$a^b \bmod c$，所以我们发现这个过程是可以迭代下去的。当然，对于奇数的情形会多出一项$a \bmod c$，所以为了完成迭代，当b是奇数时，我们通过$ans=(ans \times a) \bmod c$;<br>来弥补多出来的这一项，此时剩余的部分就可以进行迭代了。<br>形如上式的迭代下去后，当$b=0$时，所有的因子都已经相乘，算法结束。<br>于是便可以在$O(\log{b})$的时间内完成了。<br>于是，有了最终的算法：快速幂算法。</p>
+<h1 id="算法5：快速幂算法"><a href="#算法5：快速幂算法" class="headerlink" title="算法5：快速幂算法"></a><strong>算法5：快速幂算法</strong></h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span>  <span class="title">PowerMod</span> <span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span> </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span>  ans = <span class="number">1</span>; </span><br><span class="line">    a = a % c; </span><br><span class="line">    <span class="keyword">while</span> (b &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">        <span class="keyword">if</span>(b % <span class="number">2</span> = = <span class="number">1</span>) </span><br><span class="line">            ans = (ans * a) % c; </span><br><span class="line">        b = b / <span class="number">2</span>;       <span class="comment">//b &gt;&gt;= 1;</span></span><br><span class="line">        a = (a * a) % c; </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> ans; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本算法的时间复杂度为O（logb），能在几乎所有的程序设计（竞赛）过程中通过，是目前最常用的算法之一。    </p>
+<h1 id="扩展："><a href="#扩展：" class="headerlink" title="扩展："></a><strong>扩展：</strong></h1><p>有关于快速幂的算法的推导，还可以从另一个角度来想。<br>$a^b \bmod c$求解这个问题，我们也可以从二进制转换来考虑：<br>将10进制的$b$转化成2进制的表达式：<br>$b_{(10)}=\overline{a_{n}a_{n-1}…a_{1}a_{0}}_ {(2)}$<br>那么，实际上，$b=a_{n} \cdot 2^{n}+a_{n-1} \cdot 2^{n-1}+…+a_{1} \cdot 2^{1}+ a_0$<br>$a^b=a^{a_{n} \cdot 2^{n}+a_{n-1} \cdot 2^{n-1}+…+a_{1} \cdot 2+ a_0}=a^{a_{n} \cdot 2^{n}} \cdot a^{a_{n-1} \cdot 2^{n-1}} \cdot … \cdot a^{a_{1} \cdot 2} \cdot a^{a_0}$<br>所以<br>$\ \ \ a^b \bmod c = (a^{a_{n} \cdot 2^{n}} \cdot a^{a_{n-1} \cdot 2^{n-1}} \cdot … \cdot a^{a_{1} \cdot 2} \cdot a^{a_0}) \bmod c$<br>$=[(a^{a_{n} \cdot 2^{n}} \bmod c) \cdot (a^{a_{n-1} \cdot 2^{n-1}} \bmod c) \cdot … \cdot (a^{a_{0}} \bmod c)] \bmod c$<br>注意此处的$a_n$要么为0，要么为1，如果为0，那么这一项就是1，这个对应了上面算法过程中b是偶数的情况,为1对应了b是奇数的情况。</p>
+<hr>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">题解</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/25/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/25/Python-%E5%88%A9%E7%94%A8selenium%E7%88%AC%E5%8F%96%E6%BC%AB%E7%94%BB%E7%BD%91%E7%AB%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">[Python]利用selenium爬取漫画网站</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -226,9 +358,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
