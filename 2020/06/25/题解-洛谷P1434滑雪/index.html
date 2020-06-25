@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/6 | Hexo</title>
+  <title>[题解]洛谷P1434滑雪 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2020/06/index.html">
+  <meta name="description" content="我觉得这道题主要方法应该有两种：     动态规划 搜索     下面会分别对这两种方法进行简述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[题解]洛谷P1434滑雪">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="我觉得这道题主要方法应该有两种：     动态规划 搜索     下面会分别对这两种方法进行简述">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-25T02:28:47.000Z">
+<meta property="article:modified_time" content="2020-06-25T02:34:25.554Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="题解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,36 +155,86 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-题解-洛谷P1434滑雪" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/" class="archive-article-date">
-  	<time datetime="2020-06-25T02:28:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/">[题解]洛谷P1434滑雪</a>
+    <h1 class="article-title" itemprop="name">
+      [题解]洛谷P1434滑雪
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/" class="archive-article-date">
+  	<time datetime="2020-06-25T02:28:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我觉得这道题主要方法应该有两种：  </p>
+<blockquote>
+<ul>
+<li>动态规划</li>
+<li>搜索  </li>
+</ul>
+</blockquote>
+<p>下面会分别对这两种方法进行简述</p>
+<hr>
+<a id="more"></a>
+
+<h4 id="一，动态规划法"><a href="#一，动态规划法" class="headerlink" title="一，动态规划法"></a>一，动态规划法</h4><p>首先的想法是用$L_{i,j}$表示从点$(i,j)$出发能到达的<strong>最长距离</strong>。因为从$(i,j)$出发<strong>最少</strong>能滑行自己1格，所以每个点L值都先<strong>初始化为1</strong>   </p>
+<p>我们可以从$(i,j)$出发，向四周寻找，如果四周没有比他低的点，那么$L_{i,j}$即为1，否则$L_{i,j}$就为从$(i,j)$出发四周<strong>高度比L低且L值最大</strong>的那个点P的L值加1</p>
+<p>递推时的顺序为点的高度由低到高，那么在递推过程中，计算$L_{i,j}$时，他四周比他低的点P的L值一定已经被计算出来了</p>
+<p>接下来需要解决的问题便是如何按点的高度由小到大递推<br>关于这个问题，我们难道要每次递推时用两遍循环找出当前未递推的最低点？显然不可取，<strong>时间复杂度会爆炸的</strong>。那么就考虑<strong>能否一个$sort()$解决问题</strong>（<del>懒得自己写排序</del>）。$sort()$能给一个二维数组排序？不知大佬们怎么想，反正本蒟蒻不会。。。那为了$sort()$<del>更香</del>可以方便的使用，我用一个<strong>一维数组</strong>进行存储每个点的数据。</p>
+<p>这时候不得不说，<strong>结构体</strong><del>真香</del>真的实用。下面用代码直观地说一下这个结构体</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> r;   <span class="comment">//行号</span></span><br><span class="line">	<span class="keyword">int</span> c;   <span class="comment">//列号</span></span><br><span class="line">	<span class="keyword">int</span> h;   <span class="comment">//高度</span></span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Point &amp; p) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> h &lt; p.h;</span><br><span class="line">	&#125;<span class="comment">//构造函数，不懂的同学可以写一个cmp代替,下面代码会有特别说明</span></span><br><span class="line">&#125;;Point point[<span class="number">10101</span>];</span><br></pre></td></tr></table></figure>
+<p>为了方便储存以及不造成浪费（<del>个人习惯</del>）这里$i$和$j$都从0开始取，那么点$(i,j)$用$point$数组存的下标为$c \times i + j$</p>
+<blockquote>
+<p>由于$i,j$从0开始取，$c \times i + j$这个式子表示的是第$i+1$行第$j+1$个数，那么，$i$最大为$R-1$，$j$最大为$C-1$，整个数组最大下标为$C \times (R-1)+C-1$，即$C \times R-1$</p>
+<blockquote>
+<p>若$i,j$从1开始取，为保证运算方便及善待空间，下标应为$C \times (i-1)+j-1$</p>
+</blockquote>
+</blockquote>
+<p>该算法的分析已给出，大家可以结合代码自行理解</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;//头文件，不多解释</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> r;<span class="comment">//行号</span></span><br><span class="line">	<span class="keyword">int</span> c;<span class="comment">//列号</span></span><br><span class="line">	<span class="keyword">int</span> h;<span class="comment">//高度</span></span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Point &amp; p) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> h &lt; p.h;<span class="comment">//构造函数，不会的可删掉看下面cmp</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;Point point[<span class="number">10101</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(Point a,Point b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (a.h &lt; b.h)   <span class="comment">//如果a的高度小于b的高度</span></span><br><span class="line">	  <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//返回真</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	  <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//否则返回假</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> R,C,ans = <span class="number">-0x3ffff</span>;<span class="comment">//需初始化ans为较小值（害怕玄学出错）</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">101</span>][<span class="number">101</span>],d[<span class="number">102</span>][<span class="number">102</span>];<span class="comment">//a为每点的高度，d为该点可滑行的最大值</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; R &gt;&gt; C;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; R;i ++)</span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; C;j ++)&#123;</span><br><span class="line">	  	<span class="built_in">cin</span> &gt;&gt; a[i][j];<span class="comment">//输入点的高度</span></span><br><span class="line">	  	point[i * C + j].h = a[i][j];<span class="comment">//根据上面所说的下标，</span></span><br><span class="line">	  	point[i * C + j].r = i;	 	 <span class="comment">//对点的数据进行存储</span></span><br><span class="line">	  	point[i * C + j].c = j;</span><br><span class="line">	  	d[i][j] = <span class="number">1</span>;            <span class="comment">//初始可滑行长度为1</span></span><br><span class="line">	  &#125;</span><br><span class="line">	sort(point,point + R * C);<span class="comment">//如果用了cmp可换为sort(point,point + R * C，cmp);</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; R * C;i ++)&#123;</span><br><span class="line">		<span class="keyword">int</span> r = point[i].r;<span class="comment">//找一个替身,怕玄学或运算时出错</span></span><br><span class="line">		<span class="keyword">int</span> c = point[i].c;<span class="comment">//同理</span></span><br><span class="line">		<span class="keyword">if</span> (r &gt; <span class="number">0</span> &amp;&amp; a[r - <span class="number">1</span>][c] &lt; a[r][c])<span class="comment">//找上面的</span></span><br><span class="line">		  d[r][c] = max(d[r][c],d[r - <span class="number">1</span>][c] + <span class="number">1</span>);<span class="comment">//进行更新</span></span><br><span class="line">		<span class="keyword">if</span> (c &gt; <span class="number">0</span> &amp;&amp; a[r][c - <span class="number">1</span>] &lt; a[r][c])<span class="comment">//找左面的</span></span><br><span class="line">		  d[r][c] = max(d[r][c],d[r][c - <span class="number">1</span>] + <span class="number">1</span>);<span class="comment">//进行更新</span></span><br><span class="line">		<span class="keyword">if</span> (r &lt; R - <span class="number">1</span> &amp;&amp; a[r + <span class="number">1</span>][c] &lt; a[r][c])<span class="comment">//找下面的</span></span><br><span class="line">		  d[r][c] = max(d[r][c],d[r + <span class="number">1</span>][c] + <span class="number">1</span>);<span class="comment">//进行更新</span></span><br><span class="line">		<span class="keyword">if</span> (c &lt; C - <span class="number">1</span> &amp;&amp; a[r][c + <span class="number">1</span>] &lt; a[r][c])<span class="comment">//找右面的</span></span><br><span class="line">		  d[r][c] = max(d[r][c],d[r][c + <span class="number">1</span>] + <span class="number">1</span>); <span class="comment">//进行更新</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; R;i ++)</span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; C;j ++)</span><br><span class="line">	    ans = max(ans,d[i][j]); <span class="comment">//找出最大值</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//完美撒花</span></span><br></pre></td></tr></table></figure>
+<p>由于点$(i,j)$的L值的计算为极小的常数值，所以这个算法的复杂度为$O(R \times C)$   </p>
+<hr>
+<h4 id="二、搜索"><a href="#二、搜索" class="headerlink" title="二、搜索"></a>二、搜索</h4><p>相信大家都会想到DFS,但若是单纯的DFS，会TLE一个点，所以，我们就要考虑到记忆化搜索。那么也很好实现，具体请见下方代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> R,C;</span><br><span class="line"><span class="keyword">int</span> g1[<span class="number">4</span>] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>&#125;;<span class="comment">//定义寻找的4个方向</span></span><br><span class="line"><span class="keyword">int</span> g2[<span class="number">4</span>] = &#123;<span class="number">-1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> m[<span class="number">101</span>][<span class="number">101</span>];<span class="comment">//储存每个点的高度</span></span><br><span class="line"><span class="keyword">int</span> lj[<span class="number">101</span>][<span class="number">101</span>];<span class="comment">//储存每个点可滑行的最大长度</span></span><br><span class="line"><span class="keyword">int</span> maxn,lr;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (lj[i][j] - <span class="number">1</span>)<span class="comment">//判断是否搜过，因为下面将每一个点的最初滑行长度为1</span></span><br><span class="line">    			 <span class="comment">//如果该点最长长度-1为0，说明该点未被搜过</span></span><br><span class="line">	  <span class="keyword">return</span> lj[i][j];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> o = <span class="number">0</span>;o &lt; <span class="number">4</span>;o ++)<span class="comment">//向4个方向搜</span></span><br><span class="line">	  <span class="keyword">if</span> (i + g1[o] &gt;= <span class="number">0</span> &amp;&amp; i + g1[o] &lt; R &amp;&amp; j + g2[o] &gt;= <span class="number">0</span> &amp;&amp; j + g2[o] &lt; C &amp;&amp; m[i + g1[o]][j + g2[o]] &lt; m[i][j])&#123;<span class="comment">//保证不越界</span></span><br><span class="line">	  	lj[i][j] = max(lj[i][j],dfs(i + g1[o],j + g2[o]) + <span class="number">1</span>);<span class="comment">//进行搜索及更新</span></span><br><span class="line">	  &#125;</span><br><span class="line">	<span class="keyword">return</span> lj[i][j];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; R &gt;&gt; C;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; R;i ++)<span class="comment">//初始化</span></span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; C;j ++)</span><br><span class="line">	    lj[i][j] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; R;i ++)</span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; C;j ++)</span><br><span class="line">	    <span class="built_in">cin</span> &gt;&gt; m[i][j];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; R;i ++)</span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; C;j ++)&#123;</span><br><span class="line">	  	<span class="keyword">if</span> (lj[i][j] - <span class="number">1</span> != <span class="number">0</span>)&#123;<span class="comment">//如果该点被搜过</span></span><br><span class="line">	  		maxn = max(maxn,lj[i][j]);<span class="comment">//直接更新</span></span><br><span class="line">	  		<span class="keyword">continue</span>;</span><br><span class="line">		  &#125;</span><br><span class="line">	  	lj[i][j] = dfs(i,j);</span><br><span class="line">	  	maxn = max(maxn,lj[i][j]);</span><br><span class="line">	  &#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; maxn;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//撒花</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这就是该题本人的思路，希望能给你带来帮助</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,19 +246,96 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
 
 
           </div>
@@ -226,8 +358,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
