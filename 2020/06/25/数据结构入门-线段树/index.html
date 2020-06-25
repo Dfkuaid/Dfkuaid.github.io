@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>[数据结构入门]线段树 | Dfkuaid的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引入：我们经常会遇到需要维护一个序列的问题，例如，给定一个整数序列，每次操作会修改某个位置或某个区间的值，或是询问你序列中的某个区间内所有数的和。或许你可能回去暴力出奇迹或者使用前缀和，但是当数据很大时，时间复杂度明显是受不了的。那么，就需要引入一种时间复杂度相对较小的数据结构 ——线段树    目录​            基础​                ├ 关于线段树​">
+  <meta name="description" content="引入：我们经常会遇到需要维护一个序列的问题，例如，给定一个整数序列，每次操作会修改某个位置或某个区间的值，或是询问你序列中的某个区间内所有数的和。或许你可能回去暴力出奇迹或者使用前缀和，但是当数据很大时，时间复杂度明显是受不了的。那么，就需要引入一种时间复杂度相对较小的数据结构 ——线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[数据结构入门]线段树">
 <meta property="og:url" content="http://yoursite.com/2020/06/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
 <meta property="og:site_name" content="Dfkuaid的博客">
-<meta property="og:description" content="引入：我们经常会遇到需要维护一个序列的问题，例如，给定一个整数序列，每次操作会修改某个位置或某个区间的值，或是询问你序列中的某个区间内所有数的和。或许你可能回去暴力出奇迹或者使用前缀和，但是当数据很大时，时间复杂度明显是受不了的。那么，就需要引入一种时间复杂度相对较小的数据结构 ——线段树    目录​            基础​                ├ 关于线段树​">
+<meta property="og:description" content="引入：我们经常会遇到需要维护一个序列的问题，例如，给定一个整数序列，每次操作会修改某个位置或某个区间的值，或是询问你序列中的某个区间内所有数的和。或许你可能回去暴力出奇迹或者使用前缀和，但是当数据很大时，时间复杂度明显是受不了的。那么，就需要引入一种时间复杂度相对较小的数据结构 ——线段树">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QibUbR.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QF9Q9s.png">
@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QF9Q9s.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QFV301.png">
 <meta property="article:published_time" content="2020-06-25T03:02:18.000Z">
-<meta property="article:modified_time" content="2020-06-25T03:04:37.881Z">
+<meta property="article:modified_time" content="2020-06-25T03:15:15.295Z">
 <meta property="article:author" content="Dfkuaid">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
@@ -182,6 +182,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="引入："><a href="#引入：" class="headerlink" title="引入："></a>引入：</h3><p>我们经常会遇到需要维护一个序列的问题，例如，给定一个整数序列，每次操作会修改某个位置或某个区间的值，或是询问你序列中的某个区间内所有数的和。或许你可能回去暴力出奇迹或者使用前缀和，但是当数据很大时，时间复杂度明显是受不了的。那么，就需要引入一种时间复杂度相对较小的数据结构 ——<strong>线段树</strong>  </p>
+<a id="more"></a>
+
+
+
 <hr>
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>​            <strong>基础</strong><br>​                ├ 关于线段树<br>​                ├ 建树<br>​                ├ 区间查询<br>​                └ 单点修改  </p>
 <p>​            <strong>进阶</strong><br>​                ├ 延迟标记<br>​                ├ 　　└ 区间修改 单点查询<br>​                └ 区间修改 区间查询<br>​                            ├ 标记下传<br>​                            └ 标记永久化</p>
