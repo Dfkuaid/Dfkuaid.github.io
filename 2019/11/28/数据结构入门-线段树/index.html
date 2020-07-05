@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -26,7 +26,6 @@
 <meta property="og:url" content="http://yoursite.com/2019/11/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
 <meta property="og:site_name" content="Dfkuaid的博客">
 <meta property="og:description" content="引入：我们经常会遇到需要维护一个序列的问题，例如，给定一个整数序列，每次操作会修改某个位置或某个区间的值，或是询问你序列中的某个区间内所有数的和。或许你可能回去暴力出奇迹或者使用前缀和，但是当数据很大时，时间复杂度明显是受不了的。那么，就需要引入一种时间复杂度相对较小的数据结构 ——线段树">
-<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QibUbR.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QF9Q9s.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QFFlIU.png">
@@ -49,7 +48,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'zh-Hans'
   };
 </script>
 
@@ -93,7 +92,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -122,12 +121,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Startseite</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archiv</a>
 
   </li>
   </ul>
@@ -157,7 +156,7 @@
     
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-%E7%BA%BF%E6%AE%B5%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -179,16 +178,16 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
 
-              <time title="创建时间：2019-11-28 20:39:18" itemprop="dateCreated datePublished" datetime="2019-11-28T20:39:18+08:00">2019-11-28</time>
+              <time title="Erstellt: 2019-11-28 20:39:18" itemprop="dateCreated datePublished" datetime="2019-11-28T20:39:18+08:00">2019-11-28</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-25 12:55:32" itemprop="dateModified" datetime="2020-06-25T12:55:32+08:00">2020-06-25</time>
+                <span class="post-meta-item-text">Bearbeitet am</span>
+                <time title="Geändert am: 2020-06-25 12:55:32" itemprop="dateModified" datetime="2020-06-25T12:55:32+08:00">2020-06-25</time>
               </span>
 
           
@@ -316,10 +315,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          文章目录
+          Inhaltsverzeichnis
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Übersicht
         </li>
       </ul>
 
@@ -340,12 +339,12 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">7</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
         <span class="site-state-item-count">7</span>
-        <span class="site-state-item-name">标签</span>
+        <span class="site-state-item-name">schlagwörter</span>
       </div>
   </nav>
 </div>
@@ -377,7 +376,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
 
         
