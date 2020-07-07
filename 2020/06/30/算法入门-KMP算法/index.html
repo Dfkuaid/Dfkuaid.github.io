@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法,c++," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引入现在我们面临这样一个问题：有一个主串S，和一个模式串P，现在要查找P在S中的位置，怎么查找呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[算法入门]KMP算法">
+<meta property="og:url" content="http://yoursite.com/2020/06/30/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-KMP%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Dfkuaid的博客">
+<meta property="og:description" content="引入现在我们面临这样一个问题：有一个主串S，和一个模式串P，现在要查找P在S中的位置，怎么查找呢？">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/Headba8df9eaa4ba583b868655e3da08cG.jpg">
+<meta property="og:image" content="https://ae01.alicdn.com/kf/Hc2eb3f984988485fb7858a5cdd7998e3h.jpg">
+<meta property="article:published_time" content="2020-06-30T07:30:39.000Z">
+<meta property="article:modified_time" content="2020-07-07T03:21:26.233Z">
+<meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="c++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ae01.alicdn.com/kf/Headba8df9eaa4ba583b868655e3da08cG.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/30/算法入门-KMP算法/"/>
+
+
+
+
+
+  <title>[算法入门]KMP算法 | Dfkuaid的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Dfkuaid的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-KMP%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Dfkuaid">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dfkuaid的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[算法入门]KMP算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T15:30:39+08:00">
+                2020-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>现在我们面临这样一个问题：有一个主串S，和一个模式串P，现在要查找P在S中的位置，怎么查找呢？</p>
+<a id="more"></a>
+
+
+
+<h1 id="Brute-Force（暴力求解）"><a href="#Brute-Force（暴力求解）" class="headerlink" title="Brute-Force（暴力求解）"></a>Brute-Force（暴力求解）</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果用<strong>暴力匹配</strong>的思路，并假设现在主串S匹配到 i 位置，模式串P匹配到 j 位置，则有：</p>
+<ul>
+<li>如果当前字符匹配成功（即$S_i = P_{j}$），则$i++,j++$，继续匹配下一个字符；</li>
+<li>如果失配（即$S_i \not= P_j$），令$i = i - (j - 1),j = 0$。相当于每次匹配失败时，i 回溯，j 被置为0。</li>
+</ul>
+<p>举个例子，我们有一个主串$AAAAAAB$，我们要查找模式串$AAAB$的位置，则过程如下图：<br><img src="https://ae01.alicdn.com/kf/Headba8df9eaa4ba583b868655e3da08cG.jpg" alt=""></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> Brute-Force(<span class="built_in">string</span> s,<span class="built_in">string</span> p) &#123;  </span><br><span class="line">    <span class="keyword">int</span> ls = s.length();  </span><br><span class="line">    <span class="keyword">int</span> lp = p.length();  </span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">while</span> (i &lt; ls &amp;&amp; j &lt; lp)&#123;  </span><br><span class="line">        <span class="keyword">if</span> (s[i] == p[j])&#123;  </span><br><span class="line">            <span class="comment">//如果当前字符匹配成功则i++，j++      </span></span><br><span class="line">            i++;  </span><br><span class="line">            j++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span>  &#123;  </span><br><span class="line">            <span class="comment">//如果失配，令i = i - (j - 1)，j = 0      </span></span><br><span class="line">            i = i - j + <span class="number">1</span>;  </span><br><span class="line">            j = <span class="number">0</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">//匹配成功，返回模式串p在文本串s中的位置，否则返回-1  </span></span><br><span class="line">    <span class="keyword">if</span> (j == lp)  </span><br><span class="line">        <span class="keyword">return</span> i - j;  </span><br><span class="line">    <span class="keyword">else</span>  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们成功实现了 Brute-Force 算法。现在，我们看一下它的时间复杂度。记 $n = |S|$ 为串 S 的长度，$m = |P|$ 为串 P 的长度。不难想到 Brute-Force 算法所面对的最坏情况：主串形如$AAAAAAAAAAA…B$，而模式串形如$AAAAA…B$。每次字符串比较都需要付出 $|P|$次字符比较的代价，总共需要比较 $|S| - |P| + 1$ 次，因此总时间复杂度是$O(|P| \cdot (|S| - |P| + 1))$. 考虑到主串一般比模式串长很多，故 Brute-Force 的复杂度是$O(|P| \cdot |S|)$，也就是 $O(nm)$的。u1s1,我家门口的蜗牛跑的都比他快…</p>
+<h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p>KMP算法是一种改进的字符串匹配算法，由<code>D.E.Knuth</code>，<code>J.H.Morris</code>和<code>V.R.Pratt</code>提出的，因此人们称它为<code>Knuth-Morris-Pratt操作</code>（简称KMP算法）。</p>
+<h2 id="从改进暴力算法开始"><a href="#从改进暴力算法开始" class="headerlink" title="从改进暴力算法开始"></a>从改进暴力算法开始</h2><p>分析暴力算法，我们发现，我们很难降低字符串比较的复杂度，因此，我们考虑<strong>降低比较的次数</strong>。如果比较的趟数能降到足够低，那么总的复杂度也将会下降很多。<br>看下面这个例子：</p>
+<p><img src="https://ae01.alicdn.com/kf/Hc2eb3f984988485fb7858a5cdd7998e3h.jpg" alt="Markdown"></p>
+<p>在 Brute-Force 中，如果从 S[i] 开始的那一趟比较失败了，会直接开始尝试从 S[i+1] 开始比较。我们应当注意到，一次失败的匹配，会给我们提供宝贵的信息——如果 $S$ 与 $P$ 的匹配是在第 $r$ 个位置失败的，那么从 S[i] 开始的 $(r-1)$ 个连续字符，一定与 P 的前 $(r-1)$ 个字符是<strong>一样</strong>的！</p>
+<p>例如：$S=ABCABCAB…$<br>$\ \ \ \ \ \ \ \ \ \ P=ABCABE$<br>$\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .$^$.$<br>可以发现，是在 $P[5]$ 失配的，那么说明 $S[0:5]$ 等于 $P[0:5]$，即 $ABCAB$. 现在我们来考虑：从 $S[1]$、$S[2]$、$S[3]$ 开始的匹配，有没有可能成功？</p>
+<blockquote>
+<p>这里$K[n:m]$使用了$Python$的语法，表示$K[n] \sim K[m - 1]$</p>
+</blockquote>
+<p>从 $S[1]$ 开始肯定没办法成功，因为 $S[1] = P[1] = ‘B’$，和 $P[0]$ 并不相等。从 $S[2]$ 开始也不行，因为 $S[2] = P[2] = ‘C’$，并不等于$P[0]$. 但是从 $S[3]$ 开始是有可能成功的。</p>
+<h2 id="KMP的精髓——next数组"><a href="#KMP的精髓——next数组" class="headerlink" title="KMP的精髓——next数组"></a>KMP的精髓——next数组</h2><p>P 的 <code>next[i]</code> 表示 <code>P[0] ~ P[i - 1]</code> 这一个子串中，前k个字符恰等于后k个字符的最大的k，也就是代表当前字符之前的字符串中，有多大长度的相同前缀后缀。<br>如$P=ABCABE$,当$i=4$时，<code>next[4] = 1</code>,也就是子串$A$，当$i=5$时，<code>next[5] = 2</code>,也就是子串$AB$。</p>
+<p>在使用暴力算法时，每次仅将模式串向后移动一位，而改进算法则是一下移动好几位，跳过那些不可能匹配成功的位置，由 <a href="https://www.cnblogs.com/Dfkuaid-210/p/13204580.html#%E4%BB%8E%E6%94%B9%E8%BF%9B%E6%9A%B4%E5%8A%9B%E7%AE%97%E6%B3%95%E5%BC%80%E5%A7%8B" target="_blank" rel="noopener">3.1</a> 节可以发现旧的$P$已匹配的部分的后缀要与$P$的前缀一致(假设$P$在$i$处失配，那么已匹配部分即为$P[0] - P[i - 1]$)，也就是要求$P[0] \sim P[i - 1]$中有多大长度的相同前缀后缀，这不正是next数组吗！</p>
+<blockquote>
+<p>存储字符串时，第一个字符对应的下标是$0$，而$next[i]$存储的是长度，也就是说，最大长度的相同前缀后缀中的前缀的最后一个字符的下标为$next[i] - 1$，那么$next[i]$作为下标对应的字符为最大长度的相同前缀后缀中的前缀的最后一个字符的下一个，也就是并不属于$P[0] - P[i - 1]$最大长度的相同前缀后缀中的前缀的第一个字符</p>
+</blockquote>
+<p>假设现在$S$匹配到$i$位置，$P$匹配到$j$位置</p>
+<ul>
+<li>如果$j = -1$，或者当前字符匹配成功都令<code>i++;j++</code>，继续匹配下一个字符；</li>
+<li>如果$j \not= -1$，且当前字符匹配失败，则令$i$不变，<code>j = next[j]</code>。此举意味着失配时，模式串$P$相对于文本串$S$向右移动了$j - next [j]$ 位,此时将$S[i]$与$P[next[j]]$比较(由前面的分析可以得到，失配时，前面的子串相等)，重复这一步，直至满足$j = -1$或$s[i] = p[j]$。<br>由此，我们可以得到以下代码：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KmpSearch</span><span class="params">(<span class="built_in">string</span> s,<span class="built_in">string</span> p)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> ls = s.length();  </span><br><span class="line">    <span class="keyword">int</span> lp = p.length();  </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;   </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; ls;i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(j != <span class="number">-1</span> &amp;&amp; p[j] != s[i])</span><br><span class="line">          j = next[j];</span><br><span class="line">        j ++;</span><br><span class="line">        <span class="keyword">if</span> (j == lp)&#123;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; i - lp + <span class="number">2</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    j = next[j];</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>##快速求得next数组<br>这是最后一个问题，也是最重要的——如何快速构建next数组。快速构建next数组，核心思想是“P自己与自己做匹配”。<br>回顾next数组： $next[x]$ 定义为： $P[0] \sim P[x]$ 这一段字符串，使得长度为$k$的前缀恰等于长度为$k$的后缀的最大的$k$($k$不能等于自身长度)。那么，我们可以考虑，从$P$串的头开始，逐个比较，由于前缀或后缀的长度都不能等于这个串的本长，两个比较字符最近时也只是相邻，故初始<code>head = -1</code>,<code>tail = 0</code>（$head$表示前缀，$tail$表示后缀）</p>
+<p>分情况讨论。</p>
+<ul>
+<li><p>如果$head = -1$，则说明未开始或$P[0] \sim P[tail]$没有相同前后缀，<code>head ++;tail++;next[tail] = head;</code></p>
+</li>
+<li><p>如果$P[head] = P[tail]$，两个字符相同，此时$P[0] \sim P[tail]$最长相同前后缀的长度为$head + 1$，也就是说，$next[tail + 1] = head + 1$，将两个指针后移指向下一位，<code>head ++;tail ++;</code></p>
+</li>
+<li><p>否则$P[head] \not= P[tail]$，两个字符不相同，由于 $head$ 一定小于 $tail$，此时$next[head]$必定是已知的，则令$tail$不变，<code>head = next[head];</code>，跳回到$P[0] \sim P[head - 1]$中最长相同前后缀的下一位，此时将$P[tail]$与$P[next[head]]$比较（$head$为执行<code>head = next[head];</code>前），重复这一步，直至满足$head = -1$或$P[head] = P[tail]$。</p>
+</li>
+</ul>
+<blockquote>
+<p>这与原问题处理很相似，主串$S’$为$P$串本身，模式串$P’$为$P[0] \sim P[head]$,与 <a href="https://www.cnblogs.com/Dfkuaid-210/p/13204580.html#kmp%E7%9A%84%E7%B2%BE%E9%AB%93next%E6%95%B0%E7%BB%84" target="_blank" rel="noopener">3.2</a> 节中思想相同，旧的$P[0] - P[head]$的已匹配的部分的后缀要与$P[0] \sim P[head]$前缀一致，才可以将$P[0] \sim P[head]$这把“标尺”向后跳跃式移动</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNext</span><span class="params">(<span class="built_in">string</span> p,<span class="keyword">int</span> next[])</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> lp = p.length();  </span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">int</span> head = <span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> tail = <span class="number">0</span>;tail &lt; lp;tail ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="number">-1</span> &amp;&amp; p[tail] != p[head])</span><br><span class="line">          head = next[head];</span><br><span class="line">	head ++;</span><br><span class="line">        next[tail + <span class="number">1</span>] = head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="求得next数组的优化"><a href="#求得next数组的优化" class="headerlink" title="求得next数组的优化"></a>求得next数组的优化</h2><p>按照以上的方法求解next数组，会有一个小问题，如：<br>$S=”ABACABAB”$<br>$P=”ABAB”$<br>$next = { -1,0,0,1 }$<br>当$i = 3$且$j = 3$时,B与C失配，<code>j = next[j]</code>，此时$j = 1$，B和C将再一次失配；那么，我们发现，如果$p[j] = p[next[j]]$，必然导致后一步匹配失败（因为$p[j]$已经跟$s[i]$失配，用跟$p[j]$等同的值$p[next[j]]$去跟$s[i]$匹配必然失配）。如果出现了$p[j] = p[next[j]]$，我们直接使$j$跳回$next[next[j]]$，即在求next数组时，在 $p[tail] = p[head]$ 的前提下，若 $p[tail + 1] = p[head + 1]$ 运行<code>next[tail + 1] = next[head + 1]</code>（$next[head + 1]$与$next[next[tail]]$必定相等）。</p>
+<p>那么，可以得到以下修改后的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNext</span><span class="params">(<span class="built_in">string</span> p,<span class="keyword">int</span> next[])</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> lp = p.length();  </span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">int</span> head = <span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">int</span> tail = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">while</span> (tail &lt; lp)&#123;  </span><br><span class="line">        <span class="comment">//p[head]表示前缀，p[tail]表示后缀  </span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="number">-1</span> || p[tail] == p[head])&#123;</span><br><span class="line">            ++ head;  </span><br><span class="line">            ++ tail;  </span><br><span class="line">            <span class="keyword">if</span> (p[head] != p[tail])  </span><br><span class="line">              next[tail] = head;</span><br><span class="line">            <span class="keyword">else</span>   </span><br><span class="line">              next[tail] = next[head]; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          head = next[head];   </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样得到的next数组：<br>$next={ -1,0,-1,0 }$</p>
+<p>此时应当使用的<code>KmpSearch</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KmpSearch</span><span class="params">(<span class="built_in">string</span> s,<span class="built_in">string</span> p)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> ls = s.length();  </span><br><span class="line">    <span class="keyword">int</span> lp = p.length();  </span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;   </span><br><span class="line">    <span class="keyword">while</span> (i &lt; ls)&#123;  </span><br><span class="line">        <span class="keyword">if</span> (j == <span class="number">-1</span> || s[i] == p[j])&#123;  </span><br><span class="line">            i++;  </span><br><span class="line">            j++;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          j = next[j];  </span><br><span class="line">        <span class="keyword">if</span> (j == lp)  </span><br><span class="line">          <span class="built_in">cout</span> &lt;&lt; i - j + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>我们发现如果某个字符匹配成功，模式串首字符的位置保持不动，仅仅是 <code>i ++</code>、<code>j ++</code>；如果匹配失配，$i$ 不变，模式串会跳过匹配过的$next[j]$个字符，这样的运算时间复杂度都是$O(1)$的。整个算法最坏的情况是，当模式串首字符位于$i - j$的位置时才匹配成功，算法结束。</p>
+<p>所以，如果文本串的长度为$n$，模式串的长度为$m$，那么匹配过程的时间复杂度为$O(n)$，算上计算next的$O(m)$时间，KMP的整体时间复杂度为$O(m + n)$。</p>
+<h1 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h1><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p><a href="https://www.luogu.com.cn/problem/P3375" target="_blank" rel="noopener">洛谷P3375</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> next[<span class="number">10001</span>];</span><br><span class="line"><span class="built_in">string</span> s,p;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetNext</span><span class="params">(<span class="built_in">string</span> p,<span class="keyword">int</span> next[])</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> lp = p.length();  </span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">int</span> head = <span class="number">-1</span>;  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> tail = <span class="number">0</span>;tail &lt; lp;tail ++)&#123;</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="number">-1</span> &amp;&amp; p[tail] != p[head])</span><br><span class="line">	  head = next[head];</span><br><span class="line">	head ++;</span><br><span class="line">        next[tail + <span class="number">1</span>] = head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KmpSearch</span><span class="params">(<span class="built_in">string</span> s,<span class="built_in">string</span> p)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> ls = s.length();  </span><br><span class="line">    <span class="keyword">int</span> lp = p.length();  </span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;   </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; ls;i ++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(j != <span class="number">-1</span> &amp;&amp; p[j] != s[i])</span><br><span class="line">          j = next[j];</span><br><span class="line">        j ++;</span><br><span class="line">        <span class="keyword">if</span> (j == lp)&#123;</span><br><span class="line">	    <span class="built_in">cout</span> &lt;&lt; i - lp + <span class="number">2</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	    j = next[j];</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s &gt;&gt; p;</span><br><span class="line">	GetNext(p,next);</span><br><span class="line">	KmpSearch(s,p);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= p.length();i ++)</span><br><span class="line">	  <span class="built_in">cout</span> &lt;&lt; next[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="更新日志及说明"><a href="#更新日志及说明" class="headerlink" title="更新日志及说明"></a>更新日志及说明</h1><h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><blockquote>
+<ul>
+<li>初次完成编辑 - $2020.6.30$<br>本文若有更改或补充会持续更新</li>
+</ul>
+</blockquote>
+<h2 id="个人主页"><a href="#个人主页" class="headerlink" title="个人主页"></a>个人主页</h2><p>欢迎到以下地址支持作者！<br><strong>Github</strong>：<a href="https://github.com/Dfkuaid/" target="_blank" rel="noopener">戳这里</a><br><strong>Bilibili</strong>：<a href="https://space.bilibili.com/312728987" target="_blank" rel="noopener">戳这里</a><br><strong>Luogu</strong>：<a href="https://www.luogu.com.cn/user/162191" target="_blank" rel="noopener">戳这里</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/06/24/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="next" title="[算法入门]单调队列">
+                <i class="fa fa-chevron-left"></i> [算法入门]单调队列
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg"
+                alt="Dfkuaid" />
+            
+              <p class="site-author-name" itemprop="name">Dfkuaid</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引入"><span class="nav-number">1.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Brute-Force（暴力求解）"><span class="nav-number">2.</span> <span class="nav-text">Brute-Force（暴力求解）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KMP算法"><span class="nav-number">3.</span> <span class="nav-text">KMP算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从改进暴力算法开始"><span class="nav-number">3.1.</span> <span class="nav-text">从改进暴力算法开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMP的精髓——next数组"><span class="nav-number">3.2.</span> <span class="nav-text">KMP的精髓——next数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求得next数组的优化"><span class="nav-number">3.3.</span> <span class="nav-text">求得next数组的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度分析"><span class="nav-number">3.4.</span> <span class="nav-text">时间复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#练习"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模板"><span class="nav-number">4.1.</span> <span class="nav-text">模板</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新日志及说明"><span class="nav-number">5.</span> <span class="nav-text">更新日志及说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">5.1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人主页"><span class="nav-number">5.2.</span> <span class="nav-text">个人主页</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
