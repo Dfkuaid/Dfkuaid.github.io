@@ -20,28 +20,47 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dfkuaid的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="#0.0 前言每次的CSP考试前最担心的就是初赛，翻看了许多资料，还是觉得自己整理最有助于自己的理解，因而作此篇，望有助   #1.0 网络常识#1.1 网络的分类按地域范围 局域网 范围在一般在$1km$的范围内，缩写为$LAN$(Loacl Area Network) 城域网 范围在几千米到几十千米以内，缩写为$MAN$(Metorpolitan Area Network) 广域网 范围在几十">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[五年CSP三年模拟]CSP2020-J冲刺 - 初赛篇">
+<meta property="og:url" content="http://yoursite.com/2020/10/08/%E4%BA%94%E5%B9%B4CSP%E4%B8%89%E5%B9%B4%E6%A8%A1%E6%8B%9F-CSP2020-J%E5%86%B2%E5%88%BA-%E5%88%9D%E8%B5%9B%E7%AF%87/index.html">
 <meta property="og:site_name" content="Dfkuaid的博客">
+<meta property="og:description" content="#0.0 前言每次的CSP考试前最担心的就是初赛，翻看了许多资料，还是觉得自己整理最有助于自己的理解，因而作此篇，望有助   #1.0 网络常识#1.1 网络的分类按地域范围 局域网 范围在一般在$1km$的范围内，缩写为$LAN$(Loacl Area Network) 城域网 范围在几千米到几十千米以内，缩写为$MAN$(Metorpolitan Area Network) 广域网 范围在几十">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.downk.cc/item/5f649411160a154a6749e7f5.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5f64985f160a154a674b04af.jpg">
+<meta property="og:image" content="https://pic.downk.cc/item/5f64a475160a154a674eff6d.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5f64a62a160a154a674f7ea9.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5f64a83e160a154a67501504.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5f64a83e160a154a67501502.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5f64ac15160a154a67511521.png">
+<meta property="og:image" content="https://pic.downk.cc/item/5f64ac15160a154a67511523.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/Dfkuaid-210/1861210/o_201011012959huffman_y.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/Dfkuaid-210/1861210/o_201011014219huffman_y%20-%20%E5%89%AF%E6%9C%AC.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/Dfkuaid-210/1861210/o_201011014854huffman_y%20-%20%E5%89%AF%E6%9C%AC%20-%20%E5%89%AF%E6%9C%AC.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/Dfkuaid-210/1861210/o_201011015313huffman_y%20-%20%E5%89%AF%E6%9C%AC%20-%20%E5%89%AF%E6%9C%AC%20-%20%E5%89%AF%E6%9C%AC.png">
+<meta property="article:published_time" content="2020-10-08T09:22:49.000Z">
+<meta property="article:modified_time" content="2020-10-31T09:07:08.568Z">
 <meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="备战">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.downk.cc/item/5f649411160a154a6749e7f5.png">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/10/08/%E4%BA%94%E5%B9%B4CSP%E4%B8%89%E5%B9%B4%E6%A8%A1%E6%8B%9F-CSP2020-J%E5%86%B2%E5%88%BA-%E5%88%9D%E8%B5%9B%E7%AF%87/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Dfkuaid的博客</title>
+  <title>[五年CSP三年模拟]CSP2020-J冲刺 - 初赛篇 | Dfkuaid的博客</title>
   
 
 
@@ -139,9 +158,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -157,10 +177,9 @@
       <meta itemprop="name" content="Dfkuaid的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/08/%E4%BA%94%E5%B9%B4CSP%E4%B8%89%E5%B9%B4%E6%A8%A1%E6%8B%9F-CSP2020-J%E5%86%B2%E5%88%BA-%E5%88%9D%E8%B5%9B%E7%AF%87/" class="post-title-link" itemprop="url">[五年CSP三年模拟]CSP2020-J冲刺 - 初赛篇</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          [五年CSP三年模拟]CSP2020-J冲刺 - 初赛篇
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -190,7 +209,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="0-0-前言"><a href="#0-0-前言" class="headerlink" title="#0.0 前言"></a>#0.0 前言</h1><p>每次的CSP考试前最担心的就是初赛，翻看了许多资料，还是觉得自己整理最有助于自己的理解，因而作此篇，望有助</p>
+        <h1 id="0-0-前言"><a href="#0-0-前言" class="headerlink" title="#0.0 前言"></a>#0.0 前言</h1><p>每次的CSP考试前最担心的就是初赛，翻看了许多资料，还是觉得自己整理最有助于自己的理解，因而作此篇，望有助</p>
 <hr>
 <hr>
 <h1 id="1-0-网络常识"><a href="#1-0-网络常识" class="headerlink" title="#1.0 网络常识"></a>#1.0 网络常识</h1><h2 id="1-1-网络的分类"><a href="#1-1-网络的分类" class="headerlink" title="#1.1 网络的分类"></a>#1.1 网络的分类</h2><h3 id="按地域范围"><a href="#按地域范围" class="headerlink" title="按地域范围"></a>按<strong>地域范围</strong></h3><ul>
@@ -449,605 +468,34 @@
 </blockquote>
 <h2 id="个人主页"><a href="#个人主页" class="headerlink" title="个人主页"></a>个人主页</h2><p>欢迎到以下地址支持作者！<br><strong>Github</strong>：<a href="https://github.com/Dfkuaid/" target="_blank" rel="noopener">戳这里</a><br><strong>Bilibili</strong>：<a href="https://space.bilibili.com/312728987" target="_blank" rel="noopener">戳这里</a><br><strong>Luogu</strong>：<a href="https://www.luogu.com.cn/user/162191" target="_blank" rel="noopener">戳这里</a></p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/%E5%A4%87%E6%88%98/" rel="tag"># 备战</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/30/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-KMP%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/30/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-KMP%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">[算法入门]KMP算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-30 15:30:39" itemprop="dateCreated datePublished" datetime="2020-06-30T15:30:39+08:00">2020-06-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-07 11:21:26" itemprop="dateModified" datetime="2020-07-07T11:21:26+08:00">2020-07-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>现在我们面临这样一个问题：有一个主串S，和一个模式串P，现在要查找P在S中的位置，怎么查找呢？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/30/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-KMP%E7%AE%97%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/24/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" class="post-title-link" itemprop="url">[算法入门]单调队列</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-24 14:38:19" itemprop="dateCreated datePublished" datetime="2020-06-24T14:38:19+08:00">2020-06-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 16:06:38" itemprop="dateModified" datetime="2020-07-06T16:06:38+08:00">2020-07-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h1><p>单调队列，即<strong>单调递减或单调递增</strong>的<a href="https://baike.baidu.com/item/队列/718364" target="_blank" rel="noopener">队列</a>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/24/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/30/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-KMP%E7%AE%97%E6%B3%95/" rel="prev" title="[算法入门]KMP算法">
+      <i class="fa fa-chevron-left"></i> [算法入门]KMP算法
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/Python-%E5%88%A9%E7%94%A8selenium%E7%88%AC%E5%8F%96%E6%BC%AB%E7%94%BB%E7%BD%91%E7%AB%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/09/Python-%E5%88%A9%E7%94%A8selenium%E7%88%AC%E5%8F%96%E6%BC%AB%E7%94%BB%E7%BD%91%E7%AB%99/" class="post-title-link" itemprop="url">[Python]利用selenium爬取漫画网站</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-09 21:02:49" itemprop="dateCreated datePublished" datetime="2020-06-09T21:02:49+08:00">2020-06-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-09 21:16:59" itemprop="dateModified" datetime="2020-07-09T21:16:59+08:00">2020-07-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>本人也是一位老二次元了，常常会在各种网站上浏览漫画,遇到自己喜欢的漫画就会想将其存下来，但大部分漫画大部分都有**几十上百章**，所以，手存是不可能的，这辈子都不可能的！</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/06/09/Python-%E5%88%A9%E7%94%A8selenium%E7%88%AC%E5%8F%96%E6%BC%AB%E7%94%BB%E7%BD%91%E7%AB%99/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/%E6%9C%89%E5%85%B3%E9%80%92%E6%8E%A8%E4%B8%8E%E9%80%92%E5%BD%92%E7%9A%84%E5%9B%9E%E9%A1%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/16/%E6%9C%89%E5%85%B3%E9%80%92%E6%8E%A8%E4%B8%8E%E9%80%92%E5%BD%92%E7%9A%84%E5%9B%9E%E9%A1%BE/" class="post-title-link" itemprop="url">有关递推与递归的回顾</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-16 17:43:17" itemprop="dateCreated datePublished" datetime="2020-05-16T17:43:17+08:00">2020-05-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 16:07:56" itemprop="dateModified" datetime="2020-07-06T16:07:56+08:00">2020-07-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="注：本文为回顾，所以仅会记录本人认为的难点与分析"><a href="#注：本文为回顾，所以仅会记录本人认为的难点与分析" class="headerlink" title="注：本文为回顾，所以仅会记录本人认为的难点与分析"></a>注：本文为回顾，所以仅会记录本人认为的难点与分析</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/16/%E6%9C%89%E5%85%B3%E9%80%92%E6%8E%A8%E4%B8%8E%E9%80%92%E5%BD%92%E7%9A%84%E5%9B%9E%E9%A1%BE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/%E6%9C%89%E5%85%B3%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%92%8C%E6%8E%92%E5%BA%8F%E7%9A%84%E5%9B%9E%E9%A1%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/05/09/%E6%9C%89%E5%85%B3%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%92%8C%E6%8E%92%E5%BA%8F%E7%9A%84%E5%9B%9E%E9%A1%BE/" class="post-title-link" itemprop="url">有关高精度和排序的回顾</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-05-09 21:12:48" itemprop="dateCreated datePublished" datetime="2020-05-09T21:12:48+08:00">2020-05-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 16:08:03" itemprop="dateModified" datetime="2020-07-06T16:08:03+08:00">2020-07-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="注：本文为回顾，所以仅会记录本人认为的难点与分析"><a href="#注：本文为回顾，所以仅会记录本人认为的难点与分析" class="headerlink" title="注：本文为回顾，所以仅会记录本人认为的难点与分析"></a>注：本文为回顾，所以仅会记录本人认为的难点与分析</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/05/09/%E6%9C%89%E5%85%B3%E9%AB%98%E7%B2%BE%E5%BA%A6%E5%92%8C%E6%8E%92%E5%BA%8F%E7%9A%84%E5%9B%9E%E9%A1%BE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/29/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/29/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/" class="post-title-link" itemprop="url">[算法入门]快速幂取余</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-29 15:52:07" itemprop="dateCreated datePublished" datetime="2019-12-29T15:52:07+08:00">2019-12-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 16:07:37" itemprop="dateModified" datetime="2020-07-06T16:07:37+08:00">2020-07-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>快速幂取余，其实就是$a^b \mod c$</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/29/%E7%AE%97%E6%B3%95%E5%85%A5%E9%97%A8-%E5%BF%AB%E9%80%9F%E5%B9%82%E5%8F%96%E4%BD%99/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-%E7%BA%BF%E6%AE%B5%E6%A0%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">[数据结构入门]线段树</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-28 20:39:18" itemprop="dateCreated datePublished" datetime="2019-11-28T20:39:18+08:00">2019-11-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 16:07:03" itemprop="dateModified" datetime="2020-07-06T16:07:03+08:00">2020-07-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="引入："><a href="#引入：" class="headerlink" title="引入："></a>引入：</h3><p>我们经常会遇到需要维护一个序列的问题，例如，给定一个整数序列，每次操作会修改某个位置或某个区间的值，或是询问你序列中的某个区间内所有数的和。或许你可能回去暴力出奇迹或者使用前缀和，但是当数据很大时，时间复杂度明显是受不了的。那么，就需要引入一种时间复杂度相对较小的数据结构 ——<strong>线段树</strong>  </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/11/28/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%85%A5%E9%97%A8-%E7%BA%BF%E6%AE%B5%E6%A0%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://pic.downk.cc/item/5f029b2c14195aa594cc0f81.jpg">
-      <meta itemprop="name" content="Dfkuaid">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dfkuaid的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/" class="post-title-link" itemprop="url">[题解]洛谷P1434滑雪</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-25 17:21:47" itemprop="dateCreated datePublished" datetime="2019-11-25T17:21:47+08:00">2019-11-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 16:07:49" itemprop="dateModified" datetime="2020-07-06T16:07:49+08:00">2020-07-06</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>我觉得这道题主要方法应该有两种：  </p>
-<blockquote>
-<ul>
-<li>动态规划</li>
-<li>搜索  </li>
-</ul>
-</blockquote>
-<p>下面会分别对这两种方法进行简述</p>
-<hr>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/11/25/%E9%A2%98%E8%A7%A3-%E6%B4%9B%E8%B0%B7P1434%E6%BB%91%E9%9B%AA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -1100,6 +548,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-0-前言"><span class="nav-number">1.</span> <span class="nav-text">#0.0 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-0-网络常识"><span class="nav-number">2.</span> <span class="nav-text">#1.0 网络常识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-网络的分类"><span class="nav-number">2.1.</span> <span class="nav-text">#1.1 网络的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按地域范围"><span class="nav-number">2.1.1.</span> <span class="nav-text">按地域范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按拓扑结构"><span class="nav-number">2.1.2.</span> <span class="nav-text">按拓扑结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-网络的体系结构"><span class="nav-number">2.2.</span> <span class="nav-text">#1.2 网络的体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#OSI模型与TCP-IT模型的对应关系"><span class="nav-number">2.2.1.</span> <span class="nav-text">OSI模型与TCP&#x2F;IT模型的对应关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题"><span class="nav-number">2.2.2.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-IP地址"><span class="nav-number">2.3.</span> <span class="nav-text">#1.3 IP地址</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-0-数制转换"><span class="nav-number">3.</span> <span class="nav-text">#2.0 数制转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-十进制与二进制的互相转换"><span class="nav-number">3.1.</span> <span class="nav-text">#2.1 十进制与二进制的互相转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制转十进制"><span class="nav-number">3.1.1.</span> <span class="nav-text">二进制转十进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十进制整数转二进制"><span class="nav-number">3.1.2.</span> <span class="nav-text">十进制整数转二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#十进制小数转二进制"><span class="nav-number">3.1.3.</span> <span class="nav-text">十进制小数转二进制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-八进制与二进制的互相转换"><span class="nav-number">3.2.</span> <span class="nav-text">#2.2 八进制与二进制的互相转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#八进制转二进制"><span class="nav-number">3.2.1.</span> <span class="nav-text">八进制转二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制转八进制"><span class="nav-number">3.2.2.</span> <span class="nav-text">二进制转八进制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-十六进制与二进制的互相转换"><span class="nav-number">3.3.</span> <span class="nav-text">#2.3 十六进制与二进制的互相转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#十六进制转二进制"><span class="nav-number">3.3.1.</span> <span class="nav-text">十六进制转二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制转十六进制"><span class="nav-number">3.3.2.</span> <span class="nav-text">二进制转十六进制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-十进制与八进制、十六进制的转换"><span class="nav-number">3.4.</span> <span class="nav-text">#2.4 十进制与八进制、十六进制的转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-拓展-关于以上进制转换的の思考"><span class="nav-number">3.5.</span> <span class="nav-text">#2.5 拓展 - 关于以上进制转换的の思考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-例题"><span class="nav-number">3.6.</span> <span class="nav-text">#2.6 例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-信息编码"><span class="nav-number">4.</span> <span class="nav-text">#3.0 信息编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-储存容量"><span class="nav-number">4.1.</span> <span class="nav-text">#3.1 储存容量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#储存容量单位间换算"><span class="nav-number">4.1.1.</span> <span class="nav-text">储存容量单位间换算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题-1"><span class="nav-number">4.1.2.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-ASCII码"><span class="nav-number">4.2.</span> <span class="nav-text">#3.2 ASCII码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-汉字信息编码"><span class="nav-number">4.3.</span> <span class="nav-text">#3.3 汉字信息编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#汉字交换码"><span class="nav-number">4.3.1.</span> <span class="nav-text">汉字交换码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字形储存码"><span class="nav-number">4.3.2.</span> <span class="nav-text">字形储存码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-0-原码·反码·补码"><span class="nav-number">5.</span> <span class="nav-text">#4.0 原码·反码·补码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-原码"><span class="nav-number">5.1.</span> <span class="nav-text">#4.1 原码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-反码"><span class="nav-number">5.2.</span> <span class="nav-text">#4.2 反码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-补码"><span class="nav-number">5.3.</span> <span class="nav-text">#4.3 补码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-关于补码加法和减法也可以统一处理的解释"><span class="nav-number">5.4.</span> <span class="nav-text">#4.4 关于补码加法和减法也可以统一处理的解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-补码求原码"><span class="nav-number">5.5.</span> <span class="nav-text">#4.5 补码求原码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-例题"><span class="nav-number">5.6.</span> <span class="nav-text">#4.6 例题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-0-逻辑运算"><span class="nav-number">6.</span> <span class="nav-text">#5.0 逻辑运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注：这里讲的是数学布尔运算"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">注：这里讲的是数学布尔运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-运算级比较"><span class="nav-number">6.1.</span> <span class="nav-text">#5.1 运算级比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-运算规则"><span class="nav-number">6.2.</span> <span class="nav-text">#5.2 运算规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-0-位运算"><span class="nav-number">7.</span> <span class="nav-text">#6.0 位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-运算级比较"><span class="nav-number">7.1.</span> <span class="nav-text">#6.1 运算级比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-运算规则"><span class="nav-number">7.2.</span> <span class="nav-text">#6.2 运算规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-0-数据结构"><span class="nav-number">8.</span> <span class="nav-text">#7.0 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#7-1-栈"><span class="nav-number">8.1.</span> <span class="nav-text">#7.1 栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-2-队列"><span class="nav-number">8.2.</span> <span class="nav-text">#7.2 队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-3-二叉树"><span class="nav-number">8.3.</span> <span class="nav-text">#7.3 二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性质"><span class="nav-number">8.3.1.</span> <span class="nav-text">性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-4-线段树"><span class="nav-number">8.4.</span> <span class="nav-text">#7.4 线段树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-0-数学问题"><span class="nav-number">9.</span> <span class="nav-text">#8.0 数学问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-0-其他"><span class="nav-number">10.</span> <span class="nav-text">#9.0 其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-1-图片大小计算"><span class="nav-number">10.1.</span> <span class="nav-text">#9.1 图片大小计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公式"><span class="nav-number">10.1.1.</span> <span class="nav-text">公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题-2"><span class="nav-number">10.1.2.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2-哈夫曼编码"><span class="nav-number">10.2.</span> <span class="nav-text">#9.2 哈夫曼编码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新日志及说明"><span class="nav-number">11.</span> <span class="nav-text">更新日志及说明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新"><span class="nav-number">11.1.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人主页"><span class="nav-number">11.2.</span> <span class="nav-text">个人主页</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1206,61 +655,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
