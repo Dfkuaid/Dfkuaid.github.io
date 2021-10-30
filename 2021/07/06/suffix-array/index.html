@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dfkuaid.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="后缀数组倍增 $O(n\log n)$ 算法的简单讲解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「字符串相关」后缀数组 - 倍增算法">
+<meta property="og:url" content="https://dfkuaid.github.io/2021/07/06/suffix-array/index.html">
+<meta property="og:site_name" content="Dfkuaid の 小窝">
+<meta property="og:description" content="后缀数组倍增 $O(n\log n)$ 算法的简单讲解">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/60e442f95132923bf8eb1e93.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/60e446c25132923bf8fc2d8c.png">
+<meta property="article:published_time" content="2021-07-06T13:50:38.000Z">
+<meta property="article:modified_time" content="2021-10-30T00:07:34.779Z">
+<meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="基数排序">
+<meta property="article:tag" content="字符串">
+<meta property="article:tag" content="倍增">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/60e442f95132923bf8eb1e93.png">
+
+<link rel="canonical" href="https://dfkuaid.github.io/2021/07/06/suffix-array/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>「字符串相关」后缀数组 - 倍增算法 | Dfkuaid の 小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dfkuaid の 小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">暖呼呼~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-friends">
+
+    <a href="/friends/" rel="section"><i class="fa fa-friends fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dfkuaid.github.io/2021/07/06/suffix-array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Dfkuaid">
+      <meta itemprop="description" content="每个人的心里都有一团火，路过的人只看到烟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dfkuaid の 小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「字符串相关」后缀数组 - 倍增算法
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-06 21:50:38" itemprop="dateCreated datePublished" datetime="2021-07-06T21:50:38+08:00">2021-07-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-30 08:07:34" itemprop="dateModified" datetime="2021-10-30T08:07:34+08:00">2021-10-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index"><span itemprop="name">字符串</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">后缀数组倍增 $O(n\log n)$ 算法的简单讲解</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>我们约定，下文所提到的字符串下标都从 $0$ 开始。下文中的“第 $x$ 后缀”指的是从下标 $x$ 开始的后缀。</p>
+<p>对于后缀数组的学习，本人建议可以自己随便写一个字符串，然后按照相应的过程进行模拟，会很方便的理解每一步的作用以及原理。</p>
+</blockquote>
+<h1 id="1-0-何为后缀数组"><a href="#1-0-何为后缀数组" class="headerlink" title="#1.0 何为后缀数组"></a>#1.0 何为后缀数组</h1><h2 id="1-1-后缀树"><a href="#1-1-后缀树" class="headerlink" title="#1.1 后缀树"></a>#1.1 后缀树</h2><p>我们知道，像 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Dfkuaid-210/p/ac_auto.html">$\texttt{AC}$ 自动机</a> 这样的多模式串匹配需要预处理的是模式串，但是在很多时候，我们会先知道文本串，而非模式串，对于每个模式串的询问要求在线回答，那怎么办？我们引入<strong>后缀树</strong>这个概念。</p>
+<p>所谓后缀树，就是将一个字符串的所有后缀建成一棵树，设 $S=’abaca’$，$S$ 的后缀树为：</p>
+<p><img src="https://pic.imgdb.cn/item/60e442f95132923bf8eb1e93.png" alt=""></p>
+<p><script type="math/tex">` 符号是为了标记每一个后缀的结束位置，每个叶节点下面的数字表示该后缀从原字符串的第几位开始，我们已经把所有后缀按字典序从左向右摆放（默认 `</script> 符号的字典序最小），显然从上面寻找模式串是非常方便的，但我们发现整个后缀树的结构非常庞大，有没有合适的替代品呢？</p>
+<h2 id="1-2-后缀数组"><a href="#1-2-后缀数组" class="headerlink" title="#1.2 后缀数组"></a>#1.2 后缀数组</h2><p>将上面的叶结点下的数字从左往右取出放在数组中，便得到了<strong>后缀数组</strong>（$\texttt{Suffix Array}$），</p>
+<p>由此便不难得到后缀数组的定义：所有的后缀按字典序排序后的编号数组。</p>
+<h1 id="2-0-后缀数组的构建"><a href="#2-0-后缀数组的构建" class="headerlink" title="#2.0 后缀数组的构建"></a>#2.0 后缀数组的构建</h1><h2 id="2-1-朴素算法"><a href="#2-1-朴素算法" class="headerlink" title="#2.1 朴素算法"></a>#2.1 朴素算法</h2><p>一个很简单的算法便是直接采用快排 <code>sort()</code>，快排的时间复杂度为 $O(n\log n)$，但由于字符串比较需要按位比较，所以实际时间复杂度为 $O(n^2\log n)$，显然不能接受。</p>
+<h2 id="2-2-倍增算法"><a href="#2-2-倍增算法" class="headerlink" title="#2.2 倍增算法"></a>#2.2 倍增算法</h2><p>这里采用倍增的双关键字排序。大致流程如下：</p>
+<ol>
+<li>给所有后缀的第一个字符排序；</li>
+<li>给所有后缀的前两个字符排序，实际是双关键字排序；</li>
+<li>枚举长度 $l=2^k$，给所有后缀的前 $l$ 个字符排序，实际依旧是双关键字排序，因为可以借助上一次排序的结果（$l=2^k=2^{k-1}+2^{k-1}$），即错开 $l-1$ 位进行双关键字排序；重复这一步直到所有后缀的排名不同。</li>
+</ol>
+<p><img src="https://pic.imgdb.cn/item/60e446c25132923bf8fc2d8c.png" alt=""></p>
+<p>显然，上面的过程最多只需要 $\log n$ 次，如果这里的双关键字排序采用快排的话，时间复杂度为 $O(n\log^2 n)$</p>
+<h2 id="2-3-基数排序优化"><a href="#2-3-基数排序优化" class="headerlink" title="#2.3 基数排序优化"></a>#2.3 基数排序优化</h2><p>我们注意到最多只有 $n$ 个后缀，所以可以采用<a target="_blank" rel="noopener" href="https://oi-wiki.org/basic/radix-sort/">基数排序</a>（我们常用的桶排序便是单关键字的基数排序），这里需要采用双关键字的基数排序。</p>
+<p>直接讲解并没有非常好讲，所以这里先贴出代码，我们来一行一行的分析。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> sa[N], t[N], t2[N], c[N], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">build_sa</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//m 是编号的最大值</span></span><br><span class="line">    <span class="keyword">int</span> i, *x = t, *y = t2;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; ++ i) c[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++ i) c[x[i] = s[i]] ++;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; m; ++ i) c[i] += c[i - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i --) sa[-- c[x[i]]] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = n - k; i &lt; n; i ++) y[p ++] = i;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i ++) <span class="keyword">if</span> (sa[i] &gt;= k)</span><br><span class="line">          y[p ++] = sa[i] - k;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; ++ i) c[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++ i) c[x[y[i]]] ++;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; m; ++ i) c[i] += c[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i --)</span><br><span class="line">          sa[-- c[x[y[i]]]] = y[i];</span><br><span class="line">        <span class="built_in">swap</span>(x, y); p = <span class="number">1</span>; x[sa[<span class="number">0</span>]] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; ++ i)</span><br><span class="line">          x[sa[i]] = y[sa[i<span class="number">-1</span>]] == y[sa[i]] &amp;&amp; y[sa[i - <span class="number">1</span>] + k] == y[sa[i] + k] ? p - <span class="number">1</span> : p ++;</span><br><span class="line">        <span class="keyword">if</span> (p &gt;= n) <span class="keyword">break</span>;</span><br><span class="line">        m = p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>首先是第一部分</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; ++ i) c[i] = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++ i) c[x[i] = s[i]] ++;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; m; ++ i) c[i] += c[i - <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i --) sa[-- c[x[i]]] = i;</span><br></pre></td></tr></table></figure>
+<p>这里是先对每个后缀的首字母进行排序，<code>x[i]</code> 在这里表示的是第 <code>i</code> 个字符的编号（此时的第一关键字），<code>sa[i]</code> 表示的是按第一关键字排序后的第 <code>i</code> 个后缀在原字符串的起始位置。</p>
+<hr>
+<p>然后是循环中的这一部分</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (i = n - k; i &lt; n; i ++) y[p ++] = i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i ++) <span class="keyword">if</span> (sa[i] &gt;= k)</span><br><span class="line">  y[p ++] = sa[i] - k;</span><br></pre></td></tr></table></figure>
+<p>这一部分是按第二关键字排序，<code>y[i]</code> 储存的是按第二关键字排序后第 <code>i</code> 个后缀在原字符串上的开始位置。</p>
+<p>其中第一个 <code>for</code> 是将没有第二关键字的后缀的第二关键字设置为无限小，所以要放在 <code>y[]</code> 数组的最前面。</p>
+<p>考虑第二个 <code>for</code> 为什么可以直接借助 <code>sa[]</code> 数组进行赋值，我们知道，<code>sa[i]</code> 表示的是在长度为 $\frac k 2$ 时，按当时的双关键字排序后的第 <code>i</code> 个后缀在原字符串的起始下标，这时对应的也就是在此时长度为 $k$ 的情况下按第一关键字排序后的第 <code>i</code> 个后缀在原字符串的起始下标。</p>
+<p>而 <code>sa[i] - k</code> 就相当于按第一关键字排序后的第 <code>i</code> 个后缀在原字符串的下标的第前 <code>k</code> 个位置，那么如果将 <code>sa[i]</code> 看作第二关键字，那么 <code>sa[i] - k</code> 便是所对应的第一关键字在原字符串中的下标位置，那么数组 <code>y[]</code> 中的数恰好便是按第二关键字排序后的第 <code>i</code> 个后缀在原字符串的起始下标。</p>
+<hr>
+<p>循环中的第二大部分<del>梦幻四重循环</del></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; m; ++ i) c[i] = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; ++ i) c[x[y[i]]] ++;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; m; ++ i) c[i] += c[i - <span class="number">1</span>];</span><br><span class="line"><span class="keyword">for</span> (i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i --) sa[-- c[x[y[i]]]] = y[i];</span><br></pre></td></tr></table></figure>
+<p>这里 <code>x[i]</code> 表示的是第 $i$ 后缀在按第一关键字排序后对应的 <code>sa[]</code> 数组上的排名（注意这样的排名的大小只是相对性的，可能并不连续）。</p>
+<blockquote>
+<p>在整个算法的大部分时间里，<code>x[]</code> 都是从后缀映射到排名，<code>sa[]</code> 则是从排名映射到后缀。</p>
+</blockquote>
+<p>不难发现这里和第一部分几乎一模一样。这里是结合两个关键字的分别排序，构建出当前的双关键字排序后的结果，也是下一次长度为 $2k$ 时按第一关键字排序后的结果。</p>
+<p>原因不难想到：<code>y[]</code> 本身具有顺序性，即第二关键字小的在前面，而本身这个排序则是将第一关键字小的排在前面，而不改变第一关键字相同的数之间的相对位置，综合起来，得到的答案便是按双关键字排序后的结果。</p>
+<hr>
+<p>这是循环中的最后一部分</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">swap</span>(x, y); p = <span class="number">1</span>; x[sa[<span class="number">0</span>]] = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; n; ++ i)</span><br><span class="line">  x[sa[i]] = y[sa[i<span class="number">-1</span>]] == y[sa[i]] &amp;&amp; y[sa[i - <span class="number">1</span>] + k] == y[sa[i] + k] ? p - <span class="number">1</span> : p ++;</span><br><span class="line"><span class="keyword">if</span> (p &gt;= n) <span class="keyword">break</span>;</span><br><span class="line">m = p;</span><br></pre></td></tr></table></figure>
+<p>注意在开始前我们先交换了指针 <code>x</code> 和指针 <code>y</code> 所指向的地址，所以此时 <code>x[i]</code> 指的是按第二关键字排序后的第 <code>i</code> 个后缀在原字符串的起始下标，这个数据对于我们来说已经没有用处了；<code>y[i]</code> 表示的是第 $i$ 后缀在按第一关键字排序后对应的 <code>sa[]</code> 数组上的排名（注意这样的排名的大小只是相对性的，可能并不连续）。</p>
+<p>这里是统计按现在的结果，还会有多少个不同的排名，如果排名数达到了后缀的总数，那么就没有必要继续进行下去了，如果不够，那么同时为各个不同的后缀重新编号（记录按双关键字排序后对应的 <code>sa[]</code> 数组上的排名），这样编号最大为 $p-1$。</p>
+<p>中间的三目运算符写成 <code>if</code> 如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (y[sa[i<span class="number">-1</span>]] == y[sa[i]] &amp;&amp; y[sa[i - <span class="number">1</span>] + k] == y[sa[i] + k])</span><br><span class="line">  x[sa[i]] = p - <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> x[sa[i]] = p ++;</span><br></pre></td></tr></table></figure>
+<p>这里判等的条件分别是按长度为 $2k$ 时的第一关键字相等（<code>y[sa[i-1]] == y[sa[i]]</code>）和第二关键字相等（<code>y[sa[i - 1] + k] == y[sa[i] + k]</code>），至于为什么 <code>sa[]</code> 的下标是连续的：两个双关键字都相等，而 <code>sa[i]</code> 中是当前双关键字排序后时排名为 $i$ 的后缀的起始位置，双关键字排序的要求便是先满足第一关键字从小到大，再满足第二关键字从小到大，所以如果两个都相等，那么在 <code>sa[]</code> 中的排名必然是相邻的。</p>
+<blockquote>
+<p>笔者中午在宿舍里思考这里时脑子抽了，是这样断的句：<code>(((x[sa[i]] = y[sa[i-1]]) == y[sa[i]]) &amp;&amp; (y[sa[i - 1] + k)] == y[sa[i] + k]) ? p - 1/*错误地以为是 p --*/ : p ++</code>，当时愣是搞不明白为啥这样做是对的，吹起床哨了才发现我™又断错句了. QnQ</p>
+</blockquote>
+<hr>
+<p>整体来说比较复杂，一遍不懂就需要多啃几遍。</p>
+<h1 id="3-0-后缀数组的应用"><a href="#3-0-后缀数组的应用" class="headerlink" title="#3.0 后缀数组的应用"></a>#3.0 后缀数组的应用</h1><h2 id="3-1-在线模式串匹配"><a href="#3-1-在线模式串匹配" class="headerlink" title="#3.1 在线模式串匹配"></a>#3.1 在线模式串匹配</h2><p>采用二分查找的方式，在文本串中寻找是否存在一个位置开始的后缀的前缀是模式串。</p>
+<p>我们可以二分所属的后缀的排名，并与模式串比较大小，如果小了就让排名增大，反之亦然。</p>
+<p>设模式串长度为 $m$，文本串长度为 $n$，那么单次询问时间复杂度为 $O(m\log n).$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp_suffix</span><span class="params">(<span class="keyword">char</span>* pattern, <span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strncmp</span>(pattern, s + sa[p], m);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">char</span>* P)</span> </span>&#123;</span><br><span class="line">    m = <span class="built_in">strlen</span>(P);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">cmp_suffix</span>(P, <span class="number">0</span>) &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">cmp_suffix</span>(P, n - <span class="number">1</span>) &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (r &gt;= l) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = l + (r + l) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="built_in">cmp_suffix</span>(P, mid);</span><br><span class="line">        <span class="keyword">if</span> (!res) <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span> (res &lt; <span class="number">0</span>) r = mid - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>[1]  刘汝佳, 陈锋. 算法竞赛入门经典：训练指南. 北京: 清华大学出版社, 2012.</p>
+<p>[2]  <a target="_blank" rel="noopener" href="https://www.cnblogs.com/TianMeng-hyl/p/14695293.html">后缀数组——倍增算法 - hyl天梦</a></p>
+<p>[3]  <a target="_blank" rel="noopener" href="https://oi-wiki.org/string/sa/">后缀数组简介 - OI Wiki</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dfkuaid
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dfkuaid.github.io/2021/07/06/suffix-array/" title="「字符串相关」后缀数组 - 倍增算法">https://dfkuaid.github.io/2021/07/06/suffix-array/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" rel="tag"># 基数排序</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag"># 字符串</a>
+              <a href="/tags/%E5%80%8D%E5%A2%9E/" rel="tag"># 倍增</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/18/hello-world/" rel="next" title="Hello!">
+      Hello! <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-0-%E4%BD%95%E4%B8%BA%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">#1.0 何为后缀数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E5%90%8E%E7%BC%80%E6%A0%91"><span class="nav-number">1.1.</span> <span class="nav-text">#1.1 后缀树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84"><span class="nav-number">1.2.</span> <span class="nav-text">#1.2 后缀数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-0-%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">#2.0 后缀数组的构建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E6%9C%B4%E7%B4%A0%E7%AE%97%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">#2.1 朴素算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%80%8D%E5%A2%9E%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">#2.2 倍增算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F%E4%BC%98%E5%8C%96"><span class="nav-number">2.3.</span> <span class="nav-text">#2.3 基数排序优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-0-%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">#3.0 后缀数组的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E5%9C%A8%E7%BA%BF%E6%A8%A1%E5%BC%8F%E4%B8%B2%E5%8C%B9%E9%85%8D"><span class="nav-number">3.1.</span> <span class="nav-text">#3.1 在线模式串匹配</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dfkuaid"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Dfkuaid</p>
+  <div class="site-description" itemprop="description">每个人的心里都有一团火，路过的人只看到烟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
