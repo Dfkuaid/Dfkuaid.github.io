@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dfkuaid.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ZROI-21-CSP7连-DAY3 总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「考试总结」ZROI-21-CSP7连-DAY3 总结">
+<meta property="og:url" content="https://dfkuaid.github.io/2021/09/17/ZROI-21-CSP-DAY3/index.html">
+<meta property="og:site_name" content="Dfkuaid の 小窝">
+<meta property="og:description" content="ZROI-21-CSP7连-DAY3 总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-17T11:47:15.000Z">
+<meta property="article:modified_time" content="2021-11-04T13:29:10.720Z">
+<meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dfkuaid.github.io/2021/09/17/ZROI-21-CSP-DAY3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>「考试总结」ZROI-21-CSP7连-DAY3 总结 | Dfkuaid の 小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dfkuaid の 小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">暖呼呼~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
+
+  </li>
+        <li class="menu-item menu-item-friends">
+
+    <a href="/friends/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dfkuaid.github.io/2021/09/17/ZROI-21-CSP-DAY3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Dfkuaid">
+      <meta itemprop="description" content="每个人的心里都有一团火，路过的人只看到烟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dfkuaid の 小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「考试总结」ZROI-21-CSP7连-DAY3 总结
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-17 19:47:15" itemprop="dateCreated datePublished" datetime="2021-09-17T19:47:15+08:00">2021-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-04 21:29:10" itemprop="dateModified" datetime="2021-11-04T21:29:10+08:00">2021-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">考试总结</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">ZROI-21-CSP7连-DAY3 总结</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="T1-斯诺克"><a href="#T1-斯诺克" class="headerlink" title="#T1 斯诺克"></a>#T1 斯诺克</h2><h3 id="题意简述"><a href="#题意简述" class="headerlink" title="#题意简述"></a>#题意简述</h3><p>$7$ 种物品，第 $i$ 种物品的价值为 $i$，有 $a_i$ 个，必须按照价值自小到大地选，特别的，必须将第 $1$ 种选完才能向后选，选第 $1$ 种时可以得到一个额外价值 $x$，可以在当前 $a_i&gt;0(i\ne1)$ 的物品价值中任选。</p>
+<h3 id="大体思路"><a href="#大体思路" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>显然只要有就一定可以都选上，附加权值直接贪心的选最大的即可。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> rcnt, a[<span class="number">8</span>], res, mx;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">7</span>; ++ i) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">        res += a[i] * i;</span><br><span class="line">        <span class="keyword">if</span> (a[i]) mx = i;</span><br><span class="line">    &#125;</span><br><span class="line">    res += a[<span class="number">1</span>] * mx;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, res);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T2-翻转"><a href="#T2-翻转" class="headerlink" title="#T2 翻转"></a>#T2 翻转</h2><h3 id="题意简述-1"><a href="#题意简述-1" class="headerlink" title="#题意简述"></a>#题意简述</h3><p>给定一个 $n\times m(n,m\leq17)$ 的 $01$ 矩阵，每次操作可以将如下图范围的图形做异或操作，图形可以不全（在边界），但中心点必须位于矩阵中。</p>
+<p>问至少需要操作多少次才能将矩阵全部变为 $0$。</p>
+<h3 id="大体思路-1"><a href="#大体思路-1" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>不难发现</p>
+<ul>
+<li>对于一个位置最多被操作一次；</li>
+<li>对于两个操作位置相同的操作聚合，结果相同；</li>
+</ul>
+<p>于是可以想到自上而下的确定情况，注意到如果将第一行的状态确定，每次只对已经确定的行的下一行进行操作，那么下面怎么变换都是确定的了，于是不难得到以下算法：用二进制枚举第一行的每个点的操作状态，对原图进行修改，并在改后的图上进行模拟/统计即可，时间复杂度为 $O(nm\cdot2^m)$.</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="title">Min</span><span class="params">(<span class="keyword">const</span> T a, <span class="keyword">const</span> T b)</span> </span>&#123;<span class="keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, ans = INF, mp[<span class="number">20</span>][<span class="number">20</span>], tmp[<span class="number">20</span>][<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">bitcount</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (x) cnt += (x &amp; <span class="number">1</span>), x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_res</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++ j)</span><br><span class="line">        tmp[i][j] = mp[i][j];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++ i)</span><br><span class="line">      <span class="keyword">if</span> (x &amp; (<span class="number">1</span> &lt;&lt; i)) &#123;</span><br><span class="line">          tmp[<span class="number">1</span>][i + <span class="number">1</span>] ^= <span class="number">1</span>, tmp[<span class="number">1</span>][i] ^= <span class="number">1</span>;</span><br><span class="line">          tmp[<span class="number">1</span>][i + <span class="number">2</span>] ^= <span class="number">1</span>, tmp[<span class="number">2</span>][i + <span class="number">1</span>] ^= <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; ++ i)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++ j)</span><br><span class="line">        <span class="keyword">if</span> (tmp[i][j]) &#123;</span><br><span class="line">            ++ res; tmp[i][j] ^= <span class="number">1</span>;</span><br><span class="line">            tmp[i + <span class="number">1</span>][j] ^= <span class="number">1</span>;</span><br><span class="line">            tmp[i + <span class="number">1</span>][j - <span class="number">1</span>] ^= <span class="number">1</span>;</span><br><span class="line">            tmp[i + <span class="number">1</span>][j + <span class="number">1</span>] ^= <span class="number">1</span>;</span><br><span class="line">            tmp[i + <span class="number">2</span>][j] ^= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;= m; ++ i)</span><br><span class="line">      <span class="keyword">if</span> (tmp[n][i]) <span class="keyword">return</span> INF;</span><br><span class="line">    <span class="keyword">return</span> res + <span class="built_in">bitcount</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>); cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++ j) &#123;</span><br><span class="line">          <span class="keyword">char</span> c; cin &gt;&gt; c;</span><br><span class="line">          <span class="keyword">if</span> (c == <span class="string">&#x27;X&#x27;</span>) mp[i][j] = <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">else</span> mp[i][j] = <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1</span> &lt;&lt; m; ++ i)</span><br><span class="line">      ans = <span class="built_in">Min</span>(ans, <span class="built_in">get_res</span>(i));</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T3-数对"><a href="#T3-数对" class="headerlink" title="#T3 数对"></a>#T3 数对</h2><h3 id="题意简述-2"><a href="#题意简述-2" class="headerlink" title="#题意简述"></a>#题意简述</h3><p>给定两个数列 $\{a_1,a_2,\dots,a_n\}$ 和 $\{b_1,b_2,\dots,b_m\}(n,m\leq10^5,1\leq a_i,b_i\leq2^30)$，问有多少数对 $(a_i,b_j)(1\leq i\leq n,1\leq j\leq m)$，满足 $\text{bitcount}(a_i\text{ xor }b_j)=2$.</p>
+<h3 id="大体思路-2"><a href="#大体思路-2" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>$\text{bitcount}(a_i\text{ xor }b_j)=2$ 意味着 $a_i,b_j$ 在二进制下只有两位不同，维护一个 Hash，每次枚举不同的位置中的一位 $k$，先查询 Hash 中每个 $b_j\text{ xor }2^k$ 出现的次数，再将每个 $a_i\text{ xor }2^k$ 加入 Hash，不难发现这样统计每对数字刚好被统计一次，即得答案。时间复杂度 $O(30\cdot n)$，$30$ 为枚举 $k$ 的复杂度。</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">20000010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">19260817</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Hash</span> &#123;</span><span class="keyword">int</span> val, tot, nxt;&#125; h[N];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, a[N], b[N], head[N], cnt;</span><br><span class="line">ll ans;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hx = x % MOD, p = head[hx];</span><br><span class="line">    <span class="keyword">while</span> (p &amp;&amp; h[p].val != x) p = h[p].nxt;</span><br><span class="line">    <span class="keyword">if</span> (h[p].val == x) h[p].tot += c;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        h[++ cnt].val = x, h[cnt].tot = c;</span><br><span class="line">        h[cnt].nxt = head[hx], head[hx] = cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">Count</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hx = x % MOD, p = head[hx];</span><br><span class="line">    <span class="keyword">while</span> (p &amp;&amp; h[p].val != x) p = h[p].nxt;</span><br><span class="line">    <span class="keyword">if</span> (h[p].val == x) <span class="keyword">return</span> h[p].tot;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i= <span class="number">1</span>; i &lt;= m; ++ i)</span><br><span class="line">      <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;b[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">30</span>; ++ i) &#123;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">1</span> &lt;&lt; (i - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; ++ j)</span><br><span class="line">          ans += <span class="built_in">Count</span>(b[j] ^ k);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++ j)</span><br><span class="line">          <span class="built_in">insert</span>(a[j] ^ k, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T4-回文串"><a href="#T4-回文串" class="headerlink" title="#T4 回文串"></a>#T4 回文串</h2><h3 id="题意简述-3"><a href="#题意简述-3" class="headerlink" title="#题意简述"></a>#题意简述</h3><p>定义一个字符串的价值是它的回文子串的个数。现给定一字符串 $s(|s|\leq10^5)$，可以任一改变一个字符，问可得到的最大价值。</p>
+<h3 id="大体思路-3"><a href="#大体思路-3" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>考虑改变一个位置会造成的影响：失去一些回文子串、得到新的回文子串。</p>
+<p>在考虑改变造成的影响前，我们需要先得到在每个位置的回文半径，可以用 Manacher 求，当然也可以用 Hash+二分完成，这里直接用的 Hash。然后，我们再来考虑造成的影响。</p>
+<p>对于每个回文中心 $i，j(i\leq j)$ 和其对应的回文半径 $r$，考虑得到新的回文子串时对应的改变位置要么是 $x=i-r$ 要么是 $y=j+r$，且一定是改成对应的另一个的字符，否则对于这个回文中心，不会造成价值增加。</p>
+<blockquote>
+<p>对于奇回文，$i=j$，对于偶回文，$j=i+1$。</p>
+</blockquote>
+<p>之后同样可以用 Hash+二分求得不包括 $x$ 和 $y$ 的新增半径（即为新增的回文子串的数量），用数组 $f_{i,c}$ 进行存储，其中 $f$ 的意义是 “将第 $i$ 个位置变为 $c$ 字符增加的回文子串的数量”。</p>
+<p>下面来考虑修改 $x$ 失去的回文串数量，显然对于当前回文中心 $i,j$，若 $i-r+1\leq x\leq i$，那么减少的个数为 $r-(i-x)=r-i+x$，若 $j\leq x\leq j+r-1$，那么减少的个数为 $j+r-1-(x-1)=j+r-x$，发现这两个贡献对于修改位置 $x$ 都可以拆分成两部分：$r-i$ 和 $x$、$r+j$ 和 $-x$，其中仅关于 $i,j,r$ 的部分与修改哪里无关，于是可以维护一个数组 $fl_x$，记录这一部分的贡献，这里的区间加法可以用差分处理；再来看 $x$ 与 $-x$，同样可以维护差分数组 $fk_x$，对 $fk$ 只做区间加 $1$ 与加 $-1$，最后统计贡献可以统一乘上 $x$。</p>
+<p>综上我们对于修改的影响都已经解决了，最后枚举修改位置及修改后的字符，将贡献取最大值与初始价值相加即得答案。时间复杂度为 $O(n\log n+26\cdot n)$.</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ull unsigned long long</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">const</span> ull BASE = <span class="number">9973</span>;</span><br><span class="line"><span class="keyword">const</span> ull MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="title">Min</span><span class="params">(<span class="keyword">const</span> T a, <span class="keyword">const</span> T b)</span> </span>&#123;<span class="keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="title">Max</span><span class="params">(<span class="keyword">const</span> T a, <span class="keyword">const</span> T b)</span> </span>&#123;<span class="keyword">return</span> a &gt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, p[N], h[N], hr[N]; <span class="keyword">char</span> s[N], sr[N];</span><br><span class="line">ll f[N][<span class="number">26</span>], fk[N], fl[N], init_val;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init_hash</span><span class="params">(<span class="keyword">char</span> *S, <span class="keyword">int</span> *H)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(S); H[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++ i)</span><br><span class="line">      H[i + <span class="number">1</span>] = (<span class="number">1ull</span> * H[i] * BASE % MOD + (ll)(S[i] - <span class="string">&#x27;a&#x27;</span>)) % MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ull <span class="title">getHash</span><span class="params">(<span class="keyword">int</span>* H, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((<span class="number">1ull</span> * H[b + <span class="number">1</span>] - <span class="number">1ull</span> * H[a] * p[b - a + <span class="number">1</span>] % MOD) + MOD) % MOD;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c, <span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">getHash</span>(h, a, b) == <span class="built_in">getHash</span>(hr, n - d - <span class="number">1</span>, n - c - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getRadius</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> L = x, R = y, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (L &lt;= R) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = (L + R + <span class="number">1</span>) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(l - mid + <span class="number">1</span>, l, r, r + mid - <span class="number">1</span>))</span><br><span class="line">          res = mid, L = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> R = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, s); n = <span class="built_in">strlen</span>(s); p[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; ++ i)</span><br><span class="line">      p[i + <span class="number">1</span>] = (<span class="number">1ull</span> * p[i] * BASE) % MOD;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i)</span><br><span class="line">      sr[i] = s[n - i - <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">init_hash</span>(s, h); <span class="built_in">init_hash</span>(sr, hr);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= i + <span class="number">1</span>; ++ j) &#123;</span><br><span class="line">          <span class="keyword">int</span> r = <span class="number">0</span>; r = <span class="built_in">getRadius</span>(i, j, <span class="number">0</span>, <span class="built_in">Min</span>(i + <span class="number">1</span>, n - j));</span><br><span class="line">          <span class="keyword">if</span> (i == j) &#123;</span><br><span class="line">              fk[j + <span class="number">1</span>] += <span class="number">-1</span>, fk[j + r] -= <span class="number">-1</span>;</span><br><span class="line">              fl[j + <span class="number">1</span>] += j + r, fl[j + r] -= j + r;</span><br><span class="line">              fk[i - r + <span class="number">1</span>] += <span class="number">1</span>, fk[i] -= <span class="number">1</span>;</span><br><span class="line">              fl[i - r + <span class="number">1</span>] += -(i - r), fl[i] -= -(i - r);</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              fk[j] += <span class="number">-1</span>, fk[j + r] -= <span class="number">-1</span>;</span><br><span class="line">              fl[j] += j + r, fl[j + r] -= j + r;</span><br><span class="line">              fk[i - r + <span class="number">1</span>] += <span class="number">1</span>, fk[i + <span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">              fl[i - r + <span class="number">1</span>] += -(i - r), fl[i + <span class="number">1</span>] -= -(i - r);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">int</span> x = i - r, y = j + r; init_val += r;</span><br><span class="line">          <span class="keyword">if</span> (x &lt; <span class="number">0</span> || y &gt;= n) <span class="keyword">continue</span>;</span><br><span class="line">          ++ r; r = <span class="built_in">getRadius</span>(x - <span class="number">1</span>, y + <span class="number">1</span>, <span class="number">0</span>, <span class="built_in">Min</span>(i + <span class="number">1</span>, n - j) - r);</span><br><span class="line">          f[x][s[y] - <span class="string">&#x27;a&#x27;</span>] += r + <span class="number">1</span>;</span><br><span class="line">          f[y][s[x] - <span class="string">&#x27;a&#x27;</span>] += r + <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    ll best_change = <span class="number">0</span>, k = <span class="number">0</span>, l = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i) &#123;</span><br><span class="line">        k += fk[i], l += fl[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">26</span>; ++ j)</span><br><span class="line">          <span class="keyword">if</span> (j + <span class="string">&#x27;a&#x27;</span> != s[i])</span><br><span class="line">            best_change = <span class="built_in">Max</span>(best_change, f[i][j] - (<span class="number">1ll</span> * i * k + l));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, init_val + best_change);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dfkuaid
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dfkuaid.github.io/2021/09/17/ZROI-21-CSP-DAY3/" title="「考试总结」ZROI-21-CSP7连-DAY3 总结">https://dfkuaid.github.io/2021/09/17/ZROI-21-CSP-DAY3/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/08/HDU6606/" rel="prev" title="「题解」HDU6606 Distribution of books">
+      <i class="fa fa-chevron-left"></i> 「题解」HDU6606 Distribution of books
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/18/ZROI-21-CSP-EXTRA1/" rel="next" title="「考试总结」ZROI-21-CSP7连-EXTRA1 总结">
+      「考试总结」ZROI-21-CSP7连-EXTRA1 总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1-%E6%96%AF%E8%AF%BA%E5%85%8B"><span class="nav-number">1.</span> <span class="nav-text">#T1 斯诺克</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-number">1.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2-%E7%BF%BB%E8%BD%AC"><span class="nav-number">2.</span> <span class="nav-text">#T2 翻转</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF-1"><span class="nav-number">2.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">2.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3-%E6%95%B0%E5%AF%B9"><span class="nav-number">3.</span> <span class="nav-text">#T3 数对</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF-2"><span class="nav-number">3.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T4-%E5%9B%9E%E6%96%87%E4%B8%B2"><span class="nav-number">4.</span> <span class="nav-text">#T4 回文串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0-3"><span class="nav-number">4.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF-3"><span class="nav-number">4.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">4.3.</span> <span class="nav-text">#Code</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dfkuaid"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Dfkuaid</p>
+  <div class="site-description" itemprop="description">每个人的心里都有一团火，路过的人只看到烟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'a60e970d81232433980f',
+      clientSecret: '08e596627e7cbff9b465ca374e3201366cfbc4ab',
+      repo        : 'commit_for_blogs',
+      owner       : 'Dfkuaid',
+      admin       : ['Dfkuaid'],
+      id          : '2b7c39bb42ea510645e13726ee816495',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

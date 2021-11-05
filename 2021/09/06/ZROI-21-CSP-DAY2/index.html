@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dfkuaid.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ZROI-21-CSP7连-DAY2 总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「考试总结」ZROI-21-CSP7连-DAY2 总结">
+<meta property="og:url" content="https://dfkuaid.github.io/2021/09/06/ZROI-21-CSP-DAY2/index.html">
+<meta property="og:site_name" content="Dfkuaid の 小窝">
+<meta property="og:description" content="ZROI-21-CSP7连-DAY2 总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6136037244eaada739e72677.png">
+<meta property="og:image" content="https://pic.imgdb.cn/item/6136098b44eaada739f1ee29.png">
+<meta property="article:published_time" content="2021-09-06T13:33:31.000Z">
+<meta property="article:modified_time" content="2021-11-04T13:37:00.322Z">
+<meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/6136037244eaada739e72677.png">
+
+<link rel="canonical" href="https://dfkuaid.github.io/2021/09/06/ZROI-21-CSP-DAY2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>「考试总结」ZROI-21-CSP7连-DAY2 总结 | Dfkuaid の 小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dfkuaid の 小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">暖呼呼~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
+
+  </li>
+        <li class="menu-item menu-item-friends">
+
+    <a href="/friends/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dfkuaid.github.io/2021/09/06/ZROI-21-CSP-DAY2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Dfkuaid">
+      <meta itemprop="description" content="每个人的心里都有一团火，路过的人只看到烟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dfkuaid の 小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「考试总结」ZROI-21-CSP7连-DAY2 总结
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-06 21:33:31" itemprop="dateCreated datePublished" datetime="2021-09-06T21:33:31+08:00">2021-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-04 21:37:00" itemprop="dateModified" datetime="2021-11-04T21:37:00+08:00">2021-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">考试总结</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">ZROI-21-CSP7连-DAY2 总结</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="T1-IP-地址"><a href="#T1-IP-地址" class="headerlink" title="#T1 IP 地址"></a>#T1 IP 地址</h2><h3 id="题意简述"><a href="#题意简述" class="headerlink" title="#题意简述"></a>#题意简述</h3><p>一个合法的 IP 地址每位数字最小为 $0$，最大为 $255$，且不含前导零。每位数字中间有一个 “.” 隔开。</p>
+<p>给定一个文本串，其中最多包含 $4$ 个整数（可能极大），问是否是合法的 IP 地址，如果不合法请更正为合法 IP，数字大于 $255$ 则修改为 $255$.</p>
+<h3 id="大体思路"><a href="#大体思路" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>把快读魔改一下就好了，但是一定要注意细节，比如快读实际会向后多读一个字符，可以借此判断最后是否有多余字符。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">is_not_ip</span><span class="params">(<span class="number">0</span>)</span>, cnt</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>; <span class="keyword">int</span> f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> c = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">&#x27;.&#x27;</span>) ++ cnt;</span><br><span class="line">        <span class="keyword">if</span> (c != <span class="string">&#x27;.&#x27;</span> || cnt &gt; <span class="number">3</span>) is_not_ip |= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (; ; c = <span class="built_in">getchar</span>())  &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c != <span class="string">&#x27;.&#x27;</span>) is_not_ip |= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (++ cnt &gt; <span class="number">3</span>) is_not_ip |= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (c == <span class="string">&#x27;0&#x27;</span> &amp;&amp; x == <span class="number">0</span>) is_not_ip |= <span class="number">1</span>;</span><br><span class="line">        x = x * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (x &gt; <span class="number">255</span>) x = <span class="number">255</span>, is_not_ip |= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    x *= f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++ i) <span class="built_in">read</span>(a[i]);</span><br><span class="line">    <span class="keyword">if</span> (is_not_ip) <span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++ i) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, a[i]);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">3</span>) <span class="built_in">printf</span>(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T2-字符串"><a href="#T2-字符串" class="headerlink" title="#T2 字符串"></a>#T2 字符串</h2><h3 id="题意简述-1"><a href="#题意简述-1" class="headerlink" title="#题意简述"></a>#题意简述</h3><p>给定一个长度为 $n$ 的字符串，其中一共包含两种字符：<code>A</code> 和 <code>P</code>，其中，<code>AP</code> 和 <code>PP</code> 可以消去，消去后剩下两段字符串会拼在一起，问经过若干次消除后能得到的最小字符串长度为多少。</p>
+<h3 id="大体思路-1"><a href="#大体思路-1" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>注意到 <code>A</code> 只能由 <code>AP</code> 消去，而 <code>P</code> 可以由 <code>PP</code> 消去，考虑贪心：当前的 <code>A</code> 要么在后面被消去，要么无法消去，而多出来的 <code>P</code> 对答案的贡献最多是 $1$，所以优先消掉 <code>A</code> 一定是最优的选择。</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line"><span class="keyword">int</span> n, pcnt, acnt;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, s); n = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s[i] == <span class="string">&#x27;A&#x27;</span>) ++ acnt;</span><br><span class="line">        <span class="keyword">else</span> acnt ? -- acnt : ++ pcnt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, acnt + (pcnt &amp; <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T3-继承类"><a href="#T3-继承类" class="headerlink" title="#T3 继承类"></a>#T3 继承类</h2><h3 id="题意简述-2"><a href="#题意简述-2" class="headerlink" title="#题意简述"></a>#题意简述</h3><blockquote>
+<p>实在不好概述，这里直接粘来原题面。</p>
+</blockquote>
+<p>现在发明了一种类似于 C++ 的面向对象编程语言中的类声明。</p>
+<p>每个类声明的格式为 “$K : P_1\ P_2\ \dots\ P_K;$”</p>
+<p>其中 $K$ 是要声明的新类的名称，$P_1$ 、$P_2$ 、$\dots$ 、$P_k$ 类 $K$ 继承的类的名称。</p>
+<p>例如，”<strong>shape : ;</strong>“ 是不继承任何其他类的类 “shape” 的声明，而 “<strong>square : shape rectangle;</strong>” 是继承类 “shape” 和 “rectangle” 的类 “square” 的声明。</p>
+<p>如果类 $K_1$ 继承类 $K_2$ ，类 $K_2$ 继承类 $K_3$ ，依此类推，直到类 $K_{m−1}$ 继承类 $K_m$ ，那么我们说所有类 $K_1,K_2,\dots,K_{m−1}$ 派生自类 $K_m$ 。</p>
+<p>编程语言的规则禁止循环定义，因此不允许从自身派生一个类。换句话说，类层次结构形成了一个有向无环图。此外，不允许在类层次结构中出现所谓的菱形。一个菱形由四个不同的类 $A$、$B$、$X$、$Y$ 组成，而且它满足（如下图所示）：</p>
+<ul>
+<li>类 $X$ 和 $Y$ 派生自 $A$。</li>
+<li>类 $B$ 派生自 $X$ 和 $Y$。</li>
+<li>类 $X$ 不是从 $Y$ 派生的，类 $Y$ 也不是从 $X$ 派生的。</li>
+</ul>
+<p><img src="https://pic.imgdb.cn/item/6136037244eaada739e72677.png" alt="img"></p>
+<p>现在你会获得 $n(n\le 1000)$ 个要按顺序处理的类声明，并确定每个类声明是否是正确声明。</p>
+<p>正确声明的类被添加到层次结构中，而错误的类被丢弃。声明 “$K : P_1\ P_2\ \dots\ P_K;$” 如果满足以下条件，则认为是正确声明：</p>
+<ol>
+<li>类 $K$ 尚未声明。</li>
+<li>所有类别 $P_1,P_2,\dots,P_k$ 之前已经声明过。请注意，此条件可确保类永远不会从其自身派生，或者类层次结构中不能存在循环。</li>
+<li>通过添加继承了 $P_1,P_2,\dots,P_k$ 的类 $K$ 以后，类层次结构保持有序，即没有形成任何菱形。</li>
+</ol>
+<p>现在需要你分别处理上述声明并确定每个声明的正确性。</p>
+<h3 id="大体思路-2"><a href="#大体思路-2" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>直接考虑性质三：简单分析“菱形”的性质，不难发现不存在菱形的前提是所有的 $P_i$ 要么是严格的祖孙关系，要么毫无关系，总之不能为旁系亲属，发现如果当前语句合法，那么所有的 $P_i$ 的旁系亲属都是当前 $K$ 的旁系亲属，很好维护，但是直接用 <code>bool</code> 数组维护关系的话时间复杂度为 $O(n^3)$，不能接受，又发现维护的值要么是 $0$ 要么是 $1$，且支持位运算，直接上 <code>bitset</code>，时间复杂度优化到 $O(\dfrac{n^3}{w})$，可以艹过去了。</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line">string s, t;</span><br><span class="line"><span class="keyword">int</span> n, cnt, tcnt, q[N];</span><br><span class="line"></span><br><span class="line">map &lt;string, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">bitset &lt;1010&gt; f[N], b[N], tmp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    tmp.<span class="built_in">reset</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tcnt; ++ i)</span><br><span class="line">      tmp[q[i]] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tcnt; ++ i)</span><br><span class="line">      <span class="keyword">if</span> ((tmp &amp; b[q[i]]).<span class="built_in">any</span>()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>); cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">    cin &gt;&gt; n; <span class="keyword">int</span> is_wrong = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i) &#123;</span><br><span class="line">        is_wrong = tcnt = <span class="number">0</span>;</span><br><span class="line">        cin &gt;&gt; s; cin &gt;&gt; t; cin &gt;&gt; t;</span><br><span class="line">        <span class="keyword">while</span> (t != <span class="string">&quot;;&quot;</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!mp[t]) is_wrong |= <span class="number">1</span>;</span><br><span class="line">            q[++ tcnt] = mp[t]; cin &gt;&gt; t;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">check</span>()) is_wrong |= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (is_wrong || mp[s]) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;greska\n&quot;</span>; <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;ok\n&quot;</span>; mp[s] = ++ cnt;</span><br><span class="line">        f[cnt][cnt] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tcnt; ++ j)</span><br><span class="line">          f[cnt] |= f[q[j]];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; cnt; ++ j)</span><br><span class="line">          <span class="keyword">if</span> (!f[cnt][j] &amp;&amp; (f[j] &amp; f[cnt]).<span class="built_in">any</span>()) &#123;</span><br><span class="line">              b[cnt][j] = <span class="number">1</span>;</span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T4-子图"><a href="#T4-子图" class="headerlink" title="#T4 子图"></a>#T4 子图</h2><h3 id="题意简述-3"><a href="#题意简述-3" class="headerlink" title="#题意简述"></a>#题意简述</h3><blockquote>
+<p>依旧是不好简述，上原题面。</p>
+</blockquote>
+<p>Cuber QQ 的研究兴趣是在图 $G=(V(G),E(G))$ 中找到最好的 $k$-degree 子图。</p>
+<p>子图 $S$ 是 $G$ 的 $k$-degree 子图需要满足以下要求：</p>
+<ul>
+<li>每个顶点 $v(v\in S)$ 在 $S$ 中至少有 $k$ 度；</li>
+<li>$S$ 是连通的 ;</li>
+<li>$S$ 是极大的，即 $S$ 的任何超图都不是 $k$-degree 子图，除了 $S$ 本身。</li>
+</ul>
+<p><img src="https://pic.imgdb.cn/item/6136098b44eaada739f1ee29.png" alt="img"></p>
+<p>然后 Cuber QQ 定义子图 $S$ 的分数。在定义分数之前，他首先定义：</p>
+<ul>
+<li>$n(S)$：子图 $S$ 中的顶点数，即 $n(S)=|V(S)|$；</li>
+<li>$m(S)$：子图 $S$ 的边数，即 $m(S)=|E(S)|$；</li>
+<li>$b(S)$：子图 $S$ 中的边界边数，$b(S)=|{(u,v)|(u,v)∈E(G),u∈V(S),v∉V(S),v∈V(G)}|$;</li>
+</ul>
+<p>他定义一个子图的分数为 $score(S)=M\cdot m(S)−N\cdot n(S)+B\cdot b(S)$，其中 $M,N,B$ 是给定的常数。</p>
+<p>子图的分数越高，Cuber QQ 认为它越好。你需要在图 $G$ 中找到最好的 $k$-degree 子图。如果有许多 $k$-degree 子图的分数相同，则应最大化 $k$。输出最大的分数及对应的 $k$.</p>
+<h3 id="大体思路-3"><a href="#大体思路-3" class="headerlink" title="#大体思路"></a>#大体思路</h3><p>首先，如果不考虑连通性问题，那么 $(k+1)$-degree 一定是 $k$-degree 的子图，于是我们可以先求得一个<strong>标记</strong>，如果一个点属于 $k$-degree 而不属于 $k+1$-degree，那么该点标记为 $k$，求得这个标记的过程可以通过像剥卷心菜一样将原图层层剥开，具体细节我们留到后面去说；</p>
+<p>假设我们已经求得了每个点的标记，再来考虑通过将<del>卷心菜</del>原图一层层还原回去得到每个 $k$-degree 的 score；显然我们是通过加入标记为 $k$ 的点得到 $k$-degree，考虑单个新加入的点，他们对 $n,m,b$ 的贡献分别是什么。</p>
+<p>先来引入一些新记号：</p>
+<ul>
+<li>$E(u,&gt;)$ 表示 $u$ 的边中另一个点标记比 $u$ 大的边的集合；</li>
+<li>$E(u,&lt;)$ 表示 $u$ 的边中另一个点标记比 $u$ 小的边的集合；</li>
+<li>$E(u,=)$ 表示 $u$ 的边中另一个点 $v$ 标记与 $u$ 相等但 $v&gt;u$ 的边的集合；</li>
+</ul>
+<p>现在不难写出新的贡献：</p>
+<ul>
+<li>$\Delta n=1$；</li>
+<li>$\Delta m=|E(u,&gt;)|+|E(u,=)|$；</li>
+<li>$\Delta b=|E(u,&lt;)|-|E(u,&gt;)|$；</li>
+</ul>
+<p>在合并的过程中，可能会导致几个连通块合成一个连通块，可以采用并查集提前维护出各个连通块的代表元素，代表元应当是整个连通块中标记最小的点，这样才能正确地完成合并。为下面合并答案，同时记录每个小连通块合并后的大连通块的编号，以及当前连通块的 $k$.</p>
+<p>并查集采用按秩合并+路径压缩，总体时间复杂度为 $O(m+n)$，下面的代码仅采用了路径压缩，总体时间复杂度为 $O(m\log n+n)$.</p>
+<h3 id="一些细节实现"><a href="#一些细节实现" class="headerlink" title="#一些细节实现"></a>#一些细节实现</h3><p>获取标记时，先用桶排将所有点按照度数从小到大排序，我们自小到大遍历这个序列，对于每个点，将与其相连的所有度数<strong>大于</strong>该点度数的点的度数减一，同时直接改变其在数列中的位置，将其放到原本度数的开头位置，对应度数的开头位置后移一位，这样维护可以保证在任意时刻队列中都是有序的。考虑为什么只有度数大于该点的点需要改变度数：小于该点的意味着已经被遍历，其度数就是其标记；等于该点的点，显然应当与该点属于同一层，直接保留度数作为标记；对于大于的，根据 $k$-degree 的定义，如果不在同一层，当前边贡献的度数显然不符合要求，应当减去，如果应当在同一层，那么由于处理完的度数对应的应当是正确的标记，而当前大于正确标记，应当减去。</p>
+<p>详细见下方代码。</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> VI vector <span class="meta-string">&lt;int&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair <span class="meta-string">&lt;ll, int&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2000100</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="title">Min</span><span class="params">(<span class="keyword">const</span> T a, <span class="keyword">const</span> T b)</span> </span>&#123;<span class="keyword">return</span> a &lt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="title">Max</span><span class="params">(<span class="keyword">const</span> T a, <span class="keyword">const</span> T b)</span> </span>&#123;<span class="keyword">return</span> a &gt; b ? a : b;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span><span class="keyword">int</span> u, v, nxt;&#125; e[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">UFS</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> fa[N]; <span class="keyword">int</span> *d_;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> *d)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= x; ++ i) fa[i] = i;</span><br><span class="line">        <span class="keyword">this</span>-&gt;d_ = d;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (x != fa[x]) x = fa[x] = fa[fa[x]];</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        x = <span class="built_in">find</span>(x), y = <span class="built_in">find</span>(y);</span><br><span class="line">        <span class="keyword">if</span> (x != y)  &#123;</span><br><span class="line">            <span class="keyword">if</span> ((d_[x] &gt; d_[y]) || (d_[x] == d_[y] &amp;&amp; x &gt; y))</span><br><span class="line">              <span class="built_in">swap</span>(y, x);</span><br><span class="line">            fa[y] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; ufs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, d[N], head[N], <span class="built_in">ecnt</span>(<span class="number">1</span>), cbtot;</span><br><span class="line"><span class="keyword">int</span> frt, tal, q[N], pos[N], bin[N], max_k, cb_id[N];</span><br><span class="line"><span class="keyword">int</span> inq[N], kpc[N], kcnt; ll A, B, C;</span><br><span class="line"></span><br><span class="line">vector &lt;<span class="keyword">int</span>&gt; tk, pa;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">add_edge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">    e[ecnt].u = u, e[ecnt].v = v; ++ d[u];</span><br><span class="line">    e[ecnt].nxt = head[u], head[u] = ecnt ++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Get_Tags</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max_d = <span class="number">0</span>, st = <span class="number">0</span>, now = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">      ++ bin[d[i]], max_d = <span class="built_in">Max</span>(max_d, d[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= max_d; ++ i)</span><br><span class="line">      now = bin[i], bin[i] = st, st += now;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">      pos[i] = bin[d[i]] ++, q[pos[i]] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = max_d; i; -- i) bin[i] = bin[i - <span class="number">1</span>];</span><br><span class="line">    bin[<span class="number">0</span>] = <span class="number">0</span>, bin[max_d + <span class="number">1</span>] = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = q[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = head[v]; j; j = e[j].nxt) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = e[j].v;</span><br><span class="line">            <span class="keyword">if</span> (d[u] &gt; d[v]) &#123;</span><br><span class="line">                <span class="keyword">int</span> du = d[u], pu = pos[u];</span><br><span class="line">                <span class="keyword">int</span> pw = bin[du], w = q[pw];</span><br><span class="line">                <span class="keyword">if</span> (u != w) &#123;</span><br><span class="line">                    pos[u] = pw, q[pu] = w;</span><br><span class="line">                    pos[w] = pu, q[pw] = u;</span><br><span class="line">                &#125; ++ bin[du], -- d[u];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">      max_k = <span class="built_in">Max</span>(max_k, d[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Get_Connected_Blocks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ufs.<span class="built_in">init</span>(n, d); pa.<span class="built_in">push_back</span>(<span class="number">0</span>); tk.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = max_k; k; -- k) &#123;</span><br><span class="line">        <span class="keyword">int</span> l = bin[k], r = bin[k + <span class="number">1</span>] - <span class="number">1</span>; kcnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; ++ i) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = q[i]; </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = head[v]; j; j = e[j].nxt)&#123;</span><br><span class="line">                <span class="keyword">int</span> u = e[j].v;</span><br><span class="line">                <span class="keyword">int</span> fp = ufs.<span class="built_in">find</span>(u);</span><br><span class="line">                <span class="keyword">if</span> (d[fp] &gt; k) <span class="keyword">if</span> (!inq[fp])</span><br><span class="line">                  kpc[++ kcnt] = fp, inq[fp] = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span> (d[fp] &gt;= k) ufs.<span class="built_in">merge</span>(v, fp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = l; i &lt;= r; ++ i) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = q[i], fp = ufs.<span class="built_in">find</span>(v);</span><br><span class="line">            <span class="keyword">if</span> (!cb_id[fp]) &#123;</span><br><span class="line">                cb_id[fp] = ++ cbtot;</span><br><span class="line">                pa.<span class="built_in">push_back</span>(<span class="number">-1</span>);</span><br><span class="line">                tk.<span class="built_in">push_back</span>(d[fp]);</span><br><span class="line">            &#125;</span><br><span class="line">            cb_id[v] = cb_id[fp];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= kcnt; ++ i) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = kpc[i], fp = ufs.<span class="built_in">find</span>(v);</span><br><span class="line">            pa[cb_id[v]] = cb_id[fp]，inq[v] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Compute_the_Answer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">VI <span class="title">vert</span><span class="params">(cbtot + <span class="number">1</span>, <span class="number">0</span>)</span>, <span class="title">edge</span><span class="params">(cbtot + <span class="number">1</span>, <span class="number">0</span>)</span>, <span class="title">boun</span><span class="params">(cbtot + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i) &#123;</span><br><span class="line">        <span class="keyword">int</span> ci = d[i], lt = <span class="number">0</span>, eq = <span class="number">0</span>, gt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = head[i]; j; j = e[j].nxt) &#123;</span><br><span class="line">            <span class="keyword">int</span> nbr = e[j].v, cnbr = d[nbr];</span><br><span class="line">            <span class="keyword">if</span> (cnbr &lt; ci) ++ lt;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cnbr == ci) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &lt; nbr) ++ eq;</span><br><span class="line">            &#125; <span class="keyword">else</span> ++ gt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ti = cb_id[i]; ++ vert[ti];</span><br><span class="line">        edge[ti] += gt + eq; boun[ti] += lt - gt;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">pii <span class="title">ans</span><span class="params">(<span class="number">1ll</span> * (<span class="number">-1e18</span>), <span class="number">-1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= cbtot; ++ i) &#123;</span><br><span class="line">        <span class="keyword">int</span> f = pa[i];</span><br><span class="line">        <span class="keyword">if</span> (f != <span class="number">-1</span>)</span><br><span class="line">          vert[f] += vert[i], edge[f] += edge[i], boun[f] += boun[i];</span><br><span class="line">        ll score = A * edge[i] - B * vert[i] + C * boun[i];</span><br><span class="line">        <span class="keyword">if</span> (tk[i] &gt; <span class="number">0</span>) ans = <span class="built_in">max</span>(ans, &#123;score, tk[i]&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d %lld\n&quot;</span>, ans.second, ans.first);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%lld%lld%lld&quot;</span>, &amp;n, &amp;m, &amp;A, &amp;B, &amp;C);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++ i) &#123;</span><br><span class="line">        <span class="keyword">int</span> u, v; <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;u, &amp;v);</span><br><span class="line">        <span class="built_in">add_edge</span>(u, v); <span class="built_in">add_edge</span>(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">Get_Tags</span>(); <span class="built_in">Get_Connected_Blocks</span>();</span><br><span class="line">    <span class="built_in">Compute_the_Answer</span>(); <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dfkuaid
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dfkuaid.github.io/2021/09/06/ZROI-21-CSP-DAY2/" title="「考试总结」ZROI-21-CSP7连-DAY2 总结">https://dfkuaid.github.io/2021/09/06/ZROI-21-CSP-DAY2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/06/ZROI-21-NOIP-DAY2/" rel="prev" title="「考试总结」ZROI-21-NOIP10连-DAY2 总结">
+      <i class="fa fa-chevron-left"></i> 「考试总结」ZROI-21-NOIP10连-DAY2 总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/08/HDU5634/" rel="next" title="「题解」HDU5634 Rikka with Phi">
+      「题解」HDU5634 Rikka with Phi <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1-IP-%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">#T1 IP 地址</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-number">1.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">2.</span> <span class="nav-text">#T2 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF-1"><span class="nav-number">2.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">2.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3-%E7%BB%A7%E6%89%BF%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">#T3 继承类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF-2"><span class="nav-number">3.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T4-%E5%AD%90%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">#T4 子图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F%E7%AE%80%E8%BF%B0-3"><span class="nav-number">4.1.</span> <span class="nav-text">#题意简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E4%BD%93%E6%80%9D%E8%B7%AF-3"><span class="nav-number">4.2.</span> <span class="nav-text">#大体思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.3.</span> <span class="nav-text">#一些细节实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">4.4.</span> <span class="nav-text">#Code</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dfkuaid"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Dfkuaid</p>
+  <div class="site-description" itemprop="description">每个人的心里都有一团火，路过的人只看到烟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'a60e970d81232433980f',
+      clientSecret: '08e596627e7cbff9b465ca374e3201366cfbc4ab',
+      repo        : 'commit_for_blogs',
+      owner       : 'Dfkuaid',
+      admin       : ['Dfkuaid'],
+      id          : '5f9455b3959ae5685349041e3e995ba6',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>

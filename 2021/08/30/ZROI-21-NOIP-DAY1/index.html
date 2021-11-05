@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dfkuaid.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="ZROI-21-NOIP10连-DAY1 总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「考试总结」ZROI-21-NOIP10连-DAY1 总结">
+<meta property="og:url" content="https://dfkuaid.github.io/2021/08/30/ZROI-21-NOIP-DAY1/index.html">
+<meta property="og:site_name" content="Dfkuaid の 小窝">
+<meta property="og:description" content="ZROI-21-NOIP10连-DAY1 总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-30T03:32:42.000Z">
+<meta property="article:modified_time" content="2021-11-04T13:41:28.069Z">
+<meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dfkuaid.github.io/2021/08/30/ZROI-21-NOIP-DAY1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>「考试总结」ZROI-21-NOIP10连-DAY1 总结 | Dfkuaid の 小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dfkuaid の 小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">暖呼呼~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">34</span></a>
+
+  </li>
+        <li class="menu-item menu-item-friends">
+
+    <a href="/friends/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dfkuaid.github.io/2021/08/30/ZROI-21-NOIP-DAY1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Dfkuaid">
+      <meta itemprop="description" content="每个人的心里都有一团火，路过的人只看到烟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dfkuaid の 小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          「考试总结」ZROI-21-NOIP10连-DAY1 总结
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-30 11:32:42" itemprop="dateCreated datePublished" datetime="2021-08-30T11:32:42+08:00">2021-08-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-04 21:41:28" itemprop="dateModified" datetime="2021-11-04T21:41:28+08:00">2021-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%80%83%E8%AF%95%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">考试总结</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">ZROI-21-NOIP10连-DAY1 总结</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>被完虐… QwQ</p>
+</blockquote>
+<h2 id="T1"><a href="#T1" class="headerlink" title="#T1"></a>#T1</h2><h3 id="Problem"><a href="#Problem" class="headerlink" title="#Problem"></a>#Problem</h3><p>给定 $n,p$，求：</p>
+<script type="math/tex; mode=display">
+\sum\limits_{i=1}^n\sum\limits_{j=1}^p\varphi(i^j)\mod 10^9+7.</script><h3 id="Solution"><a href="#Solution" class="headerlink" title="#Solution"></a>#Solution</h3><h4 id="60pts"><a href="#60pts" class="headerlink" title="#60pts"></a>#60pts</h4><p>考场上最初以为是莫比乌斯反演的题，先简单推一推：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\sum\limits_{i=1}^n\sum\limits_{j=1}^p\varphi(i^j)=\sum\limits_{i=1}^n\sum\limits_{j=1}^p\sum\limits_{d|i^j}\mu(d)\dfrac{i^j}{d}\\
+=&\sum\limits_{d=1}^n\mu(d)\sum\limits_{i=1}^{\left\lfloor\frac{n}{d}\right\rfloor}\sum\limits_{j=1}^pi^jd^{j-1}=\sum\limits_{j=1}^p\sum\limits_{d=1}^n\mu(d)d^{j-1}\sum\limits_{i=1}^{\left\lfloor\frac{n}{d}\right\rfloor}i^j
+\end{aligned}</script><p>推到这里，我已经做不下去了，这样的时空复杂度可以做到 $O(np)$，可得 $60pts$，注意到，这里无法继续进行的原因是幂没有合适的处理方法。</p>
+<h4 id="100pts"><a href="#100pts" class="headerlink" title="#100pts"></a>#100pts</h4><p>接着上面的错误思路返回原点，突然想起欧拉函数具有以下性质：</p>
+<script type="math/tex; mode=display">
+\varphi(i^j)=\varphi(i)\cdot i^{j-1}</script><p>于是原式化为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\sum\limits_{i=1}^n\sum\limits_{j=1}^p\varphi(i^j)=\sum\limits_{i=1}^n\sum\limits_{j=1}^pi^{j-1}\varphi(i)=\sum\limits_{i=1}^n\varphi(i)\sum\limits_{j=1}^pi^{j-1}\\
+=&p\cdot\varphi(1)+\sum\limits_{i=2}^n\varphi(i)\dfrac{i^p-1}{i-1}=p\cdot\varphi(1)+\sum\limits_{i=2}^n\dfrac{1}{i-1}\varphi(i)(i^p-1)\\
+=&p\cdot\varphi(1)+\sum\limits_{i=2}^n\dfrac{1}{i-1}\left(\varphi(i)\cdot i^p-\varphi(i)\right)
+\end{aligned}</script><p>对于后面的和式，不难发现 $\varphi$ 是<strong>积性函数</strong>，$i^p$ 是<strong>完全积性函数</strong>，于是我们便可以用线性筛筛出这两个函数，其中在 $i$ 为质数时，$i^p$ 需要使用一次快速幂，而小于等于 $n$ 的质数个数 $\pi(n)$ 约为 $\dfrac{n}{\ln n}$，于是线性筛的整体时间复杂度约为 $O(n\log_np)$，可以接受。</p>
+<p>我们再线性推个逆元，直接求和即得答案。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="#Code"></a>#Code</h3><h4 id="60pts-1"><a href="#60pts-1" class="headerlink" title="#60pts"></a>#60pts</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> int long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mset(l, x) memset(l, x, sizeof(l))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">10010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10000010</span>;</span><br><span class="line"><span class="keyword">const</span> ll MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, p, nprm[N], prm[N], pcnt;</span><br><span class="line">ll mi[M][M], mu[N], sum[M][M], ans, sum1[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">fpow</span><span class="params">(ll a, ll b)</span> </span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) (res *= a) %= MOD;</span><br><span class="line">        (a *= a) %= MOD; b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">euler</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x; i ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!nprm[i]) prm[++ pcnt] = i, mu[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= pcnt; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prm[j] * i &gt; x) <span class="keyword">break</span>;</span><br><span class="line">            nprm[prm[j] * i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prm[j]) mu[i * prm[j]] = -mu[i];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">signed</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>, &amp;n, &amp;p); <span class="built_in">euler</span>(n);</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">          sum1[i] = (sum1[i - <span class="number">1</span>] + i) % MOD;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span>; d &lt;= n; ++ d) &#123;</span><br><span class="line">            ans += mu[d] * sum1[n / d] % MOD;</span><br><span class="line">            (ans += MOD) %= MOD;</span><br><span class="line">        &#125;</span><br><span class="line">          </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= p; ++ j) &#123;</span><br><span class="line">            mi[i][j] = <span class="built_in">fpow</span>(i, j) % MOD;</span><br><span class="line">            sum[i][j] = (sum[i - <span class="number">1</span>][j] + mi[i][j]) % MOD;</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= p; ++ i)</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span>; d &lt;= n; ++ d) &#123;</span><br><span class="line">              ans += mu[d] * mi[d][i - <span class="number">1</span>] % MOD * sum[n / d][i] % MOD;</span><br><span class="line">              (ans += MOD) %= MOD; </span><br><span class="line">          &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="100pts-1"><a href="#100pts-1" class="headerlink" title="#100pts"></a>#100pts</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mset(l, x) memset(l, x, sizeof(l))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">10010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">10000010</span>;</span><br><span class="line"><span class="keyword">const</span> ll MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line">ll n, p, mu[N], nprm[N], prm[N], pcnt;</span><br><span class="line">ll ans, phi[N], f[N], mi[N], inv[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">fpow</span><span class="params">(ll a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    ll res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (b) &#123;</span><br><span class="line">        <span class="keyword">if</span> (b &amp; <span class="number">1</span>) (res *= a) %= MOD;</span><br><span class="line">        (a *= a) %= MOD; b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">euler</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>; f[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x; i ++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!nprm[i]) &#123;</span><br><span class="line">            prm[++ pcnt] = i, mi[i] = <span class="built_in">fpow</span>(i, p);</span><br><span class="line">            phi[i] = i - <span class="number">1</span>, f[i] = phi[i] * mi[i] % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= pcnt; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (prm[j] * i &gt; x) <span class="keyword">break</span>;</span><br><span class="line">            nprm[prm[j] * i] = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prm[j]) &#123;</span><br><span class="line">                f[i * prm[j]] = f[i] * f[prm[j]] % MOD;</span><br><span class="line">                phi[i * prm[j]] = phi[i] * (prm[j] - <span class="number">1</span>) % MOD;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                phi[i * prm[j]] = phi[i] * prm[j] % MOD;</span><br><span class="line">                f[i * prm[j]] = f[i] * prm[j] % MOD * mi[prm[j]] % MOD;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld&quot;</span>, &amp;n, &amp;p);</span><br><span class="line">    <span class="built_in">euler</span>(n); inv[<span class="number">0</span>] = inv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++ i) </span><br><span class="line">      inv[i] = ((MOD - MOD / i) * inv[MOD % i]) % MOD;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++ i)</span><br><span class="line">      (ans += inv[i - <span class="number">1</span>] * (f[i] - phi[i]) % MOD + MOD) %= MOD;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, (ans + p % MOD + MOD) % MOD);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T2"><a href="#T2" class="headerlink" title="#T2"></a>#T2</h2><blockquote>
+<p>巨大诈骗题，赛时想麻烦了（</p>
+</blockquote>
+<h3 id="Problem-1"><a href="#Problem-1" class="headerlink" title="#Problem"></a>#Problem</h3><p>一个含有 $n$ 个点的大根堆是一个二叉树，左右儿子有区别，每个节点上有一个 $1\sim n$ 的值，任意两个节点上的值不同，且父亲节点的权值大于子节点的权值。</p>
+<p>现在给定一个集合 $S$，要求 $\forall a\in S$，值 $a$ 对应的节点是叶结点。求有多少个满足要求的大根堆，答案 $\bmod 10^9+7$。</p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="#Solution"></a>#Solution</h3><p>首先明确概念：<strong>堆不一定是完全二叉树！</strong></p>
+<blockquote>
+<p>“左偏堆是不是堆？左偏堆是完全二叉树吗？” ——wzy</p>
+</blockquote>
+<p>因为是一个大根堆，于是插入顺序可以直接确定为由大到小插入，我们设当前可选位置个数为 $s$，不难发现，对于一个必须为叶子的节点，不论放到哪里，下一个点的可选位置一定减少一，如果不是，那么自己占了一个位置，又提供了两个可选位置，于是下一个点的可选位置一定增加一，将每一步的 $s$ 相乘即得答案。</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mset(l, x) memset(l, x, sizeof(l))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">const</span> ll MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,  p, vis[N];</span><br><span class="line">ll s = <span class="number">1</span>, ans = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;p);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= p; ++ i) &#123;</span><br><span class="line">        <span class="keyword">int</span> x; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;x); vis[x] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt;= <span class="number">1</span>; -- i) &#123;</span><br><span class="line">        (ans *= s) %= MOD;</span><br><span class="line">        <span class="keyword">if</span> (vis[i]) -- s; <span class="keyword">else</span> ++ s;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, ans);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T3"><a href="#T3" class="headerlink" title="#T3"></a>#T3</h2><h3 id="Problem-2"><a href="#Problem-2" class="headerlink" title="#Problem"></a>#Problem</h3><p>初始有一张含有 $n$ 个点的有向图，你可以不断向其中加入至多 $n(n−1)$ 条边，不允许加入重边或者自环。</p>
+<p>定义一个长度为 $m$ 的序列 $\{ai\}$ 为一个 SCC 序列，当且仅当存在一种加边方案，使得加入 $i$ 条边后图中恰好存在 $a_i$ 个强连通分量（两个点在一个强连通分量中当且仅当他们能够相互到达）。</p>
+<p>给定 $n$，你需要求出当序列长度分别为 $1\cdots n(n−1)$ 时，有多少种 SCC 序列，由于答案可能很大，需要对于一个数字取模。为了防止打表，模数是输入的。</p>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="#Solution"></a>#Solution</h3><p>用的 zyc 大佬的思路，这里说的详细一点。</p>
+<p>我们考虑这个序列字典序最大是多少，假设 $n=4$，那么这个序列是：</p>
+<script type="math/tex; mode=display">
+4,4,4,4,4,4,3,2,2,1,1,1</script><p>记该序列为 $\{mxl_i\}$ 我们考虑这个序列是怎么形成的，一开始有 $n$ 个空点，然后相邻连边，就可以使 scc 个数不变。加的不能加为止，不难发现，每多连一条边，就可以有 $x$ 条边使得 scc 个数为 $n−x$ 不变。这个自己画一下图就能论证。</p>
+<p>接下来我们考虑如果已知一个前缀 scc 序列，如何看下一个值最小能填多少？我们不难发现，这个数是 $n−k+1$，其中 $n$ 是序列长度，$k$ 是序列中不同的数的个数。这个很好论证，用构造的方法就可以证明。</p>
+<p>至于上界，这个就是上一位和这一位的 $mxl$ 值做 $\min$ 就可以。</p>
+<p>上下界固定后，暴力就好想了，DP 也很自然。</p>
+<p>设 $f_{i,j,k}$ 表示序列长度为 $i$，最后一个数为 $j$，有 $k$ 个不同的数的方案数。</p>
+<p>我们考虑有哪些状态可以转移到 $f_{i,j,k}$。我们考虑如果这个序列中 $j$ 不止一个，那么就可以从 $f_{i−1,j,k}$ 中转移。</p>
+<p>否则，我们枚举第 $i−1$ 个填了什么，然后转移，不难发现这个东西是 $f_{i−1,j’,k−1}$ 其中 $j’&gt;j$，因为不合法的状态我们已经设置为 $0$，所以可以放心转移。用前缀和优化，可以做到 O(Tn^4)。</p>
+<p>空间简单卡一下可以通过，保险起见，这里采用滚动数组优化。</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mset(l, x) memset(l, x, sizeof(l))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">101</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[<span class="number">2</span>][N][N], pre[N][N], MOD, mxl[N * N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">prework</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n * (n - <span class="number">1</span>) / <span class="number">2</span>; ++ i) mxl[i] = n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i; -- i)</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = (n - i) * (n - i - <span class="number">1</span>) / <span class="number">2</span> + <span class="number">1</span>; j &lt;= (n - i) * (n - i - <span class="number">1</span>) / <span class="number">2</span> + n - i; ++ j)</span><br><span class="line">        mxl[n * (n - <span class="number">1</span>) / <span class="number">2</span> + j] = i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">red</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;<span class="keyword">return</span> x &gt;= MOD ? x - MOD : x;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">mset</span>(f, <span class="number">0</span>); f[<span class="number">1</span>][n][<span class="number">1</span>] = <span class="number">1</span>; <span class="built_in">printf</span>(<span class="string">&quot;1 &quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n * (n - <span class="number">1</span>); ++ i) &#123;</span><br><span class="line">        <span class="built_in">mset</span>(f[i &amp; <span class="number">1</span>], <span class="number">0</span>); <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n &amp;&amp; j &lt;= i; ++ j) &#123;</span><br><span class="line">            pre[<span class="number">1</span>][j] = f[!(i &amp; <span class="number">1</span>)][<span class="number">1</span>][j];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">2</span>; k &lt;= mxl[i - <span class="number">1</span>]; ++ k)</span><br><span class="line">              pre[k][j] = <span class="built_in">red</span>(pre[k - <span class="number">1</span>][j] + f[!(i &amp; <span class="number">1</span>)][k][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= mxl[i]; ++ j)</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n &amp;&amp; k &lt;= i &amp;&amp; k &lt;= (n - j + <span class="number">1</span>); ++ k) &#123;</span><br><span class="line">              <span class="keyword">int</span> l = <span class="built_in">max</span>(j, n - i + k - <span class="number">1</span>); <span class="keyword">if</span> (l &gt; j) <span class="keyword">continue</span>; </span><br><span class="line">              f[i &amp; <span class="number">1</span>][j][k] = (pre[mxl[i - <span class="number">1</span>]][k - <span class="number">1</span>] - pre[l + (l == j) - <span class="number">1</span>][k - <span class="number">1</span>] + MOD) % MOD;</span><br><span class="line">              <span class="keyword">if</span> (l == j) f[i &amp; <span class="number">1</span>][j][k] = <span class="built_in">red</span>(f[i &amp; <span class="number">1</span>][j][k] + f[!(i &amp; <span class="number">1</span>)][j][k]);</span><br><span class="line">              ans = <span class="built_in">red</span>(ans + f[i &amp; <span class="number">1</span>][j][k]);</span><br><span class="line">          &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, ans);</span><br><span class="line">    &#125; <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T, n; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T --) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;MOD);</span><br><span class="line">        <span class="built_in">prework</span>(n); <span class="built_in">solve</span>(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="T4"><a href="#T4" class="headerlink" title="#T4"></a>#T4</h2><h3 id="Problem-3"><a href="#Problem-3" class="headerlink" title="#Problem"></a>#Problem</h3><p>有一个长度为 $n$ 的数列 $a_i$，Alice 和 Bob 手上分别有一个初始为 $0$ 的数字（分别记为 $A,B$）。Alice 和 Bob 轮流做如下操作：</p>
+<ul>
+<li>从序列开头或者结尾取出一个数 $x$，让自己手上的数字异或上 $x$，并把 $x$ 从序列中删除。</li>
+</ul>
+<p>Alice 先手，最后谁手上的数字大谁就胜了。如果 Alice,Bob 均使用最优策略，那么谁能取胜？（或者平局，即两个人手上的数字一样大）</p>
+<h3 id="Solution-3"><a href="#Solution-3" class="headerlink" title="#Solution"></a>#Solution</h3><p>首先不难发现，当 $a_i$ 的异或和为 $0$ 时一定为平局，否则 $s$ 在二进制下最高的非零位 $p$ 必然是决胜的关键，于是我们便可以将原本的 $a_i$ 按照第 $p$ 位是否为 $1$ 转变为 01 序列，下面的操作都是在 01 序列上进行的讨论。</p>
+<p>分为两种情况：长度为奇数和长度为偶数。</p>
+<p>先来看第一种：长度为偶数。我们将 01 序列分为<strong>奇数位</strong>和<strong>偶数位</strong>，此时 a_i 的异或和不为 $0$，所以必然要么是奇数位上有奇数个 $1$，要么是偶数位上有奇数个 $1$，于是先手可以直接控制后手所选的 $1$ 的奇偶性，故在此种情况下先手必胜。</p>
+<p>再来看长度为奇数的情况：</p>
+<ul>
+<li>假如两端都是 $0$，那么无论先手选哪个都会使当前后手变为长度为偶数的先手状态，于是此时先手必败；</li>
+<li><p>假如一端为 $1$，那么先手必然要选作为 $1$ 的一端，否则必败，不是最优策略；之后先手需要跟随后手的选择，保证两者的选择完全一致，否则必败我们来简单讨论一下原因：</p>
+<ul>
+<li>假如在这一步之前，所有的先手的每一步都跟随着后手选，所以此时先后手选的 $1$ 的数量的奇偶性一定不同，在这一步时，后手选了 $1$，先手选了 $0$，那么此时先后手选的 $1$ 的数量的奇偶性变为相同，于是一共选了偶数个 $1$，还剩奇数个 $1$，此时一共选了奇数个数字，于是还剩偶数个数字，此时后手作为当前局面的先手进入必胜状态；于是这样选先手必败。</li>
+<li>在这一步时，后手选了 $0$，先手选了 $1$，与上面的证明同理，可得这样先手必败。</li>
+</ul>
+<p>由于先手取走了一个 $1$，那么此时 $1$ 的个数为偶数，由于每一步先手都跟着后手选，所以先后手必然平分偶数个 $1$，如果这个个数不能被 $4$ 整除，也就意味着先手被分到了奇数个 $1$，加上了最初的那个 $1$，必败。</p>
+</li>
+</ul>
+<p>那么，怎样的序列才能满足先手能跟着后周的每一步选呢？删除掉左右两边相同的数后，剩下的应当满足相邻奇偶位（如 $1$ 和 $2$ 是，但 $2$ 和 $3$ 不是）上的数字相同，这里不证正确性，证法与上面相似。</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="#Code"></a>#Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mset(l, x) memset(l, x, sizeof(l))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">200010</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3fffffff</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N], s, n, T, l, r, p, tot;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> cnt)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r &amp;&amp; a[l] == a[r]) ++ l, -- r;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r &amp;&amp; a[l] == a[l + <span class="number">1</span>]) l += <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (l &lt; r) <span class="keyword">return</span> <span class="number">0</span>; <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T --) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n); l = <span class="number">1</span>, r = n;</span><br><span class="line">        p = <span class="number">30</span>, tot = <span class="number">0</span>, s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">          <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a[i]), s ^= a[i];</span><br><span class="line">        <span class="keyword">if</span> (!s) &#123;<span class="built_in">printf</span>(<span class="string">&quot;Draw\n&quot;</span>); <span class="keyword">continue</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span> (!(n &amp; <span class="number">1</span>)) &#123;<span class="built_in">printf</span>(<span class="string">&quot;Alice\n&quot;</span>); <span class="keyword">continue</span>;&#125;</span><br><span class="line">        <span class="keyword">while</span> (p &amp;&amp; !((s &gt;&gt; p) &amp; <span class="number">1</span>)) -- p;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++ i)</span><br><span class="line">          a[i] = (a[i] &gt;&gt; p) &amp; <span class="number">1</span>, tot += a[i];</span><br><span class="line">        <span class="keyword">if</span> (a[<span class="number">1</span>] == <span class="number">0</span> &amp;&amp; a[n] == <span class="number">0</span>) &#123;<span class="built_in">printf</span>(<span class="string">&quot;Bob\n&quot;</span>); <span class="keyword">continue</span>;&#125;</span><br><span class="line">        -- tot; <span class="keyword">if</span> (tot % <span class="number">4</span>) &#123;<span class="built_in">printf</span>(<span class="string">&quot;Bob\n&quot;</span>); <span class="keyword">continue</span>;&#125;</span><br><span class="line">        <span class="keyword">if</span> ((a[<span class="number">1</span>] &amp;&amp; <span class="built_in">check</span>(<span class="number">2</span>, n, tot)) || (a[n] &amp;&amp; <span class="built_in">check</span>(<span class="number">1</span>, n - <span class="number">1</span>, tot)))</span><br><span class="line">          <span class="built_in">printf</span>(<span class="string">&quot;Alice\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;Bob\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>期望得分：$100+20+0+0=120$<br>实际得分：$100+30+0+0=130$<br>没想到还骗过了一个点（</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dfkuaid
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dfkuaid.github.io/2021/08/30/ZROI-21-NOIP-DAY1/" title="「考试总结」ZROI-21-NOIP10连-DAY1 总结">https://dfkuaid.github.io/2021/08/30/ZROI-21-NOIP-DAY1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c/" rel="tag"># c++</a>
+              <a href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag"># 题解</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/30/ZROI-21-CSP-DAY1/" rel="prev" title="「考试总结」ZROI-21-CSP7连-DAY1 总结">
+      <i class="fa fa-chevron-left"></i> 「考试总结」ZROI-21-CSP7连-DAY1 总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/03/HDU5756/" rel="next" title="「题解」HDU5756 Boss Bo">
+      「题解」HDU5756 Boss Bo <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1"><span class="nav-number">1.</span> <span class="nav-text">#T1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem"><span class="nav-number">1.1.</span> <span class="nav-text">#Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">#Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#60pts"><span class="nav-number">1.2.1.</span> <span class="nav-text">#60pts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#100pts"><span class="nav-number">1.2.2.</span> <span class="nav-text">#100pts</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">#Code</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#60pts-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">#60pts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#100pts-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">#100pts</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2"><span class="nav-number">2.</span> <span class="nav-text">#T2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-1"><span class="nav-number">2.1.</span> <span class="nav-text">#Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">#Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">2.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3"><span class="nav-number">3.</span> <span class="nav-text">#T3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-2"><span class="nav-number">3.1.</span> <span class="nav-text">#Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2"><span class="nav-number">3.2.</span> <span class="nav-text">#Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">3.3.</span> <span class="nav-text">#Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T4"><span class="nav-number">4.</span> <span class="nav-text">#T4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-3"><span class="nav-number">4.1.</span> <span class="nav-text">#Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-3"><span class="nav-number">4.2.</span> <span class="nav-text">#Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">4.3.</span> <span class="nav-text">#Code</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dfkuaid"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Dfkuaid</p>
+  <div class="site-description" itemprop="description">每个人的心里都有一团火，路过的人只看到烟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'a60e970d81232433980f',
+      clientSecret: '08e596627e7cbff9b465ca374e3201366cfbc4ab',
+      repo        : 'commit_for_blogs',
+      owner       : 'Dfkuaid',
+      admin       : ['Dfkuaid'],
+      id          : '51b9923f28ef854b9a570def92de3e7d',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
