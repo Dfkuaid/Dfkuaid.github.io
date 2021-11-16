@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dfkuaid.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="「进行中...」有关强连通、双连通的一些经典题目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图的连通性题单">
+<meta property="og:url" content="https://dfkuaid.github.io/2021/11/16/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7%E9%A2%98%E5%8D%95/index.html">
+<meta property="og:site_name" content="Dfkuaid の 小窝">
+<meta property="og:description" content="「进行中...」有关强连通、双连通的一些经典题目">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-16T00:44:35.000Z">
+<meta property="article:modified_time" content="2021-11-16T00:56:21.156Z">
+<meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="双连通分量">
+<meta property="article:tag" content="强连通分量">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://dfkuaid.github.io/2021/11/16/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7%E9%A2%98%E5%8D%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>图的连通性题单 | Dfkuaid の 小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dfkuaid の 小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">暖呼呼~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">42</span></a>
+
+  </li>
+        <li class="menu-item menu-item-friends">
+
+    <a href="/friends/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+        <li class="menu-item menu-item-goals">
+
+    <a href="/goals/" rel="section"><i class="fa fa-calendar fa-fw"></i>goals</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dfkuaid.github.io/2021/11/16/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7%E9%A2%98%E5%8D%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Dfkuaid">
+      <meta itemprop="description" content="每个人的心里都有一团火，路过的人只看到烟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dfkuaid の 小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图的连通性题单
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-11-16 08:44:35 / 修改时间：08:56:21" itemprop="dateCreated datePublished" datetime="2021-11-16T08:44:35+08:00">2021-11-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E5%8D%95/" itemprop="url" rel="index"><span itemprop="name">题单</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">「进行中...」有关强连通、双连通的一些经典题目</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>[Accepted] 表示已经提交并 AC，[Solved] 表示已会做但还没写</p>
+</blockquote>
+<h3 id="Accepted-Knights-of-the-Round-Table-POJ-2942"><a href="#Accepted-Knights-of-the-Round-Table-POJ-2942" class="headerlink" title="[Accepted]Knights of the Round Table (POJ 2942)"></a>[Accepted]Knights of the Round Table (POJ 2942)</h3><p>有 $n$ 个骑士，有 $m$ 对骑士相互憎恨。骑士可能召开圆桌会议，骑士们围绕着圆桌而坐，需要满足</p>
+<ul>
+<li>骑士的个数是大于 $1$ 的奇数。</li>
+<li>任何相邻的一对骑士都不相互憎恨。</li>
+</ul>
+<p>求有多少骑士不可能参加任何圆桌会议。</p>
+<p>$1\le n\le 1\,000$<br>$1\le m\le {n\choose 2}$</p>
+<p>直接从哪些不能坐在一起来入手不好直接做，于是考虑建出反图，统计出哪些可以参加某个会议，然后取补集即可。</p>
+<p>注意到一个骑士可以参加某个会议当且仅当他被包含在某个简单奇环中，由于我们需要考虑一个简单环，于是我们考虑点双连通分量，注意到在一个点双连通分量中，只要含有一个奇环，那么显然其中的每个点都可以被包含在一个奇环中（考虑将两个环连接要么新加两条边，要么重合一条边，如果是一个奇环，一个偶环，那么一定可以拼成一个大的奇环），于是我们直接找到点双，然后用二分图染色（奇环一定不是二分图）来进行判断。</p>
+<h3 id="Solved-Road-Construction-POJ-3352"><a href="#Solved-Road-Construction-POJ-3352" class="headerlink" title="[Solved]Road Construction (POJ 3352)"></a>[Solved]Road Construction (POJ 3352)</h3><p>有一个岛上有 $n$ 个旅游景点，有 $m$ 条双向道路连接着它们。现在要修建一些额外的道路，使得任意一条道路封闭后游客都能从一个旅游景点到达任意的旅游景点。求最少需要修建的道路数量。</p>
+<p>$3\le n\le 1\,000$<br>$2\le m\le 1\,000$</p>
+<p>边双连通分量缩点，得到 $k$ 棵树，将所有树连成环需要 $k$ 条边，每棵树少了两个叶子（不够就是清零），之后将剩下的叶子两两配对即可，若多出一个叶子还需要多补一条边。</p>
+<h3 id="Solved-Mining-Your-Own-Business-UVA-1108"><a href="#Solved-Mining-Your-Own-Business-UVA-1108" class="headerlink" title="[Solved]Mining Your Own Business (UVA 1108)"></a>[Solved]Mining Your Own Business (UVA 1108)</h3><p>有一张无向图，选一些点涂黑，满足任意删除一个点后（可能是被涂黑的点），每个连通分量都有至少一个黑点。求最少涂黑的点数和方案数。</p>
+<p>$1\le n\le 50\,000$</p>
+<p>因为是删点，考虑点双缩点，得到一棵圆方树，考虑每个方点下面需要一个黑点当且仅当其距离叶子的最远距离为 $1$，特殊的，如果根的度为 $1$，那么它也需要一个黑点；对于一个需要拥有黑点的方点，显然这个黑点可选的方案数是它下面的所有叶子数；于是直接在圆方树上树形 DP 即可。</p>
+<h3 id="Solved-Equivalent-Sets-HDU-3836"><a href="#Solved-Equivalent-Sets-HDU-3836" class="headerlink" title="[Solved]Equivalent Sets (HDU 3836)"></a>[Solved]Equivalent Sets (HDU 3836)</h3><p>给定一张有向图，求至少添加多少条边能使得其强连通。</p>
+<p>$1\le n\le 20\,000$<br>$0\le m\le 50\,000$</p>
+<p>首先先强连通分量缩点，得到一张 DAG，然后考虑怎样连边是最优的。</p>
+<p>把无入度点作为点集 $S$，把无出度点作为点集 $T$。</p>
+<p>二分图连边表示 $S$ 点（入度为零）可以走到 $T$ 点（出度为零），</p>
+<ul>
+<li>先暴力匹配，表示每一个 $S_i$ 尽可能走一个互不相同的 $T_i$ 点，然后所有匹配边从 $T_i$ 向下一个匹配的 $S_{i+1}$ 连一条边，表示从 $S_i\to T_i\to S_{i+1}$，如此往复，最终将最后一个 $T_k$ 连向开始时的 $S_1$，此时形成一个环，是 SCC，然后剩下的没被选上的是不连通的。</li>
+<li>如果是 $S_i$ 点表明他所有可以走到的 $T$ 都被其他 $S$ 走过去了，$T$ 也是一样，能走到他的 $S$ 都走到其他点 $T$ 了，于是上一步得到的 SCC 到剩下的 $T$ 一定有边，剩下的 $S$ 一定到 SCC 有边，就把每一对未匹配的 $T$ 向 $S$ 连一下边，这样匹配的 $T$ 和 $S$ 会形成环，这样可以尽可能多的匹配两边的点；</li>
+<li>这样最后如果还剩下来就随便连了（SCC 连向剩 $S$，剩 $T$ 连向 SCC ）。</li>
+</ul>
+<p>我们定义从 $T$ 到 $S$ 的边为反向边，这样，会发现前两步左右会将两侧的点一一配对，就都被连上了一条反向边，最后一步每个剩下的点只会有一条边，所以最少连边数量是 $\max(|S|,|T|)$。</p>
+<h3 id="Solved-Pursuit-For-Artifacts-CF652E"><a href="#Solved-Pursuit-For-Artifacts-CF652E" class="headerlink" title="[Solved]Pursuit For Artifacts (CF652E)"></a>[Solved]Pursuit For Artifacts (CF652E)</h3><p>给定一张简单无向连通图，边权为 $0$ 或 $1$，求从 $a$ 到 $b$ 是否存在一条边权和非 $0$ 的且不经过重复边的路径（单次询问）。</p>
+<p>$1\le n\le 300\,000$<br>$0\le m\le 300\,000$</p>
+<p>注意到一条边一定包含于一个点双，对于一个点双内的任意一条边和任意两个点，这两点间一定存在一条简单路径经过这条边，于是我们建出整张图的圆方树，将一个方点的权值定义为它代表的点双连通分量中的边是否存在权值为 $1$ 的边；考虑如何统计每条边在哪个 V-DCC，与点类似，我们只需要将遍历到的边压入栈中即可，每条边只入栈一次，找到 V-DCC 时同时将边弹出；最后将圆点的权值定义为 $0$，然后爆搜查寻即可。</p>
+<p>再来考虑边双怎么做，注意到一条边要么属于一个边双，要么是桥，且每条在边双中的边至少包含于一个简单环中，于是同样对于边双内的一条边和两个点，一定存在一条简单路径经过这条边，于是我们同样将一个缩完后的点的权值定义为这个点双中的所有边权的或，由于每个点一定只包含在同一个边双中于是我们可以直接判断一条边的两点是否在同一点双来得到这一点所在的点双，然后爆搜看路径上是否有边权或点权为 $1$。</p>
+<h3 id="Solved-Museums-Tour-CF1137C"><a href="#Solved-Museums-Tour-CF1137C" class="headerlink" title="[Solved]Museums Tour (CF1137C)"></a>[Solved]Museums Tour (CF1137C)</h3><p>一个国家有 $n$ 个城市，和 $m$ 条单向道路，每周有 $d$ 天。每个城市都有一个博物馆，每天博物馆的开放情况只和是一周中的哪一天有关，即每 $d$ 天一个循环。</p>
+<p>从一周中的第一天，城市 $1$ 开始，每天参观博物馆（如果开放），之后沿着一条边走到下一个城市。求无有个旅行团在城市 1 出发，当天是星期一。每天早上限的时间内最多能参观多少不同的博物馆。</p>
+<p>$1\le n\le 100\,000$<br>$0\le m\le 100\,000$<br>$0\le d\le 50$</p>
+<p>由于 $d$ 的数量不大，考虑将每个点拆成 $d$ 个点，点 $(i,j)$ 表示 $i$ 号点在星期 $j$，于是将原图重新建图，假设原图中存在边 $u\to v$，那么建新边 $(u,i)\to(v,i + 1)$，然后考虑得到的新图，显然在同一个强连通分量中的所有可行的博物馆一定可以在访问这个强连通分量时参观完，于是将每个强连通分量缩点，每个缩完的点的点权为这个强连通分量中所有的可行的博物馆，这个权值可以在统计强连通分量时同时计算，之后我们就是要找一条从 $1$ 开始的最长路。</p>
+<p>现在来考虑这样做会不会算重，即将一个点算多次贡献。</p>
+<p>假如可以从 $(u,i)$ 走到 $(u,j)$，那么意味着原图上从 $u$ 走一条长度为 $(j-i)\bmod d$ 的路径可以从 $u$ 走回 $u$，那么在 $(u,j)$ 顺着这条路径走 $d-1$ 次就可以走到 $(u,i)$，所以两者一定在同一强连通分量中，我们可以在 Tarjan 时直接处理。</p>
+<p>注意 Tarjan 时递归层数可能会很多，<code>inline</code> 或许可以优化？</p>
+<h3 id="Solved-Leaders-CF97E"><a href="#Solved-Leaders-CF97E" class="headerlink" title="[Solved]Leaders (CF97E)"></a>[Solved]Leaders (CF97E)</h3><p>给定一张简单无向图，多次询问两个点之间是否存在长度为奇数的简单路径。</p>
+<p>$1\le n\le 100\,000$<br>$0\le m\le 100\,000$<br>$1\le q\le 100\,000$</p>
+<p>注意到如果两个点之间存在一条路径，路径上经过了一条在奇环中的边，那么就一定存在一条长度为奇数的简单路径；或者说，只要路径上存在一条在奇环中的边，那么原本这条路径长度的奇偶性就可以被改变；同时注意到图中两点间的任意一条路径，都可以由另一条路径通过用某些环的一部分替换这条路径的一部分得到，于是我们考虑先找到一条初始的路径，再来考虑这条路径是否可以通过经过奇环改变/不改变奇偶性，于是我们考虑先得到原图的一棵生成树。</p>
+<p>考虑在生成树上，如果两个点如果对于 LCA 所处的深度的奇偶性不同，那么两者之间一定存在一条长度为奇数的路径（就是树上的路径），否则我们需要看两者的树上路径上是否存在在奇环中的边，于是我们需要确定每条边是否在奇环中。</p>
+<p>注意到在一个点双连通分量中，只要存在一个奇环，那么这个点双连通分量中的任意一条边都都可以找到一个包含这条边的奇环，于是我们直接求点双连通分量，然后二分图染色判断奇环，然后就可以得到每条边所处的点双连通分量（同上面 CF652E SOL.1 压栈方法），以及每个点双连通分量是否包含奇环。</p>
+<p>然后直接树上倍增即可。</p>
+<h3 id="Solved-Simple-Cycles-Edges-CF962F"><a href="#Solved-Simple-Cycles-Edges-CF962F" class="headerlink" title="[Solved]Simple Cycles Edges (CF962F)"></a>[Solved]Simple Cycles Edges (CF962F)</h3><p>给定一张简单无向图，求哪些边在恰好一个简单环内。</p>
+<p>$1\le n\le 100\,000$<br>$0\le m\le 100\,000$</p>
+<p>由于在同一个点双连通分量中的任意一条边都被包含在至少一个简单环中，且如果一个点双连通分量中包含不只一个简单环，由于点双的性质，于是这多个环中的任意两个环至少需要两条额外的边或至少一条重合的边，这样形成的点双中的任意一条边都会被包含在大于一个简单环中，所以一条边被恰好包含在一个简单环中当且仅当他所在的点双中恰有一个简单环，于是可以直接求出 V-DCC，然后判断每个 V-DCC 的边数和点数是否相等。</p>
+<h3 id="Solved-Caterpillar-CF51F"><a href="#Solved-Caterpillar-CF51F" class="headerlink" title="[Solved]Caterpillar (CF51F)"></a>[Solved]Caterpillar (CF51F)</h3><p>定义毛毛虫是一张<strong>无环图</strong>，满足存在一条路径即可使得每个点离这条路径的距离不超过 $1$。给定一张无向图，现在可以每次合并两个顶点使得图变成毛毛虫。求最少需要的操作数。</p>
+<p>$1\le n\le 2000$<br>$0\le m\le 10^5$</p>
+<p>由于是一个无环图，所以只要两点间有两条边不相交的路径就一定需要合并，于是一个边双连通分量最后一定会被缩成一个点。</p>
+<p>现在我们来考虑缩点之后得到了一棵树如何处理。对于一棵树，显然骨干必然是去掉叶子后剩下的部分中的一条链，显然这条链的长度越长越好，于是应当选直径，直径之外的点（除了叶子）就顺着树的结构合并到直径上，一定是最优的合并方案，总共合并的次数也就是除了直径和叶子之外的所有点的个数。</p>
+<p>由于图可能不连通，所以还需要把多个毛毛虫拼接，合并的次数就是之前树的数量减一。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dfkuaid
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://dfkuaid.github.io/2021/11/16/%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7%E9%A2%98%E5%8D%95/" title="图的连通性题单">https://dfkuaid.github.io/2021/11/16/图的连通性题单/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8F%8C%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" rel="tag"># 双连通分量</a>
+              <a href="/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" rel="tag"># 强连通分量</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/12/CF487E/" rel="prev" title="「题解」CF487E Tourists">
+      <i class="fa fa-chevron-left"></i> 「题解」CF487E Tourists
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accepted-Knights-of-the-Round-Table-POJ-2942"><span class="nav-number">1.</span> <span class="nav-text">[Accepted]Knights of the Round Table (POJ 2942)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Road-Construction-POJ-3352"><span class="nav-number">2.</span> <span class="nav-text">[Solved]Road Construction (POJ 3352)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Mining-Your-Own-Business-UVA-1108"><span class="nav-number">3.</span> <span class="nav-text">[Solved]Mining Your Own Business (UVA 1108)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Equivalent-Sets-HDU-3836"><span class="nav-number">4.</span> <span class="nav-text">[Solved]Equivalent Sets (HDU 3836)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Pursuit-For-Artifacts-CF652E"><span class="nav-number">5.</span> <span class="nav-text">[Solved]Pursuit For Artifacts (CF652E)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Museums-Tour-CF1137C"><span class="nav-number">6.</span> <span class="nav-text">[Solved]Museums Tour (CF1137C)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Leaders-CF97E"><span class="nav-number">7.</span> <span class="nav-text">[Solved]Leaders (CF97E)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Simple-Cycles-Edges-CF962F"><span class="nav-number">8.</span> <span class="nav-text">[Solved]Simple Cycles Edges (CF962F)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Caterpillar-CF51F"><span class="nav-number">9.</span> <span class="nav-text">[Solved]Caterpillar (CF51F)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dfkuaid"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Dfkuaid</p>
+  <div class="site-description" itemprop="description">每个人的心里都有一团火，路过的人只看到烟。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : 'a60e970d81232433980f',
+      clientSecret: '08e596627e7cbff9b465ca374e3201366cfbc4ab',
+      repo        : 'commit_for_blogs',
+      owner       : 'Dfkuaid',
+      admin       : ['Dfkuaid'],
+      id          : 'b99ddebd02f1720419397990bcd6e137',
+        language: 'zh-CN',
+      distractionFreeMode: false
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
