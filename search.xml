@@ -186,24 +186,24 @@ k\geq(1-\alpha)\cdot x,</script><p>于是每 $(1-\alpha)\cdot x$ 次删除（每
   <entry>
     <title>基础动态规划题单</title>
     <url>/2021/11/16/%E5%9F%BA%E7%A1%80%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E9%A2%98%E5%8D%95/</url>
-    <content><![CDATA[<h3 id="Solved-Luogu4302-SCOI2003-字符串折叠"><a href="#Solved-Luogu4302-SCOI2003-字符串折叠" class="headerlink" title="[Solved]Luogu4302. [SCOI2003]字符串折叠"></a>[Solved]Luogu4302. [SCOI2003]字符串折叠</h3><p>$f_{l,r}$ 表示将 $[l,r]$ 中的字符串折叠得到的最短长度，那么有两种情况：</p>
+    <content><![CDATA[<h3 id="Accepted-Luogu4302-SCOI2003-字符串折叠"><a href="#Accepted-Luogu4302-SCOI2003-字符串折叠" class="headerlink" title="[Accepted]Luogu4302. [SCOI2003]字符串折叠"></a>[Accepted]Luogu4302. [SCOI2003]字符串折叠</h3><p>$f_{l,r}$ 表示将 $[l,r]$ 中的字符串折叠得到的最短长度，那么有两种情况：</p>
 <ul>
 <li>$[l,r]$ 由一个字符串重复多次得到，那么我们尝试枚举这个长度 $x$，每次判断之间用哈希判断分成的 $\frac n x$ 个串，每个长度判断的时间复杂度是 $O(\frac n x)$，取最终结果最小值，对于这一段的时间复杂度为 $O(\sum_{d|n} \frac n d)=O(n\log n)$；</li>
 <li>其他的字符串的折叠情况一定可以通过将原串分为两部分拼接而成，枚举断点合并即可，时间复杂度为 $O(n)$；</li>
 </ul>
 <p>于是最终答案是 $f_{1,n}$，总体时间复杂度为 $O(n^3\log n)$。</p>
-<h3 id="Solved-LOJ2124-HAOI2015-树上染色"><a href="#Solved-LOJ2124-HAOI2015-树上染色" class="headerlink" title="[Solved]LOJ2124. [HAOI2015]树上染色"></a>[Solved]LOJ2124. [HAOI2015]树上染色</h3><p>由于涂黑的点数有限制，所以自然地设计状态为 $f_{i,j}$ 表示在以 $i$ 为根的子树中选了 $j$ 个为黑点，得到的子树中的最大价值，我们考虑一条边 $i$ 如何贡献，假设它所连向以 $x$ 为根的子树，$x$ 的子树中有 $j$ 个黑点，那么不论外面怎么选，$i$ 上面一定有 $k-j$ 个黑点，于是贡献就是 $w_i\cdot(k-j)\cdot j$，白点经过这条边的代价类似，然后类似树上背包合并即可。</p>
+<h3 id="Accepted-LOJ2124-HAOI2015-树上染色"><a href="#Accepted-LOJ2124-HAOI2015-树上染色" class="headerlink" title="[Accepted]LOJ2124. [HAOI2015]树上染色"></a>[Accepted]LOJ2124. [HAOI2015]树上染色</h3><p>由于涂黑的点数有限制，所以自然地设计状态为 $f_{i,j}$ 表示在以 $i$ 为根的子树中选了 $j$ 个为黑点，得到的子树中的最大价值，我们考虑一条边 $i$ 如何贡献，假设它所连向以 $x$ 为根的子树，$x$ 的子树中有 $j$ 个黑点，那么不论外面怎么选，$i$ 上面一定有 $k-j$ 个黑点，于是贡献就是 $w_i\cdot(k-j)\cdot j$，白点经过这条边的代价类似，然后类似树上背包合并即可。</p>
 <p>看起来时间复杂度是 $O(n^3)$ 的，其实不然。即设现在要计算 $x$ 的子树的价值，称 $x$ 的子树为大子树，当前考虑的 $x$ 的某个儿子 $y$ 的子树为小子树。由于计算贡献时，我们背包的大小是子树大小，相当于给小子树内的每个点一个编号，给小子树外、大子树的点一个编号，每次分别枚举一个子树内的点和一个子树外的点配对（将枚举的大小看作编号），于是每个点作为小子树内的点配对时，最多与其他 $n-1$ 个点各进行配对一次，于是总体时间复杂度为 $O(n^2)$，注意这个时间复杂度成立的前提就是我们合并时枚举的背包大小必须是子树大小。</p>
-<h3 id="Solved-LOJ2559-HNOI2003-消防局的设立"><a href="#Solved-LOJ2559-HNOI2003-消防局的设立" class="headerlink" title="[Solved]LOJ2559 [HNOI2003]消防局的设立"></a>[Solved]LOJ2559 [HNOI2003]消防局的设立</h3><p>虽然说是 DP，但更容易想到的还是贪心，显然对于当前所有未被覆盖的点，我们一定是选择覆盖其中深度最深的节点，而且我们一定是将其放在他的祖父位置放置那么我们考虑如果要覆盖这个点，那么我们一定是在它的祖父位置（如果存在）安置最优（不存在就放在父亲），这样可以覆盖到的点一定最多。</p>
+<h3 id="Acceptted-LOJ2559-HNOI2003-消防局的设立"><a href="#Acceptted-LOJ2559-HNOI2003-消防局的设立" class="headerlink" title="[Acceptted]LOJ2559 [HNOI2003]消防局的设立"></a>[Acceptted]LOJ2559 [HNOI2003]消防局的设立</h3><p>虽然说是 DP，但更容易想到的还是贪心，显然对于当前所有未被覆盖的点，我们一定是选择覆盖其中深度最深的节点，而且我们一定是将其放在他的祖父位置放置那么我们考虑如果要覆盖这个点，那么我们一定是在它的祖父位置（如果存在）安置最优（不存在就放在父亲），这样可以覆盖到的点一定最多。</p>
 <p>考虑如何确定一个点是否被覆盖，最朴素的想法便是记录到达离它最近的消防站距离它的距离 <code>d[]</code>，考虑如何更新一个点的距离：</p>
 <ul>
 <li>将某个点的祖父选中时，修改其父亲和其祖父的 <code>d[]</code>；</li>
 <li>处理到某个点时，用其父亲和祖父的 <code>d[]</code> 尝试更新自己（来自子孙的如果有一定已经被更新）；</li>
 </ul>
 <p>然后做就是了。</p>
-<h3 id="Solved-Luogu1131-ZJOI2004-时态同步"><a href="#Solved-Luogu1131-ZJOI2004-时态同步" class="headerlink" title="[Solved]Luogu1131 [ZJOI2004]时态同步"></a>[Solved]Luogu1131 [ZJOI2004]时态同步</h3><p>注意到 $x$ 的子树内的叶节点的时间一定被同步到其中最初到的最晚的时间，只需要在 $x$ 下面不满足的子树到 $x$ 的路径上进行对应的修改即可。</p>
+<h3 id="Acceptted-Luogu1131-ZJOI2004-时态同步"><a href="#Acceptted-Luogu1131-ZJOI2004-时态同步" class="headerlink" title="[Acceptted]Luogu1131 [ZJOI2004]时态同步"></a>[Acceptted]Luogu1131 [ZJOI2004]时态同步</h3><p>注意到 $x$ 的子树内的叶节点的时间一定被同步到其中最初到的最晚的时间，只需要在 $x$ 下面不满足的子树到 $x$ 的路径上进行对应的修改即可。</p>
 <p>于是 $f_{i}$ 表示将 $i$ 的子树内的时态同步所需的最小操作次数，按照上面的想法进行转移即可。</p>
-<h3 id="Solved-Luogu1220-关路灯"><a href="#Solved-Luogu1220-关路灯" class="headerlink" title="[Solved]Luogu1220 关路灯"></a>[Solved]Luogu1220 关路灯</h3><p>考虑在任意时刻关闭的灯一定是一段连续的区间，于是我们可以设状态 $f_{l,r}$ 表示将区间 $[l,r]$ 内的灯全部关闭时已消耗的最少电功，发现每次关灯一定是从之前区间的 $[l,r]$ 的边界中移动到 $l-1$ 或 $r+1$ 关灯，于是完善状态为：</p>
+<h3 id="Acceptted-Luogu1220-关路灯"><a href="#Acceptted-Luogu1220-关路灯" class="headerlink" title="[Acceptted]Luogu1220 关路灯"></a>[Acceptted]Luogu1220 关路灯</h3><p>考虑在任意时刻关闭的灯一定是一段连续的区间，于是我们可以设状态 $f_{l,r}$ 表示将区间 $[l,r]$ 内的灯全部关闭时已消耗的最少电功，发现每次关灯一定是从之前区间的 $[l,r]$ 的边界中移动到 $l-1$ 或 $r+1$ 关灯，于是完善状态为：</p>
 <p>$f_{l,r,0/1}$ 表示将区间 $[l,r]$ 内的灯全部关闭时，最后关闭的灯是 $l$ 或是 $r$，已消耗的最少电功，</p>
 <p>转移就考虑枚举一个区间 $[l,r]$，然后从 $[l+1,r]$ 和 $[l,r-1]$ 分别进行转移即可。</p>
 <h3 id="Solved-Luogu4766-CERC2014-Outer-space-invaders"><a href="#Solved-Luogu4766-CERC2014-Outer-space-invaders" class="headerlink" title="[Solved]Luogu4766 [CERC2014]Outer space invaders"></a>[Solved]Luogu4766 [CERC2014]Outer space invaders</h3><p>不难发现如果我们可以把每一个外星人看作一个时间轴上的区间，对于所有完全包含于某个区间 $[l,r]$ 内的所有外星人，必然有一次的杀伤距离是其中距离最远的外星人所处的位置，然后再考虑消灭该外星人所选取的时间  $t$，那么显然与 $t$ 有交集的所有外星人都会被消灭，那么剩下的一定是完全包含于 $[l,t-1]$ 和 $[t+1, r]$ 中的外星人。</p>
