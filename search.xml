@@ -223,7 +223,7 @@ f_{l,r,x}&=\min_{l\leq i\leq r}\left\{f_{l,i-1,v_i}+f_{i+1,r,v_i}+sum_{l,r}\righ
 f_{l,r,x}&=\min_{l\leq i\leq r}\left\{f_{l,i-1,x}+f_{i+1,r,x}+sum_{l,r}+k\right\},\\
 \end{aligned}</script><p>其中，$sum_{l,r}$ 表示 $[l,r]$ 的访问频度的和，这样做是将访问频度的代价拆分为了每层上的一部分一部分的代价和；</p>
 <p>注意我们需要把所有的权值进行离散化到区间 $[1,n]$ 中，这样我们最后的答案就是 $f_{1,n,1}$.</p>
-<h3 id="Luogu6478-NOI-Online-2-提高组-游戏"><a href="#Luogu6478-NOI-Online-2-提高组-游戏" class="headerlink" title="Luogu6478 [NOI Online #2 提高组]游戏"></a>Luogu6478 [NOI Online #2 提高组]游戏</h3><h3 id="Solved-Luogu2157-SDOI2009-学校食堂"><a href="#Solved-Luogu2157-SDOI2009-学校食堂" class="headerlink" title="[Solved]Luogu2157 [SDOI2009]学校食堂"></a>[Solved]Luogu2157 [SDOI2009]学校食堂</h3><p>首先不难看出代价就是 $a\text{ xor } b$。</p>
+<h3 id="Luogu6478-NOI-Online-2-提高组-游戏"><a href="#Luogu6478-NOI-Online-2-提高组-游戏" class="headerlink" title="Luogu6478 [NOI Online #2 提高组]游戏"></a>Luogu6478 [NOI Online #2 提高组]游戏</h3><h3 id="Accepted-Luogu2157-SDOI2009-学校食堂"><a href="#Accepted-Luogu2157-SDOI2009-学校食堂" class="headerlink" title="[Accepted]Luogu2157 [SDOI2009]学校食堂"></a>[Accepted]Luogu2157 [SDOI2009]学校食堂</h3><p>首先不难看出代价就是 $a\text{ xor } b$。</p>
 <p>对于状态，一个很自然的想法是 $f_i$ 表示 $i$ 及之前的完事了所花费的最小时间，但是注意到这样显然不能合理地区分状态，因为选择可以是不连续的，但是同样注意到对于 $i$ 来说向后的扩展不可能超过 $7$ 个人，于是我们考虑记录这 $7$ 个人的状态，也就是将状态补充为 $f_{i,S}$，表示 $[1,i-1]$ 中的人都已经打完了饭，第 $i$ 个人以及他后面的 $7$ 个人的状态是 $S$，用一个 $8$ 位二进制数表示，再考虑到转移时同样需要上一个打饭的是谁，于是在状态中还需要增添一维，要表示上一个打饭的人的位置，由于第 $i-1$ 个人已经打了饭，显然上一个打饭的人不可能比 $i-8$ 还要考前，所以用 $[-8,7]$ 表示上一个打饭的是 $i$ 向后第几个人（用数组存需要 $+8$），于是，我们就能用 $f_{i,S,j}$ 完整地表示一个状态，即：$[1,i-1]$ 中的所有人都已经打了饭，$[i,i+7]$ 中是否已打饭的情况是 $S$，上一个打饭的是第 $i+j$ 个人。</p>
 <p>设计好了状态，下面来考虑如何转移。</p>
 <p>注意到，对于状态 $f_{i,S,j}$ 如果 $S$ 代表 $i$ 的一位已经为 $1$，那么它应当和状态 $f_{i+1,S’,j-1}$ 等价，其中 $S’$ 为将 $S$ 中代表 $i$ 的一位去掉，加上代表 $i+8$ 的状态（为 $0$）的一位，这一点是显然的，这一步的转移是不需要代价的。</p>
@@ -236,7 +236,7 @@ f_{l,r,x}&=\min_{l\leq i\leq r}\left\{f_{l,i-1,x}+f_{i+1,r,x}+sum_{l,r}+k\right\
 f_{i,S}=\sum_{S'}c_{S,S'}\cdot f_{i-1,S'},</script><p>其中 $c_{S,S’}$ 为当前行状态为 $S$，上一行是否可以为 $S’$，$c_{S,S’}$ 显然都是确定的，于是考虑用矩阵快速幂优化。显然状态数不会超过 $2^6=64$，于是构建一个 $64\times64$ 的转移矩阵 $T$，$T_{i,j}$ 为第 $j$ 个状态是否可以从（上一行状态为）状态 $i$ 转移，$F_i$ 为一个 $64$ 元行向量，表示第 $i$ 行每种状态的可行方案数，显然有</p>
 <script type="math/tex; mode=display">
 F_i=F_{i-1}T\Rightarrow F_n=F_1(T)^{n-1},</script><p>然后直接矩阵快速幂即可，时间复杂度为 $O(2^{3m}\log n)$.</p>
-<h3 id="Solved-LOJ2318-NOIP2017-宝藏"><a href="#Solved-LOJ2318-NOIP2017-宝藏" class="headerlink" title="[Solved]LOJ2318 [NOIP2017]宝藏"></a>[Solved]LOJ2318 [NOIP2017]宝藏</h3><p>较为重要的一点是看出我们最终一定是得到一棵原图的生成树，然后对于一个树上的点，它的贡献就是它连向原本生成树的边权乘上它所在的深度，于是我们设计状态 $F_{S,i}$ 为当前已经加入生成树的点集为 $S$，生成树的最大深度为 $i$ 时的最小代价。</p>
+<h3 id="Accepted-LOJ2318-NOIP2017-宝藏"><a href="#Accepted-LOJ2318-NOIP2017-宝藏" class="headerlink" title="[Accepted]LOJ2318 [NOIP2017]宝藏"></a>[Accepted]LOJ2318 [NOIP2017]宝藏</h3><p>较为重要的一点是看出我们最终一定是得到一棵原图的生成树，然后对于一个树上的点，它的贡献就是它连向原本生成树的边权乘上它所在的深度，于是我们设计状态 $F_{S,i}$ 为当前已经加入生成树的点集为 $S$，生成树的最大深度为 $i$ 时的最小代价。</p>
 <p>那么考虑转移，我们枚举形成 $S$ 的子集 $S’$，$S$ 由 $S’$ 向外连边得到，显然应当连接 $\complement_SS’$ 中的点向 $S’$ 中所花费最少的边，于是应当是这些边权求和乘上最大深度，显然这样算出的答案不一定是正确的，但是假设 $\complement_SS’$ 中有的点不是连到 $S’$ 中最大深度的点上，那么一定存在另一个集合 $S’’$ 包含这些点，且最大深度与 $S’$ 相同，显然这个集合得到的答案不会比 $S’$ 得到的更大，于是更新到 $S$ 上时得到的答案一定是正确的答案。</p>
 <p>总体时间复杂度为 $O(3^n\cdot n^2)$，考虑到不合法的状态，$3^n$ 和 $n^2$ 都不容易跑满，于是能过。</p>
 <h3 id="Solved-Luogu5933-清华集训2012-串珠子"><a href="#Solved-Luogu5933-清华集训2012-串珠子" class="headerlink" title="[Solved]Luogu5933 [清华集训2012]串珠子"></a>[Solved]Luogu5933 [清华集训2012]串珠子</h3><p>我们首先直接考虑设 $f_S$ 为点集 $S$ 中的点全部连通的方案数，直接计算发现不好计算，正难则反，设 $g_S$ 为点集 $S$ 中的点所有的连边的方案数，$h_S$ 为点集 $S$ 中的点不连通的方案数，显然有</p>
