@@ -266,7 +266,10 @@ F_i=F_{i-1}T\Rightarrow F_n=F_1(T)^{n-1},</script><p>然后直接矩阵快速幂
 <script type="math/tex; mode=display">
 f_S=g_S-h_S,</script><p>$g_s$ 的计算比较显然，就是存在的点两两之间连边的方案数的乘积，可以预处理。</p>
 <p>再来考虑 $h_S$，发现我们可以指定 $S$ 的一个子集 $S’$ 连通，剩下的部分连通性随意，这两部分之间不相连，这样的不同的方案的数量就是 $h_S$，我们考虑如何在不算重的情况下计算 $h_S$，对于我们指定连通的子集 $S’$，我们可以强制要求其中包含点 $x$（$x\in S$），得到的 $\complement_S S’$ 自然一定不含 $x$，这样，将 $S$ 分为两个部分，$x$ 所处的部分一定都不同，于是得到的结果一定是不重复的。 </p>
-<h3 id="Luogu4363-九省联考2018-一双木棋chess"><a href="#Luogu4363-九省联考2018-一双木棋chess" class="headerlink" title="Luogu4363 [九省联考2018]一双木棋chess"></a>Luogu4363 [九省联考2018]一双木棋chess</h3><h3 id="Luogu3943-星空"><a href="#Luogu3943-星空" class="headerlink" title="Luogu3943 星空"></a>Luogu3943 星空</h3><h3 id="Luogu2150-NOI2015-寿司晚宴"><a href="#Luogu2150-NOI2015-寿司晚宴" class="headerlink" title="Luogu2150 [NOI2015] 寿司晚宴"></a>Luogu2150 [NOI2015] 寿司晚宴</h3><h3 id="AGC016F-Games-on-DAG"><a href="#AGC016F-Games-on-DAG" class="headerlink" title="AGC016F Games on DAG"></a>AGC016F Games on DAG</h3><h3 id="CF1523F-Favorite-Game"><a href="#CF1523F-Favorite-Game" class="headerlink" title="CF1523F Favorite Game"></a>CF1523F Favorite Game</h3>]]></content>
+<h3 id="Accepted-Luogu4363-九省联考2018-一双木棋chess"><a href="#Accepted-Luogu4363-九省联考2018-一双木棋chess" class="headerlink" title="[Accepted]Luogu4363 [九省联考2018]一双木棋chess"></a>[Accepted]Luogu4363 [九省联考2018]一双木棋chess</h3><p>看到数据范围大致知道是状压，但是要考虑怎么记录屈居的状态，注意到所下的棋，自上至下每一行靠左边的棋子个数一定是非严格单调递减，同时发现我们不需要知道当前局面的每一个棋子都是谁下的，并且每个局面接下来该谁下都是固定的，于是我们可以直接记录左上角的连通块的轮廓线，将竖边记为 $1$，横边记为 $0$，从右上角到左下角一次记录，于是就可以得到一个长度为 $n+m$ 的 01 串，每个 01 串都唯一表示一个局面。</p>
+<p>于是我们设计状态为 $f_{S}$ 表示 $S$ 局面时剩下的棋子还可以得到的得分。</p>
+<p>转移时就可以依次考虑轮廓线边缘的每个位置是否可以放置，然后进行转移，为了方便，就可以直接用记忆化搜索解决。</p>
+<h3 id="Luogu3943-星空"><a href="#Luogu3943-星空" class="headerlink" title="Luogu3943 星空"></a>Luogu3943 星空</h3><h3 id="Luogu2150-NOI2015-寿司晚宴"><a href="#Luogu2150-NOI2015-寿司晚宴" class="headerlink" title="Luogu2150 [NOI2015] 寿司晚宴"></a>Luogu2150 [NOI2015] 寿司晚宴</h3><h3 id="AGC016F-Games-on-DAG"><a href="#AGC016F-Games-on-DAG" class="headerlink" title="AGC016F Games on DAG"></a>AGC016F Games on DAG</h3><h3 id="CF1523F-Favorite-Game"><a href="#CF1523F-Favorite-Game" class="headerlink" title="CF1523F Favorite Game"></a>CF1523F Favorite Game</h3>]]></content>
       <categories>
         <category>题单</category>
       </categories>
