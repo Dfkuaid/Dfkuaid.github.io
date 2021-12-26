@@ -165,7 +165,7 @@ f_{p_i}+w(p_i,i')\leq f_j+w(j,i'),</script><p>也就说明了应有 $p_{i’}\ge
 <p>[2] <a href="https://www.cnblogs.com/Pedesis/p/11148801.html">四边形不等式 - Pedesis</a></p>
 ]]></content>
       <categories>
-        <category>DP 浅析</category>
+        <category>动态规划</category>
       </categories>
       <tags>
         <tag>c++</tag>
