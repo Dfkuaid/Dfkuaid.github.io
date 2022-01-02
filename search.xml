@@ -19,6 +19,31 @@
 ]]></content>
   </entry>
   <entry>
+    <title>「算法相关」WQS 二分</title>
+    <url>/2022/01/02/wqs-bisect/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="唔，暗号错了！你不是自己人 OnO" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="92bf9a3b00cb3720b777d4e764ecf90ec2f418f87edcaab6c68768d515af2ec4">b6d1e56d81a230ce2763e9fd702bab908229bf30000e22fb35c42c85010f79f9d778c2083e179a35f8143a59b3f388a61be3de8107687a020f50dfd96fdb8e750d0f4ca2c500b554a9aa0dfeb3f3d96e61e31823f2c066817b05c81f45e897b39bc7be039ea4c49f4cdc0cf2a8c5f681e00802b033ae03dbc08fa3a37d3d1fa385934eefb7ec40b9989dd4e27aa4b584e0cb99d87637d893dd4be388e2efbab5e779be70c989065864f881ce1496b27921c64841e0fb056d79101aad8c89facf1122517f1f863eec0673f1c2c5b609cc4806e1fc3473211b2a215b908f5b4e3bc32c9cd8b3643347caeffd66a0be9aceb31230e94affb6ce0f04c53e513308f84318829162bc69cecf5bf0f7b54ca33164e6f8be3932f60734ced4e8300fa4ee72e0404086398fff1ce584017cdbccfa0cee9ba2e9d186cc11872800e983279ab1a156c84b6bb8abfedfa5c7ebac86ee23d81a4cad2d225cbc4eeaee1f2847a85139f3b7317e70e8ff9ec259a71342c9e48b057de1ec504e5bf21c20f34cf44bc74bc8dd12a7c708f798e20232a5cd558470472f5b6bc0131f2a7996e1e3a999630efaa9b3e694ac196a58e14c2e1c6e6c989a93c620b49c6ab167645b4986f4eb0f8a542cca586e1e342014aebbade3e9ae7366e8d96588e6bd9c19dcc57ab6ee82574512a6d49b4d28d7b448f9cdb1e6890af01101ee325257ccc2d67fc32be7e7e507ab7e40be4e9314acac994a63961e91b89ffd2ef07f342188fc51ca7234ed1c341a7d76f9ca2a0cee77096fc74ce2f8af9561f80a11255e4d0ccf2f21c9e4f4cf80e245a7caa40725c438d63a09715560f78bd57d6bdc5ca5d7b62b86a9dd4eb12d1e8476a39d0d7550ab0c3e6e99d4ea38489c213084c85748a5c7279c514ff75221d126d7e1052d60350004f6371ea91208d2781b9860a35368c91cc516a593869f39ebba3ed4fe9430e67e5077fc88d0218a1a4fabb5a96740fed7c0b96e5d59c68d9281f9b070817d08c74cd20a4bd283810e29e17ad347c3777634780a8f5c6ce6bde128b214d13f02009844e025043ff0019cc4ac0c8b529be5505b58af4d3e3b7dbf8f10060b4b275e227d3b823516d6741ffccb2fa2f7ef4fb17972ccd1bc04e6a09feb1dbe60ad9447ff7eebc15bf55df3e7b5d6e11f644a7b5cbf4c1e3c5700efb7bf2d7d4067bce54157b479cd765554a3149e0c8e04a4f9e4f41a28ae8e2cc737b8e2eb96df603fad684038c37baffcc2cdf6c70998e894e1598782a80cd2ccf82f49003c2e5fe5b8dfa95a29d34423b94de44fa64d29c0d622689774bf26f27f6234dba576f3946c7e2b646fa1c7f60c1a29c570178655a53e0e718883ed7aa6e89a7e378f4e95a0af5f497c5f2ccc107908eabd85cb58f462f1a0c908c1aaa89501f617fbc7f7464180480363bfd17de76371faa6eb43e1d4591383682657607dd2f9bf11bd765479ebad1578d0bdf30978edf3d3e53b0a0f6becb10b680e6d88badd0d15deaf546b33e0f2a44dcd340989eff2ed14326fc65c8c26a8a66e189ca5942ed2dd65a9f990b15f8d1003a777b1678480a0fecd5620f16b6d5aafc60004e9f57fe9d5c19cfe8f0d3801ae1ecd68b6ed688c4a6f7aa2b25bdd2c29fd707b12404c9d7da7f38ffc018730e5181cc9dbae2c4cf01502be7fd313fe43a7c1ffe61653a8b59a7a641d5edd4152b81dd6d79efec0247d72bceade6d25ede56b6ed53253d0</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">嘿，请说出接头暗号 OvO</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>二分</tag>
+        <tag>WQS 二分</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>「DP 浅析」四边形不等式优化</title>
     <url>/2021/12/26/quadrangle/</url>
     <content><![CDATA[<blockquote>
