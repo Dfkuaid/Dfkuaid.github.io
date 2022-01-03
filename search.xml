@@ -19,6 +19,30 @@
 ]]></content>
   </entry>
   <entry>
+    <title>「DP 浅析」斜率优化</title>
+    <url>/2022/01/03/slope-optimization/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="唔，暗号错了！你不是自己人 OnO" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="79d90dcdd08d77187717519b7b2f7d98b7b9eb78480411889d9978cb9b04e3d5">b6d1e56d81a230ce2763e9fd702bab908f3dd0454d7431dd98f80eb2f584977ec32955442a97d64700716a5f5c3af7763b919ec4cdfc5724826b455f7da50c76</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">嘿，请说出接头暗号 OvO</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>动态规划</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>动态规划</tag>
+        <tag>斜率优化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>「算法相关」WQS 二分</title>
     <url>/2022/01/02/wqs-bisect/</url>
     <content><![CDATA[<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><h3 id="闲话"><a href="#闲话" class="headerlink" title="闲话"></a>闲话</h3><p>wqs 二分最初由王钦石在他的 2012 年国家集训队论文中提出，而从 IOI 2016 的 <a href="https://ioinformatics.org/files/ioi2016problem6.pdf">Aliens</a> 题目开始，这种方法开始逐步在竞赛圈中有了一定的地位。在国内我们一般称为「wqs 二分」，而在国外一般称为「Alien Trick」。</p>
