@@ -60,14 +60,14 @@ a_i\cdot (b_{j_2}-b_{j_1})\leq d_{j_1}-d_{j_2},
 <p>那么此时对于 <span class="math inline">\(b_{j_1},b_{j_2}\)</span> 的大小分类讨论（不考虑 <span class="math inline">\(b_{j_1}=b_{j_2}\)</span> 的情况）有 <span class="math display">\[
 \begin{cases}
 -a_i\geq\dfrac{d_{j_2}-d_{j_1}}{b_{j_2}-b_{j_1}},\qquad b_{j_2}&gt;b_{j_1},\\
--a_i\leq\dfrac{d_{j_2}-d_{j_1}}{b_{j_2}-b_{j_1}},\qquad b_{j_2}&lt;b_{j_1},\\\tag1
+-a_i\leq\dfrac{d_{j_2}-d_{j_1}}{b_{j_2}-b_{j_1}},\qquad b_{j_2}&lt;b_{j_1},\\\tag1\label{tag1}
 \end{cases}
 \]</span> 如果我们将决策点表示为 <span class="math inline">\((b_j,d_j)\)</span>，那么此时不等号右边是斜率式的形式。</p>
 <p>考虑位置关系如下的三个决策点：</p>
 <p><img src="https://pic.imgdb.cn/item/61d567bb2ab3f51d9151452a.jpg" /></p>
 <p>设此时 <span class="math inline">\(A\)</span> 与 <span class="math inline">\(B\)</span> 两点之间的线段的斜率为 <span class="math inline">\(k_0\)</span>，我们对 <span class="math inline">\(-a_i\)</span> 进行分类讨论。</p>
-<p>第一种情况是 <span class="math inline">\(k_0&gt;-a_i\)</span>，此时显然有 <span class="math inline">\(\overline {BC}\)</span> 的斜率 <span class="math inline">\(k_1&gt;k_0&gt;-a_i\)</span>，而根据 <span class="math inline">\((1)\)</span>，如果 <span class="math inline">\(C\)</span> 比 <span class="math inline">\(B\)</span> 更优，应当有 <span class="math inline">\(k_1\leq-a_i\)</span>，矛盾，于是此时应当点 <span class="math inline">\(B\)</span> 更优。</p>
-<p>第二种情况是 <span class="math inline">\(-a_i&gt;k_0\)</span>，此时显然有 <span class="math inline">\(\overline{AC}\)</span> 的斜率 <span class="math inline">\(k_2&lt;k_0&lt;-a_i\)</span>，根据 <span class="math inline">\((1)\)</span>，如果 <span class="math inline">\(C\)</span> 比 <span class="math inline">\(A\)</span> 更优，应当有 <span class="math inline">\(k_1\geq-a_i\)</span>，矛盾产生，于是此时必然有点 <span class="math inline">\(A\)</span> 更优。</p>
+<p>第一种情况是 <span class="math inline">\(k_0&gt;-a_i\)</span>，此时显然有 <span class="math inline">\(\overline {BC}\)</span> 的斜率 <span class="math inline">\(k_1&gt;k_0&gt;-a_i\)</span>，而根据 <span class="math inline">\(\eqref{tag1}\)</span>，如果 <span class="math inline">\(C\)</span> 比 <span class="math inline">\(B\)</span> 更优，应当有 <span class="math inline">\(k_1\leq-a_i\)</span>，矛盾，于是此时应当点 <span class="math inline">\(B\)</span> 更优。</p>
+<p>第二种情况是 <span class="math inline">\(-a_i&gt;k_0\)</span>，此时显然有 <span class="math inline">\(\overline{AC}\)</span> 的斜率 <span class="math inline">\(k_2&lt;k_0&lt;-a_i\)</span>，根据 <span class="math inline">\(\eqref{tag1}\)</span>，如果 <span class="math inline">\(C\)</span> 比 <span class="math inline">\(A\)</span> 更优，应当有 <span class="math inline">\(k_1\geq-a_i\)</span>，矛盾产生，于是此时必然有点 <span class="math inline">\(A\)</span> 更优。</p>
 <p>最后一种情况是 <span class="math inline">\(-a_i=k_0\)</span>，设此时有 <span class="math inline">\(k_2&lt;k_0=-a_i&lt;k_1\)</span>，于是 <span class="math inline">\(A,B\)</span> 两点都要比 <span class="math inline">\(C\)</span> 更优。</p>
 <p>综上，我们可以知道，如果 <span class="math inline">\(C\)</span> 不在凸包上，那么在凸包上一定存在两点可以替代 <span class="math inline">\(C\)</span>。</p>
 <p>同理，我们可以对于状态转移方程为 <span class="math inline">\(f_i=\max\limits_{0\leq j&lt;i}\{a_i\cdot b_j + c_i + d_j\}\)</span> 的决策进行证明。</p>
@@ -94,7 +94,7 @@ f_j+2S_j\cdot T+S_j^2=2S_i\cdot S_j+f_i-(S_i-T)^2,
 <p>同样，这一点我们也可以采用 <a href="https://dfkuaid.github.io/2021/12/26/quadrangle/">四边形不等式</a> 进行证明。</p>
 <p>我们将 <span class="math inline">\((S_i-S_j-T)^2\)</span> 作为 <span class="math inline">\(w(j,i)\)</span>，下面证明 <span class="math inline">\(w(j,i)\)</span> 满足四边形不等式：</p>
 <p>要证明 <span class="math inline">\(w(j,i)\)</span> 满足四边形不等式，我们只需证明<sup><a href="#refer">[4]</a></sup> <span class="math inline">\(w(j,i)\)</span> 满足 <span class="math inline">\(\forall \ell&lt;r\)</span>，有 <span class="math display">\[
-w(\ell, r)+w(\ell+1,r+1)\leq w(\ell,r+1)+w(\ell+1,r),\tag2
+w(\ell, r)+w(\ell+1,r+1)\leq w(\ell,r+1)+w(\ell+1,r),\tag2\label{tag2}
 \]</span> <strong>证明</strong>：</p>
 <p>设 <span class="math inline">\(\ell&lt;r\)</span>，有 <span class="math display">\[
 \begin{aligned}
@@ -110,7 +110,7 @@ w(\ell+1,r)=&amp;(S_r-S_{\ell+1}-T)^2=(S_r-S_\ell+T-(C_{\ell+1}+\ell+1))^2\\
 =&amp;(S_r-S_\ell-T)^2+(C_{\ell+1}+\ell+1)^2-2(S_r-S_\ell-T)(C_{\ell+1}+\ell+1),\\
 \end{aligned}
 \]</span> 于是，如果要证明 <span class="math inline">\(w(\ell, r)+w(\ell+1,r+1)\leq w(\ell,r+1)+w(\ell+1,r)\)</span>，只需证明 <span class="math display">\[
-(C_{r+1}+r+1-C_{\ell+1}-\ell-1)^2\leq(C_{r+1}+r+1)^2+(C_{\ell+1}+\ell+1)^2,\tag3
+(C_{r+1}+r+1-C_{\ell+1}-\ell-1)^2\leq(C_{r+1}+r+1)^2+(C_{\ell+1}+\ell+1)^2,\tag3\label{tag3}
 \]</span> 而又有 <span class="math display">\[
 \begin{aligned}
 (C_{r+1}+r+1-C_{\ell+1}-\ell-1)^2=&amp;(C_{r+1}+r+1)^2+(C_{\ell+1}+\ell+1)^2\\
@@ -118,7 +118,7 @@ w(\ell+1,r)=&amp;(S_r-S_{\ell+1}-T)^2=(S_r-S_\ell+T-(C_{\ell+1}+\ell+1))^2\\
 \end{aligned}
 \]</span> 又因为 <span class="math inline">\(C_{r+1},C_{\ell+1},r,\ell\in\mathbb Z^*\)</span>，于是有 <span class="math display">\[
 -2(C_{r+1}+r+1)(C_{\ell+1}+\ell+1)&lt;0,
-\]</span> 于是有 <span class="math inline">\((3)\)</span> 成立，便可得 <span class="math inline">\((2)\)</span> 成立，于是 <span class="math inline">\(w(j,i)\)</span> 满足四边形不等式。</p>
+\]</span> 于是有 <span class="math inline">\(\eqref{tag3}\)</span> 成立，便可得 <span class="math inline">\(\eqref{tag2}\)</span> 成立，于是 <span class="math inline">\(w(j,i)\)</span> 满足四边形不等式。</p>
 <p align="right">
 <b>证毕.</b>
 </p>
