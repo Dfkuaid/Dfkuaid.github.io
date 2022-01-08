@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-2D1D-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">2.1.</span> <span class="nav-text">优化 2D1D 动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%9E%8B-DP"><span class="nav-number">2.1.1.</span> <span class="nav-text">区间型 DP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A6%E4%B8%80%E5%BD%A2%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">另一形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-1D1D-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">2.2.</span> <span class="nav-text">优化 1D1D 动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%86%E5%8F%8A%E8%AF%81%E6%98%8E"><span class="nav-number">2.2.1.</span> <span class="nav-text">定理及证明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-2d1d-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">2.1.</span> <span class="nav-text">优化 2D1D 动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%9E%8B-dp"><span class="nav-number">2.1.1.</span> <span class="nav-text">区间型 DP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A6%E4%B8%80%E5%BD%A2%E5%BC%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">另一形式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96-1d1d-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">2.2.</span> <span class="nav-text">优化 1D1D 动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9A%E7%90%86%E5%8F%8A%E8%AF%81%E6%98%8E"><span class="nav-number">2.2.1.</span> <span class="nav-text">定理及证明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.2.2.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -274,142 +274,175 @@
         <blockquote>
 <p>下面的证明的思想多数为<strong>数学归纳</strong>、<strong>分类讨论</strong>或<strong>反证法</strong>。</p>
 </blockquote>
-<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>定义 $w(i,j)$ 为一个定义在 $\mathbb{Z}$ 上的二元函数，有如下定义：</p>
-<p><strong>定义 1</strong>：如果对于任意 $\ell_1\leq \ell_2\leq r_1\leq r_2$，都有 </p>
-<script type="math/tex; mode=display">
-w(\ell_1,r_1)+w(\ell_2,r_2)\leq w(\ell_1,r_2)+w(\ell_2,r_1)</script><p>成立，那么称 $w$ 满足<strong>四边形不等式</strong>（即“交叉小于包含”），如果等号始终成立，那么称 $w$ 满足<strong>四边形恒等式</strong>。</p>
-<p><strong>定义 2</strong>：如果对于任意 $\ell\leq\ell’\leq r’\leq r$，都有 $w(\ell,r)\geq w(\ell’,r’)$ 成立，那么则称 $w$ <strong>对于区间包含关系具有单调性</strong>。</p>
-<p><strong>定理 1</strong>：如果对于定义域上任意 $\ell&lt;r$，都有</p>
-<script type="math/tex; mode=display">
-w(\ell, r)+w(\ell+1,r+1)\leq w(\ell,r+1) + w(\ell+1,r)</script><p>成立，那么 $w(\ell,r)$ 满足四边形不等式。</p>
-<p><strong>证明</strong>：先来证明对于任意 $\ell_1\leq\ell_2\leq r_1$，都有</p>
-<script type="math/tex; mode=display">
-w(\ell_1,r_1)+w(\ell_2,r_1+1)\leq w(\ell_1,r_1+1)+w(\ell_2,r_1).\tag1</script><p>对于 $i=\ell_2-\ell_1$ 进行归纳，显然当 $i=0$ 时上式成立，下面证明对 $i\in[1,r_1-\ell_1]$ 成立。</p>
-<p>首先根据归纳假设，有</p>
-<script type="math/tex; mode=display">
-w(\ell_1,r_1)+w(\ell_1+i-1,r_1+1)\leq w(\ell_1,r_1+1)+w(\ell_1+i-1,r_1),\tag2</script><p>因为 $i\leq r_1-\ell_1$，于是有 $\ell_1+i-1&lt;r_1$，应当有</p>
-<script type="math/tex; mode=display">
-w(\ell_1+i-1,r_1)+w(\ell_1+i,r_1+1)\leq w(\ell_i+i,r_1)+w(\ell_1+i-1,r_1+1),\tag3</script><p>将 $(2)$ 与 $(3)$ 左右两边分别相加，于是有</p>
-<script type="math/tex; mode=display">
-w(\ell_1,r_1)+w(\ell_1+i,r_1+1)\leq w(\ell_1+1,r_1+1)+w(\ell_1+i,r_1),</script><p>于是对于 $\forall\ell_1,\ell_2,r_1\in\mathbb Z,\ell_1\leq\ell_2\leq r_1$，$(1)$ 都成立。</p>
-<p>在上面的基础上，我们再来证明对于 $\forall\ell_1,\ell_2,r_1,r_2\in\mathbb Z,\ell_1\leq\ell_2\leq r_1\leq r_2$，都有四边形不等式成立。同理，对 $j=r_2-r_1$ 进行归纳，显然当 $j=0$ 时四边形不等式成立，下面对于 $j&gt;0$ 的情况进行证明。</p>
-<p>首先根据归纳假设，有</p>
-<script type="math/tex; mode=display">
-w(\ell_1,r_1)+w(\ell_2,r_1+j-1)\leq w(\ell_1,r_1+j-1)+w(\ell_2,r_1),\tag4</script><p>因为 $r_1+j-1\geq\ell_2\geq\ell_1$，根据 $(1)$，应当有</p>
-<script type="math/tex; mode=display">
-w(\ell_1,r_1+j-1)+w(\ell_2,r_1+j)\leq w(\ell_1,r_1+j)+w(\ell_2,r_1+j-1)\tag5</script><p>将 $(4)$ 与 $(5)$ 左右两边分别相加可得</p>
-<script type="math/tex; mode=display">
-w(\ell_1,r_1)+w(\ell_2,r_1+j)\leq w(\ell_1,r_1+j)+w(\ell_2,r_1),</script><p>于是假设成立，即四边形不等式成立。</p>
-<div align="right">证毕.</div>
-
-<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="优化-2D1D-动态规划"><a href="#优化-2D1D-动态规划" class="headerlink" title="优化 2D1D 动态规划"></a>优化 2D1D 动态规划</h3><h4 id="区间型-DP"><a href="#区间型-DP" class="headerlink" title="区间型 DP"></a>区间型 DP</h4><p>常见的一种动态规划的状态转移方程为</p>
-<script type="math/tex; mode=display">
-f_{\ell,r}=\min\limits_{\ell\leq k<r}\{f_{\ell,k}+f_{k+1,r}\}+w(\ell, r), \qquad(1\leq\ell<r\leq n)</script><p>直接简单实现上面的转移，那么时间复杂度为 $O(n^3)$，如果 $w(l,r)$ 满足一些特殊性质，那么我们可以用四边形不等式对其进行优化。</p>
-<p><strong>定理 2</strong>：如果 $w(\ell, r)$ 满足四边形不等式且对于区间包含关系具有单调性，那么状态 $f_{l,r}$ 满足四边形不等式。</p>
-<p><strong>证明</strong>：定义 $g_{k,\ell,r}=f_{\ell,k}+f_{k+1,r}+w(\ell, r)$，表示决策点为 $k$ 时的状态值，任取 $\ell_1\leq\ell_2\leq r_1\leq r_2$，记 $u=\mathop{\arg\min}\limits_{\ell_1\leq k&lt;r_2}\ g_{k,\ell_1,r_2},v=\mathop{\arg\min}\limits_{\ell_2\leq k&lt;r_1}\ g_{k,\ell_2,r_1}$，分别表示 $f_{\ell_1,r_2}$ 和 $f_{\ell_2,r_1}$ 的最小最优决策点。</p>
-<p>首先，如果 $\ell_1=\ell_2$，那么显然成立，然后考虑对于 $r_2-r_1$ 进行归纳，显然当 $r_2-r_1=0$ 时成立。</p>
+<h2 id="简述">简述</h2>
+<p>定义 <span class="math inline">\(w(i,j)\)</span> 为一个定义在 <span class="math inline">\(\mathbb{Z}\)</span> 上的二元函数，有如下定义：</p>
+<p><strong>定义 1</strong>：如果对于任意 <span class="math inline">\(\ell_1\leq \ell_2\leq r_1\leq r_2\)</span>，都有 <span class="math display">\[
+w(\ell_1,r_1)+w(\ell_2,r_2)\leq w(\ell_1,r_2)+w(\ell_2,r_1)
+\]</span> 成立，那么称 <span class="math inline">\(w\)</span> 满足<strong>四边形不等式</strong>（即“交叉小于包含”），如果等号始终成立，那么称 <span class="math inline">\(w\)</span> 满足<strong>四边形恒等式</strong>。</p>
+<p><strong>定义 2</strong>：如果对于任意 <span class="math inline">\(\ell\leq\ell&#39;\leq r&#39;\leq r\)</span>，都有 <span class="math inline">\(w(\ell,r)\geq w(\ell&#39;,r&#39;)\)</span> 成立，那么则称 <span class="math inline">\(w\)</span> <strong>对于区间包含关系具有单调性</strong>。</p>
+<p><strong>定理 1</strong>：如果对于定义域上任意 <span class="math inline">\(\ell&lt;r\)</span>，都有 <span class="math display">\[
+w(\ell, r)+w(\ell+1,r+1)\leq w(\ell,r+1) + w(\ell+1,r)
+\]</span> 成立，那么 <span class="math inline">\(w(\ell,r)\)</span> 满足四边形不等式。</p>
+<p><strong>证明</strong>：先来证明对于任意 <span class="math inline">\(\ell_1\leq\ell_2\leq r_1\)</span>，都有 <span class="math display">\[
+w(\ell_1,r_1)+w(\ell_2,r_1+1)\leq w(\ell_1,r_1+1)+w(\ell_2,r_1).\tag1
+\]</span> 对于 <span class="math inline">\(i=\ell_2-\ell_1\)</span> 进行归纳，显然当 <span class="math inline">\(i=0\)</span> 时上式成立，下面证明对 <span class="math inline">\(i\in[1,r_1-\ell_1]\)</span> 成立。</p>
+<p>首先根据归纳假设，有 <span class="math display">\[
+w(\ell_1,r_1)+w(\ell_1+i-1,r_1+1)\leq w(\ell_1,r_1+1)+w(\ell_1+i-1,r_1),\tag2
+\]</span> 因为 <span class="math inline">\(i\leq r_1-\ell_1\)</span>，于是有 <span class="math inline">\(\ell_1+i-1&lt;r_1\)</span>，应当有 <span class="math display">\[
+w(\ell_1+i-1,r_1)+w(\ell_1+i,r_1+1)\leq w(\ell_i+i,r_1)+w(\ell_1+i-1,r_1+1),\tag3
+\]</span> 将 <span class="math inline">\((2)\)</span> 与 <span class="math inline">\((3)\)</span> 左右两边分别相加，于是有 <span class="math display">\[
+w(\ell_1,r_1)+w(\ell_1+i,r_1+1)\leq w(\ell_1+1,r_1+1)+w(\ell_1+i,r_1),
+\]</span> 于是对于 <span class="math inline">\(\forall\ell_1,\ell_2,r_1\in\mathbb Z,\ell_1\leq\ell_2\leq r_1\)</span>，<span class="math inline">\((1)\)</span> 都成立。</p>
+<p>在上面的基础上，我们再来证明对于 <span class="math inline">\(\forall\ell_1,\ell_2,r_1,r_2\in\mathbb Z,\ell_1\leq\ell_2\leq r_1\leq r_2\)</span>，都有四边形不等式成立。同理，对 <span class="math inline">\(j=r_2-r_1\)</span> 进行归纳，显然当 <span class="math inline">\(j=0\)</span> 时四边形不等式成立，下面对于 <span class="math inline">\(j&gt;0\)</span> 的情况进行证明。</p>
+<p>首先根据归纳假设，有 <span class="math display">\[
+w(\ell_1,r_1)+w(\ell_2,r_1+j-1)\leq w(\ell_1,r_1+j-1)+w(\ell_2,r_1),\tag4
+\]</span> 因为 <span class="math inline">\(r_1+j-1\geq\ell_2\geq\ell_1\)</span>，根据 <span class="math inline">\((1)\)</span>，应当有 <span class="math display">\[
+w(\ell_1,r_1+j-1)+w(\ell_2,r_1+j)\leq w(\ell_1,r_1+j)+w(\ell_2,r_1+j-1)\tag5
+\]</span> 将 <span class="math inline">\((4)\)</span> 与 <span class="math inline">\((5)\)</span> 左右两边分别相加可得 <span class="math display">\[
+w(\ell_1,r_1)+w(\ell_2,r_1+j)\leq w(\ell_1,r_1+j)+w(\ell_2,r_1),
+\]</span> 于是假设成立，即四边形不等式成立。</p>
+<div data-align="right">
+证毕.
+</div>
+<h2 id="应用">应用</h2>
+<h3 id="优化-2d1d-动态规划">优化 2D1D 动态规划</h3>
+<h4 id="区间型-dp">区间型 DP</h4>
+<p>常见的一种动态规划的状态转移方程为 <span class="math display">\[
+f_{\ell,r}=\min\limits_{\ell\leq k&lt;r}\{f_{\ell,k}+f_{k+1,r}\}+w(\ell, r), \qquad(1\leq\ell&lt;r\leq n)
+\]</span> 直接简单实现上面的转移，那么时间复杂度为 <span class="math inline">\(O(n^3)\)</span>，如果 <span class="math inline">\(w(l,r)\)</span> 满足一些特殊性质，那么我们可以用四边形不等式对其进行优化。</p>
+<p><strong>定理 2</strong>：如果 <span class="math inline">\(w(\ell, r)\)</span> 满足四边形不等式且对于区间包含关系具有单调性，那么状态 <span class="math inline">\(f_{l,r}\)</span> 满足四边形不等式。</p>
+<p><strong>证明</strong>：定义 <span class="math inline">\(g_{k,\ell,r}=f_{\ell,k}+f_{k+1,r}+w(\ell, r)\)</span>，表示决策点为 <span class="math inline">\(k\)</span> 时的状态值，任取 <span class="math inline">\(\ell_1\leq\ell_2\leq r_1\leq r_2\)</span>，记 <span class="math inline">\(u=\mathop{\arg\min}\limits_{\ell_1\leq k&lt;r_2}\ g_{k,\ell_1,r_2},v=\mathop{\arg\min}\limits_{\ell_2\leq k&lt;r_1}\ g_{k,\ell_2,r_1}\)</span>，分别表示 <span class="math inline">\(f_{\ell_1,r_2}\)</span> 和 <span class="math inline">\(f_{\ell_2,r_1}\)</span> 的最小最优决策点。</p>
+<p>首先，如果 <span class="math inline">\(\ell_1=\ell_2\)</span>，那么显然成立，然后考虑对于 <span class="math inline">\(r_2-r_1\)</span> 进行归纳，显然当 <span class="math inline">\(r_2-r_1=0\)</span> 时成立。</p>
 <ul>
-<li><p>$\ell_1&lt;\ell_2=r_1&lt;r_2$ （$w$ 需要对于区间包含关系具有单调性）</p>
+<li><p><span class="math inline">\(\ell_1&lt;\ell_2=r_1&lt;r_2\)</span> （<span class="math inline">\(w\)</span> 需要对于区间包含关系具有单调性）</p>
 <ul>
-<li><p>若 $u&lt;r_1$，则 $f_{\ell_1,r_1}\leq f_{\ell_1,u}+f_{u+1,r_1}+w(\ell_1,r_1)$，根据归纳假设，有 $f_{u+1,r_1}+f_{\ell_2,r_2}\leq f_{u+1,r_2}+f_{\ell_2,r_1}$，两式相加即得</p>
-<script type="math/tex; mode=display">
-f_{\ell_1,r_1}+f_{\ell_2,r_2}\leq f_{u+1,r_2}+f_{\ell_2,r_1}+f_{\ell_1,u}+w(\ell_1,r_1)\leq f_{\ell_2,r_1}+f_{\ell_1,r_2}</script></li>
-<li><p>若 $u\geq r_1$，则 $f_{\ell_2,r_2}\leq f_{\ell_2,u}+f_{u+1,r_2}+w(\ell_2,r_2)$，根据归纳假设，有 $f_{\ell_1,r_1}+f_{\ell_2,u}\leq f_{\ell_1,u}+f_{\ell_2,r_1}$，两式相加即得</p>
-<script type="math/tex; mode=display">
-f_{\ell_1,r_1}+f_{\ell_2,u}\leq f_{\ell_1,u}+f_{\ell_2,r_1}+f_{u+1,r_2}+w(\ell_2,r_2)\leq f_{\ell_2,r_1}+f_{\ell_1,r_2}</script></li>
-</ul>
-</li>
-<li><p>$\ell_1&lt;\ell_2&lt;r_1&lt;r_2$（$w$ 仅需满足四边形不等式）</p>
+<li><p>若 <span class="math inline">\(u&lt;r_1\)</span>，则 <span class="math inline">\(f_{\ell_1,r_1}\leq f_{\ell_1,u}+f_{u+1,r_1}+w(\ell_1,r_1)\)</span>，根据归纳假设，有 <span class="math inline">\(f_{u+1,r_1}+f_{\ell_2,r_2}\leq f_{u+1,r_2}+f_{\ell_2,r_1}\)</span>，两式相加即得 <span class="math display">\[
+f_{\ell_1,r_1}+f_{\ell_2,r_2}\leq f_{u+1,r_2}+f_{\ell_2,r_1}+f_{\ell_1,u}+w(\ell_1,r_1)\leq f_{\ell_2,r_1}+f_{\ell_1,r_2}
+\]</span></p></li>
+<li><p>若 <span class="math inline">\(u\geq r_1\)</span>，则 <span class="math inline">\(f_{\ell_2,r_2}\leq f_{\ell_2,u}+f_{u+1,r_2}+w(\ell_2,r_2)\)</span>，根据归纳假设，有 <span class="math inline">\(f_{\ell_1,r_1}+f_{\ell_2,u}\leq f_{\ell_1,u}+f_{\ell_2,r_1}\)</span>，两式相加即得 <span class="math display">\[
+f_{\ell_1,r_1}+f_{\ell_2,u}\leq f_{\ell_1,u}+f_{\ell_2,r_1}+f_{u+1,r_2}+w(\ell_2,r_2)\leq f_{\ell_2,r_1}+f_{\ell_1,r_2}
+\]</span></p></li>
+</ul></li>
+<li><p><span class="math inline">\(\ell_1&lt;\ell_2&lt;r_1&lt;r_2\)</span>（<span class="math inline">\(w\)</span> 仅需满足四边形不等式）</p>
 <ul>
-<li><p>若 $u\leq v$，则 $l_1\leq u&lt; r_1,\ l_2\leq v&lt; r_2$，因此</p>
-<script type="math/tex; mode=display">
+<li><p>若 <span class="math inline">\(u\leq v\)</span>，则 <span class="math inline">\(l_1\leq u&lt; r_1,\ l_2\leq v&lt; r_2\)</span>，因此</p>
+<p><span class="math display">\[
     \begin{aligned}
-        f_{l_1,r_1} \leq g_{u,l_1,r_1} &= f_{l_1,u} + f_{u+1,r_1} + w(l_1,r_1) \\
-        f_{l_2,r_2} \leq g_{v,l_2,r_2} &= f_{l_2,v} + f_{v+1,r_2} + w(l_2,r_2)
-    \end{aligned}</script><p>再由 $u+1 \leq v+1 \leq r_1 \leq r_2$ 和归纳假设知</p>
-<script type="math/tex; mode=display">
-f_{u+1,r_1} + f_{v+1,r_2} \leq f_{u+1,r_2} + f_{v+1,r_1}</script><p>将前两个不等式累加，并将第三个不等式代入，可得</p>
-<script type="math/tex; mode=display">
+        f_{l_1,r_1} \leq g_{u,l_1,r_1} &amp;= f_{l_1,u} + f_{u+1,r_1} + w(l_1,r_1) \\
+        f_{l_2,r_2} \leq g_{v,l_2,r_2} &amp;= f_{l_2,v} + f_{v+1,r_2} + w(l_2,r_2)
+    \end{aligned}
+\]</span></p>
+<p>再由 <span class="math inline">\(u+1 \leq v+1 \leq r_1 \leq r_2\)</span> 和归纳假设知</p>
+<p><span class="math display">\[
+f_{u+1,r_1} + f_{v+1,r_2} \leq f_{u+1,r_2} + f_{v+1,r_1}
+\]</span></p>
+<p>将前两个不等式累加，并将第三个不等式代入，可得</p>
+<p><span class="math display">\[
 \begin{aligned}
-    f_{l_1,r_1} + f_{l_2,r_2} & \leq f_{l_1,u} + f_{l_2,v} + f_{u+1,r_1} + f_{v+1,r_2} + w(l_1,r_1) + w(l_2,r_2) \\
-    & \leq g_{u,l_1,r_2} + g_{v,l_2,r_1} = f_{l_1,r_2} + f_{l_2,r_1}
-\end{aligned}</script></li>
-<li><p>若 $v&lt; u$，则 $l_1\leq v&lt;r_1,l_2\leq u&lt;r_2$，因此</p>
-<script type="math/tex; mode=display">
+    f_{l_1,r_1} + f_{l_2,r_2} &amp; \leq f_{l_1,u} + f_{l_2,v} + f_{u+1,r_1} + f_{v+1,r_2} + w(l_1,r_1) + w(l_2,r_2) \\
+    &amp; \leq g_{u,l_1,r_2} + g_{v,l_2,r_1} = f_{l_1,r_2} + f_{l_2,r_1}
+\end{aligned}
+\]</span></p></li>
+<li><p>若 <span class="math inline">\(v&lt; u\)</span>，则 <span class="math inline">\(l_1\leq v&lt;r_1,l_2\leq u&lt;r_2\)</span>，因此 <span class="math display">\[
 \begin{aligned}
-f_{l_1,r_1} \leq g_{v,l_1,r_1} &= f_{l_1,v} + f_{v+1,r_1} + w(l_1,r_1) \\
-f_{l_2,r_2} \leq g_{u,l_2,r_2} &= f_{l_2,u} + f_{u+1,r_2} + w(l_2,r_2)
-\end{aligned}</script><p>再由 $l_1 \leq l_2 \leq v \leq u$ 和归纳假设知</p>
-<script type="math/tex; mode=display">
-f_{l_1,v} + f_{l_2,u} \leq f_{l_1,u} + f_{l_2,v}</script><p>将前两个不等式累加，并将第三个不等式代入，可得</p>
-<script type="math/tex; mode=display">
+f_{l_1,r_1} \leq g_{v,l_1,r_1} &amp;= f_{l_1,v} + f_{v+1,r_1} + w(l_1,r_1) \\
+f_{l_2,r_2} \leq g_{u,l_2,r_2} &amp;= f_{l_2,u} + f_{u+1,r_2} + w(l_2,r_2)
+\end{aligned}
+\]</span></p>
+<p>再由 <span class="math inline">\(l_1 \leq l_2 \leq v \leq u\)</span> 和归纳假设知</p>
+<p><span class="math display">\[
+f_{l_1,v} + f_{l_2,u} \leq f_{l_1,u} + f_{l_2,v}
+\]</span></p>
+<p>将前两个不等式累加，并将第三个不等式代入，可得</p>
+<p><span class="math display">\[
 \begin{aligned}
-f_{l_1,r_1} + f_{l_2,r_2} & \leq f_{l_1,u} + f_{l_2,v} + f_{v+1,r_1} + f_{u+1,r_2} + w(l_1,r_2) + w(l_2,r_1) \\
-& \leq g_{u,l_1,r_2} + g_{v,l_2,r_1} = f_{l_1,r_2} + f_{l_2,r_1}
-\end{aligned}</script></li>
+f_{l_1,r_1} + f_{l_2,r_2} &amp; \leq f_{l_1,u} + f_{l_2,v} + f_{v+1,r_1} + f_{u+1,r_2} + w(l_1,r_2) + w(l_2,r_1) \\
+&amp; \leq g_{u,l_1,r_2} + g_{v,l_2,r_1} = f_{l_1,r_2} + f_{l_2,r_1}
+\end{aligned}
+\]</span></p></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>综上所述，两种情形均有 $f_{l_1,r_1} + f_{l_2,r_2} \leq f_{l_1,r_2} + f_{l_2,r_1}$，即四边形不等式成立。</p>
-<div align="right">证毕.</div>
-
-<p><strong>定理 3</strong>：若状态 $f$ 满足四边形不等式，记 $m_{l,r}=\min\{k:f_{l,r} = g_{k,l,r}\}$ 表示最优决策点，则有</p>
-<script type="math/tex; mode=display">
-m_{l,r-1} \leq m_{l,r} \leq m_{l+1,r} \qquad (l + 1 < r)</script><p><strong>证明</strong>：记 $u = m_{l,r},\ k_1=m_{l,r-1},\ k_2=m_{l+1,r}$，分情况讨论：</p>
+<p>综上所述，两种情形均有 <span class="math inline">\(f_{l_1,r_1} + f_{l_2,r_2} \leq f_{l_1,r_2} + f_{l_2,r_1}\)</span>，即四边形不等式成立。</p>
+<div data-align="right">
+证毕.
+</div>
+<p><strong>定理 3</strong>：若状态 <span class="math inline">\(f\)</span> 满足四边形不等式，记 <span class="math inline">\(m_{l,r}=\min\{k:f_{l,r} = g_{k,l,r}\}\)</span> 表示最优决策点，则有 <span class="math display">\[
+m_{l,r-1} \leq m_{l,r} \leq m_{l+1,r} \qquad (l + 1 &lt; r)
+\]</span></p>
+<p><strong>证明</strong>：记 <span class="math inline">\(u = m_{l,r},\ k_1=m_{l,r-1},\ k_2=m_{l+1,r}\)</span>，分情况讨论：</p>
 <ul>
-<li><p>若 $k_1&gt;u$，则 $u+1 \leq k_1+1 \leq r-1 \leq r$，因此根据四边形不等式有</p>
-<script type="math/tex; mode=display">
-f_{u+1,r-1} + f_{k_1+1,r} \leq f_{u+1,r} + f_{k_1+1,r-1}</script><p>再根据 $u$ 是状态 $f_{l,r}$ 的最优决策点可知</p>
-<script type="math/tex; mode=display">
-f_{l,u} + f_{u+1,r} \leq f_{l,k_1} + f_{k_1+1, r}</script><p>将以上两个不等式相加，得</p>
-<script type="math/tex; mode=display">
-f_{l,u} + f_{u+1,r-1} \leq f_{l,k_1}+f_{k_1+1,r-1}</script><p>即 $g_{u,l,r-1} \leq g_{k_1,l,r-1}$，但这与 $k_1$ 是最小的最优决策点矛盾，因此 $k_1\leq u$。</p>
-</li>
-<li><p>若 $u&gt;k_2$，则 $l\leq l+1 \leq k_2\leq u$，根据四边形不等式可得</p>
-<script type="math/tex; mode=display">
-f_{l,k_2} + f_{l+1,u} \leq f_{l,u} + f_{l+1, k_2}</script><p>再根据 $k_2$ 是状态 $f_{l+1, r}$ 的最优决策点可知</p>
-<script type="math/tex; mode=display">
-f_{l+1,k_2} + f_{k_2+1, r} \leq f_{l+1,u} + f_{u+1,r}</script><p>将以上两个不等式相加，得</p>
-<script type="math/tex; mode=display">
-f_{l,k_2}+f_{k_2+1,r} \leq f_{l,u} + f_{u+1,r}</script><p>即 $g_{k_2,l,r} \leq g_{u,l,r}$，但这与 $u$ 是最小的最优决策点矛盾，因此 $u \leq k_2$。</p>
-</li>
+<li><p>若 <span class="math inline">\(k_1&gt;u\)</span>，则 <span class="math inline">\(u+1 \leq k_1+1 \leq r-1 \leq r\)</span>，因此根据四边形不等式有</p>
+<p><span class="math display">\[
+f_{u+1,r-1} + f_{k_1+1,r} \leq f_{u+1,r} + f_{k_1+1,r-1}
+\]</span></p>
+<p>再根据 <span class="math inline">\(u\)</span> 是状态 <span class="math inline">\(f_{l,r}\)</span> 的最优决策点可知</p>
+<p><span class="math display">\[
+f_{l,u} + f_{u+1,r} \leq f_{l,k_1} + f_{k_1+1, r}
+\]</span></p>
+<p>将以上两个不等式相加，得</p>
+<p><span class="math display">\[
+f_{l,u} + f_{u+1,r-1} \leq f_{l,k_1}+f_{k_1+1,r-1}
+\]</span></p>
+<p>即 <span class="math inline">\(g_{u,l,r-1} \leq g_{k_1,l,r-1}\)</span>，但这与 <span class="math inline">\(k_1\)</span> 是最小的最优决策点矛盾，因此 <span class="math inline">\(k_1\leq u\)</span>。</p></li>
+<li><p>若 <span class="math inline">\(u&gt;k_2\)</span>，则 <span class="math inline">\(l\leq l+1 \leq k_2\leq u\)</span>，根据四边形不等式可得</p>
+<p><span class="math display">\[
+f_{l,k_2} + f_{l+1,u} \leq f_{l,u} + f_{l+1, k_2}
+\]</span></p>
+<p>再根据 <span class="math inline">\(k_2\)</span> 是状态 <span class="math inline">\(f_{l+1, r}\)</span> 的最优决策点可知</p>
+<p><span class="math display">\[
+f_{l+1,k_2} + f_{k_2+1, r} \leq f_{l+1,u} + f_{u+1,r}
+\]</span></p>
+<p>将以上两个不等式相加，得</p>
+<p><span class="math display">\[
+f_{l,k_2}+f_{k_2+1,r} \leq f_{l,u} + f_{u+1,r}
+\]</span></p>
+<p>即 <span class="math inline">\(g_{k_2,l,r} \leq g_{u,l,r}\)</span>，但这与 <span class="math inline">\(u\)</span> 是最小的最优决策点矛盾，因此 <span class="math inline">\(u \leq k_2\)</span>。</p></li>
 </ul>
-<div align="right">证毕.</div>
-
-<p>因此，如果在计算状态 $f_{l,r}$ 的同时将其最优决策点 $m_{l,r}$ 记录下来，那么我们对决策点 $k$ 的总枚举量将降为</p>
-<script type="math/tex; mode=display">
-\sum_{1\leq l<r\leq n} (m_{l+1,r} - m_{l,r-1}) = \sum_{i=1}^n (m_{i,n} - m_{1,i})\leq n^2</script><p>上式的第一个等号可以通过将两个 $\Sigma$ 分别展开合并同类项得证。</p>
-<h4 id="另一形式"><a href="#另一形式" class="headerlink" title="另一形式"></a>另一形式</h4><p>另一种常见的状态转移方程为</p>
-<script type="math/tex; mode=display">
-f_{i,j}=\min\limits_{k\leq j}\{f_{i-1,k}+w(k,j)\},\qquad(1\leq i\leq n,1\leq j\leq m)</script><p>具有与上面同样的结论与性质。</p>
-<h3 id="优化-1D1D-动态规划"><a href="#优化-1D1D-动态规划" class="headerlink" title="优化 1D1D 动态规划"></a>优化 1D1D 动态规划</h3><h4 id="定理及证明"><a href="#定理及证明" class="headerlink" title="定理及证明"></a>定理及证明</h4><p>一种常见的状态转移方程为</p>
-<script type="math/tex; mode=display">
-f_i=\min\limits_{0\leq j<i}\{f_j+w(i,j)\}</script><p><strong>定理 4</strong>：若 $w$ 满足四边形不等式，那么 $f$ 具有决策单调性。</p>
-<p><strong>证明</strong>：设 $p_i$ 为 $f_i$ 的最优决策点，对于 $\forall i\in[1,n],\forall j\in[0,p_i-1]$，有</p>
-<script type="math/tex; mode=display">
-f_{p_i}+w(p_i,i)\leq f_j+w(j,i),\tag6</script><p>$\forall i’\in[i+1,n]$，由于 $w$ 满足四边形不等式，于是有</p>
-<script type="math/tex; mode=display">
-w(j,i)+w(p_i,i')\leq w(j,i')+w(p_i,i),\tag7</script><p>将 $(6)$ 和 $(7)$ 左右两部分分别相加即得</p>
-<script type="math/tex; mode=display">
-f_{p_i}+w(p_i,i')\leq f_j+w(j,i'),</script><p>也就说明了应有 $p_{i’}\geq p_i$，即决策单调性。</p>
- <div align="right">证毕.</div>
-
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>由于决策单调性，$p$ 一定是一个非严格递增的序列，我们对 $p$ 进行维护，即对于当前转移完的 $i$，我们考虑从哪里开始 $i$ 开始作为最优的决策点。</p>
-<p>显然一种朴素的做法是直接在 $p$ 上进行二分，找到对应位置 $pos$，然后 $\forall j\in[pos,n]$，将 $p_j$ 修改为 $i$。</p>
-<p>一种更为简洁的做法是，用一个队列维护 $p$，利用 $p$ 是一个非严格递增的序列的性质，每一段相同的用一个三元组 $(t_k,l_k,r_k)$，表示当前 $\forall i\in[l_k,r_k],p_i=t_k$.</p>
-<p> 同时，如果一个三元组的右边界已经小于当前处理的位置，它一定不再有贡献，可以直接丢掉，于是就类似与单调队列，此时第一个合法的队头就是该位置的最优决策点。</p>
-<p>考虑用 $i$ 更新决策点的过程，我们按照以下步骤进行：</p>
-<ol>
-<li>取出队尾的三元组 $(t_k,l_k,r_k)$；</li>
-<li>若 $f_i+w(i,l_k)&lt;f_{t_k}+w(t_k,l_k)$，令 $pos=l_k$，删掉该三元组，回到 1.</li>
-<li>若 $f_i+w(i,r_k)&gt;f_{t_k}+w(t_k,r_k)$，直接到 5.</li>
-<li>在 $[l_k,r_k]$ 上二分，找到第一个可行位置，更新为 $pos$；</li>
-<li>在队尾加入 $(i,pos,n)$；</li>
+<div data-align="right">
+证毕.
+</div>
+<p>因此，如果在计算状态 <span class="math inline">\(f_{l,r}\)</span> 的同时将其最优决策点 <span class="math inline">\(m_{l,r}\)</span> 记录下来，那么我们对决策点 <span class="math inline">\(k\)</span> 的总枚举量将降为 <span class="math display">\[
+\sum_{1\leq l&lt;r\leq n} (m_{l+1,r} - m_{l,r-1}) = \sum_{i=1}^n (m_{i,n} - m_{1,i})\leq n^2
+\]</span></p>
+<p>上式的第一个等号可以通过将两个 <span class="math inline">\(\Sigma\)</span> 分别展开合并同类项得证。</p>
+<h4 id="另一形式">另一形式</h4>
+<p>另一种常见的状态转移方程为 <span class="math display">\[
+f_{i,j}=\min\limits_{k\leq j}\{f_{i-1,k}+w(k,j)\},\qquad(1\leq i\leq n,1\leq j\leq m)
+\]</span> 具有与上面同样的结论与性质。</p>
+<h3 id="优化-1d1d-动态规划">优化 1D1D 动态规划</h3>
+<h4 id="定理及证明">定理及证明</h4>
+<p>一种常见的状态转移方程为 <span class="math display">\[
+f_i=\min\limits_{0\leq j&lt;i}\{f_j+w(i,j)\}
+\]</span> <strong>定理 4</strong>：若 <span class="math inline">\(w\)</span> 满足四边形不等式，那么 <span class="math inline">\(f\)</span> 具有决策单调性。</p>
+<p><strong>证明</strong>：设 <span class="math inline">\(p_i\)</span> 为 <span class="math inline">\(f_i\)</span> 的最优决策点，对于 <span class="math inline">\(\forall i\in[1,n],\forall j\in[0,p_i-1]\)</span>，有 <span class="math display">\[
+f_{p_i}+w(p_i,i)\leq f_j+w(j,i),\tag6
+\]</span> <span class="math inline">\(\forall i&#39;\in[i+1,n]\)</span>，由于 <span class="math inline">\(w\)</span> 满足四边形不等式，于是有 <span class="math display">\[
+w(j,i)+w(p_i,i&#39;)\leq w(j,i&#39;)+w(p_i,i),\tag7
+\]</span> 将 <span class="math inline">\((6)\)</span> 和 <span class="math inline">\((7)\)</span> 左右两部分分别相加即得 <span class="math display">\[
+f_{p_i}+w(p_i,i&#39;)\leq f_j+w(j,i&#39;),
+\]</span> 也就说明了应有 <span class="math inline">\(p_{i&#39;}\geq p_i\)</span>，即决策单调性。</p>
+<div data-align="right">
+证毕.
+</div>
+<h4 id="实现">实现</h4>
+<p>由于决策单调性，<span class="math inline">\(p\)</span> 一定是一个非严格递增的序列，我们对 <span class="math inline">\(p\)</span> 进行维护，即对于当前转移完的 <span class="math inline">\(i\)</span>，我们考虑从哪里开始 <span class="math inline">\(i\)</span> 开始作为最优的决策点。</p>
+<p>显然一种朴素的做法是直接在 <span class="math inline">\(p\)</span> 上进行二分，找到对应位置 <span class="math inline">\(pos\)</span>，然后 <span class="math inline">\(\forall j\in[pos,n]\)</span>，将 <span class="math inline">\(p_j\)</span> 修改为 <span class="math inline">\(i\)</span>。</p>
+<p>一种更为简洁的做法是，用一个队列维护 <span class="math inline">\(p\)</span>，利用 <span class="math inline">\(p\)</span> 是一个非严格递增的序列的性质，每一段相同的用一个三元组 <span class="math inline">\((t_k,l_k,r_k)\)</span>，表示当前 <span class="math inline">\(\forall i\in[l_k,r_k],p_i=t_k\)</span>.</p>
+<p>同时，如果一个三元组的右边界已经小于当前处理的位置，它一定不再有贡献，可以直接丢掉，于是就类似与单调队列，此时第一个合法的队头就是该位置的最优决策点。</p>
+<p>考虑用 <span class="math inline">\(i\)</span> 更新决策点的过程，我们按照以下步骤进行：</p>
+<ol type="1">
+<li>取出队尾的三元组 <span class="math inline">\((t_k,l_k,r_k)\)</span>；</li>
+<li>若 <span class="math inline">\(f_i+w(i,l_k)&lt;f_{t_k}+w(t_k,l_k)\)</span>，令 <span class="math inline">\(pos=l_k\)</span>，删掉该三元组，回到 1.</li>
+<li>若 <span class="math inline">\(f_i+w(i,r_k)&gt;f_{t_k}+w(t_k,r_k)\)</span>，直接到 5.</li>
+<li>在 <span class="math inline">\([l_k,r_k]\)</span> 上二分，找到第一个可行位置，更新为 <span class="math inline">\(pos\)</span>；</li>
+<li>在队尾加入 <span class="math inline">\((i,pos,n)\)</span>；</li>
 </ol>
-<p>整体时间复杂度为 $O(n\log n)$.</p>
-<div id="refer"></div>
+<p>整体时间复杂度为 <span class="math inline">\(O(n\log n)\)</span>.</p>
+<div id="refer">
 
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] <a target="_blank" rel="noopener" href="https://oi-wiki.org/dp/opt/quadrangle/">四边形不等式优化 - OI Wiki</a></p>
+</div>
+<h2 id="参考资料">参考资料</h2>
+<p>[1] <a target="_blank" rel="noopener" href="https://oi-wiki.org/dp/opt/quadrangle/">四边形不等式优化 - OI Wiki</a></p>
 <p>[2] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Pedesis/p/11148801.html">四边形不等式 - Pedesis</a></p>
 
     </div>

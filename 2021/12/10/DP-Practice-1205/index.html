@@ -158,7 +158,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ1717-Dominoes"><span class="nav-number">1.</span> <span class="nav-text">POJ1717 Dominoes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ1732-Phone-numbers"><span class="nav-number">2.</span> <span class="nav-text">POJ1732 Phone numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ1458-Common-Subsequence"><span class="nav-number">3.</span> <span class="nav-text">POJ1458 Common Subsequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ3093-Margaritas-on-the-River-Walk"><span class="nav-number">4.</span> <span class="nav-text">POJ3093 Margaritas on the River Walk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ1694-An-Old-Stone-Game"><span class="nav-number">5.</span> <span class="nav-text">POJ1694 An Old Stone Game</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ2385-Apple-Catching"><span class="nav-number">6.</span> <span class="nav-text">POJ2385 Apple Catching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ2181-Jumping-Cows"><span class="nav-number">7.</span> <span class="nav-text">POJ2181 Jumping Cows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ2182-Lost-Cows"><span class="nav-number">8.</span> <span class="nav-text">POJ2182 Lost Cows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ3140-Contestants-Division"><span class="nav-number">9.</span> <span class="nav-text">POJ3140 Contestants Division</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POJ2593-Max-Sequence"><span class="nav-number">10.</span> <span class="nav-text">POJ2593 Max Sequence</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#poj1717-dominoes"><span class="nav-number">1.</span> <span class="nav-text">POJ1717 Dominoes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj1732-phone-numbers"><span class="nav-number">2.</span> <span class="nav-text">POJ1732 Phone numbers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj1458-common-subsequence"><span class="nav-number">3.</span> <span class="nav-text">POJ1458 Common Subsequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj3093-margaritas-on-the-river-walk"><span class="nav-number">4.</span> <span class="nav-text">POJ3093 Margaritas on the River Walk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj1694-an-old-stone-game"><span class="nav-number">5.</span> <span class="nav-text">POJ1694 An Old Stone Game</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj2385-apple-catching"><span class="nav-number">6.</span> <span class="nav-text">POJ2385 Apple Catching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj2181-jumping-cows"><span class="nav-number">7.</span> <span class="nav-text">POJ2181 Jumping Cows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj2182-lost-cows"><span class="nav-number">8.</span> <span class="nav-text">POJ2182 Lost Cows</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj3140-contestants-division"><span class="nav-number">9.</span> <span class="nav-text">POJ3140 Contestants Division</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#poj2593-max-sequence"><span class="nav-number">10.</span> <span class="nav-text">POJ2593 Max Sequence</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -274,33 +274,49 @@
         <blockquote>
 <p>讲真的，题有点氵</p>
 </blockquote>
-<h2 id="POJ1717-Dominoes"><a href="#POJ1717-Dominoes" class="headerlink" title="POJ1717 Dominoes"></a>POJ1717 Dominoes</h2><p>设 $f_{i,x}$ 为前 $i$ 个，得到的差为 $x$ 时的最小次数。</p>
-<h2 id="POJ1732-Phone-numbers"><a href="#POJ1732-Phone-numbers" class="headerlink" title="POJ1732 Phone numbers"></a>POJ1732 Phone numbers</h2><p>显然每个串对应唯一的一串数字。</p>
-<p>设 $f_{i}$ 表示前 $i$ 个字符对应的最小字符串数，直接 Hash 硬判转移即可。</p>
-<h2 id="POJ1458-Common-Subsequence"><a href="#POJ1458-Common-Subsequence" class="headerlink" title="POJ1458 Common Subsequence"></a>POJ1458 Common Subsequence</h2><p>经典问题了属于是。可以转化为 LIS，然后用 <code>lower_bound()</code>  做到 $O(n\log n)$.</p>
-<h2 id="POJ3093-Margaritas-on-the-River-Walk"><a href="#POJ3093-Margaritas-on-the-River-Walk" class="headerlink" title="POJ3093 Margaritas on the River Walk"></a>POJ3093 Margaritas on the River Walk</h2><p>暴力可以做到 $O(2^n)$.</p>
+<h2 id="poj1717-dominoes">POJ1717 Dominoes</h2>
+<p>设 <span class="math inline">\(f_{i,x}\)</span> 为前 <span class="math inline">\(i\)</span> 个，得到的差为 <span class="math inline">\(x\)</span> 时的最小次数。</p>
+<h2 id="poj1732-phone-numbers">POJ1732 Phone numbers</h2>
+<p>显然每个串对应唯一的一串数字。</p>
+<p>设 <span class="math inline">\(f_{i}\)</span> 表示前 <span class="math inline">\(i\)</span> 个字符对应的最小字符串数，直接 Hash 硬判转移即可。</p>
+<h2 id="poj1458-common-subsequence">POJ1458 Common Subsequence</h2>
+<p>经典问题了属于是。可以转化为 LIS，然后用 <code>lower_bound()</code> 做到 <span class="math inline">\(O(n\log n)\)</span>.</p>
+<h2 id="poj3093-margaritas-on-the-river-walk">POJ3093 Margaritas on the River Walk</h2>
+<p>暴力可以做到 <span class="math inline">\(O(2^n)\)</span>.</p>
 <p>考虑用什么不同的特点来区分所有的状态，使得可以完整表示所有状态并且得到的状态数可以接受。注意到选的物品的顺序是不被关注的，于是我们只需要关注哪些没选，判断一个状态不合法时只需要知道所有没选的物品中最小价格是否大于剩余空间，于是不妨按照最小的没选的物品最作为划分状态的依据。</p>
-<p>于是我们先将所有的物品按照权值从小到大排序，然后 $O(n)$ 枚举最小的没选的物品，之前的物品一定都要选，然后对于剩下的物品做背包，找到所有剩余空间小于枚举的物品的情况即可。</p>
-<h2 id="POJ1694-An-Old-Stone-Game"><a href="#POJ1694-An-Old-Stone-Game" class="headerlink" title="POJ1694 An Old Stone Game"></a>POJ1694 An Old Stone Game</h2><p>树上问题，考虑状态 $f_i$ 表示将石子放在 $i$ 上所需的最小石子数。</p>
+<p>于是我们先将所有的物品按照权值从小到大排序，然后 <span class="math inline">\(O(n)\)</span> 枚举最小的没选的物品，之前的物品一定都要选，然后对于剩下的物品做背包，找到所有剩余空间小于枚举的物品的情况即可。</p>
+<h2 id="poj1694-an-old-stone-game">POJ1694 An Old Stone Game</h2>
+<p>树上问题，考虑状态 <span class="math inline">\(f_i\)</span> 表示将石子放在 <span class="math inline">\(i\)</span> 上所需的最小石子数。</p>
 <p>不难发现，对于同一个父亲的多个子树，我们一定是先处理所需石子数最多的，因为多出的石子不可替代，一定要购买，且提前购买可以再次利用。于是对于每个子树的根，依次考虑每个儿子，直接记录当前剩余的石子数贪心地添加即可。</p>
-<h2 id="POJ2385-Apple-Catching"><a href="#POJ2385-Apple-Catching" class="headerlink" title="POJ2385 Apple Catching"></a>POJ2385 Apple Catching</h2><p>考虑一个完整的状态需要记录哪些信息：当前时间、已移动了多少次、当前在哪棵树。于是得到状态 $f_{i,j,0/1}$，$i,j,0/1$ 与上面的信息意义对应。</p>
+<h2 id="poj2385-apple-catching">POJ2385 Apple Catching</h2>
+<p>考虑一个完整的状态需要记录哪些信息：当前时间、已移动了多少次、当前在哪棵树。于是得到状态 <span class="math inline">\(f_{i,j,0/1}\)</span>，<span class="math inline">\(i,j,0/1\)</span> 与上面的信息意义对应。</p>
 <p>有转移：</p>
-<script type="math/tex; mode=display">
-f_{i,j,x}=\max(f_{i-1,j,x},f_{i-1,j-1,\neg x})+v_{i,x},</script><h2 id="POJ2181-Jumping-Cows"><a href="#POJ2181-Jumping-Cows" class="headerlink" title="POJ2181 Jumping Cows"></a>POJ2181 Jumping Cows</h2><p>注意到一种药对于答案的贡献只与所在时间的奇偶性有关，于是设 $f_{i,0/1}$ 为 $i$ 在偶数/奇数时间服下可得到的最大价值，转移只需要找到前面最大的与当前奇偶性不同的位置即可，显然这个可以在每次转移后 $O(1)$ 维护，于是最终时间复杂度为 $O(n)$.</p>
-<h2 id="POJ2182-Lost-Cows"><a href="#POJ2182-Lost-Cows" class="headerlink" title="POJ2182 Lost Cows"></a>POJ2182 Lost Cows</h2><p>不难发现一定是从后向前确定，然后直接考虑用标记找到前面未被标记的数量符合要求的位置，即为这一位的答案，然后直接标记。$O(n^2)$ 可过。用二分进行查找配合线段树/树状数组修改标记数组前缀和可做到 $O(n\log n)$.</p>
-<h2 id="POJ3140-Contestants-Division"><a href="#POJ3140-Contestants-Division" class="headerlink" title="POJ3140 Contestants Division"></a>POJ3140 Contestants Division</h2><p><del>百度翻译杀我</del></p>
+<p><span class="math display">\[
+f_{i,j,x}=\max(f_{i-1,j,x},f_{i-1,j-1,\neg x})+v_{i,x},
+\]</span></p>
+<h2 id="poj2181-jumping-cows">POJ2181 Jumping Cows</h2>
+<p>注意到一种药对于答案的贡献只与所在时间的奇偶性有关，于是设 <span class="math inline">\(f_{i,0/1}\)</span> 为 <span class="math inline">\(i\)</span> 在偶数/奇数时间服下可得到的最大价值，转移只需要找到前面最大的与当前奇偶性不同的位置即可，显然这个可以在每次转移后 <span class="math inline">\(O(1)\)</span> 维护，于是最终时间复杂度为 <span class="math inline">\(O(n)\)</span>.</p>
+<h2 id="poj2182-lost-cows">POJ2182 Lost Cows</h2>
+<p>不难发现一定是从后向前确定，然后直接考虑用标记找到前面未被标记的数量符合要求的位置，即为这一位的答案，然后直接标记。<span class="math inline">\(O(n^2)\)</span> 可过。用二分进行查找配合线段树/树状数组修改标记数组前缀和可做到 <span class="math inline">\(O(n\log n)\)</span>.</p>
+<h2 id="poj3140-contestants-division">POJ3140 Contestants Division</h2>
+<p><del>百度翻译杀我</del></p>
 <p>显然分成两个分别连通的部分只能是断边，而断掉某条边的答案就是下面子树大小和剩下的节点总数之差，于是直接求得每个子树的大小然后直接更新答案即可。</p>
-<h2 id="POJ2593-Max-Sequence"><a href="#POJ2593-Max-Sequence" class="headerlink" title="POJ2593 Max Sequence"></a>POJ2593 Max Sequence</h2><p>设 $h_i$ 表示第二段以 $i$ 结尾可得到的最大答案。</p>
-<p>考虑一个数作为第二段最后一个数时的最优选择，有且仅有两种：自己作为第二段，自己第一、第二段的选择与 $i-1$ 的选择仅有自己不同。</p>
-<p>简单的证明一下第二种选择：假如 $i$ 前面选择的是与 $i-1$ 的选择不同的段，其贡献为 $h_{i-1}’$，此时对于 $i$ 得到最大值，那么根据假设应有 $h_{i-1}’+a_i\geq h_{i-1}+a_i$，即 $h_{i-1}’\geq h_{i-1}$，注意到 $h_{i-1}’$ 的选择一定包含 $i-1$，所以一定已 $i-1$ 结尾，这与 $h_{i-1}$ 是以 $i-1$ 结尾的最大答案矛盾，于是假设不成立。</p>
-<p>于是我们设 $g_i$ 为前 $i$ 个数中最大的子段和，$f_i$ 为以 $i$ 结尾的最大子段和，显然应有</p>
-<script type="math/tex; mode=display">
+<h2 id="poj2593-max-sequence">POJ2593 Max Sequence</h2>
+<p>设 <span class="math inline">\(h_i\)</span> 表示第二段以 <span class="math inline">\(i\)</span> 结尾可得到的最大答案。</p>
+<p>考虑一个数作为第二段最后一个数时的最优选择，有且仅有两种：自己作为第二段，自己第一、第二段的选择与 <span class="math inline">\(i-1\)</span> 的选择仅有自己不同。</p>
+<p>简单的证明一下第二种选择：假如 <span class="math inline">\(i\)</span> 前面选择的是与 <span class="math inline">\(i-1\)</span> 的选择不同的段，其贡献为 <span class="math inline">\(h_{i-1}&#39;\)</span>，此时对于 <span class="math inline">\(i\)</span> 得到最大值，那么根据假设应有 <span class="math inline">\(h_{i-1}&#39;+a_i\geq h_{i-1}+a_i\)</span>，即 <span class="math inline">\(h_{i-1}&#39;\geq h_{i-1}\)</span>，注意到 <span class="math inline">\(h_{i-1}&#39;\)</span> 的选择一定包含 <span class="math inline">\(i-1\)</span>，所以一定已 <span class="math inline">\(i-1\)</span> 结尾，这与 <span class="math inline">\(h_{i-1}\)</span> 是以 <span class="math inline">\(i-1\)</span> 结尾的最大答案矛盾，于是假设不成立。</p>
+<p>于是我们设 <span class="math inline">\(g_i\)</span> 为前 <span class="math inline">\(i\)</span> 个数中最大的子段和，<span class="math inline">\(f_i\)</span> 为以 <span class="math inline">\(i\)</span> 结尾的最大子段和，显然应有</p>
+<p><span class="math display">\[
 \begin{aligned}
-h_i&=\max(a_i+g_{i-1},a_i+h_{i-1}),\\
-g_i&=\max_{1\leq j\leq i}\{f_j\},\\
-\end{aligned}</script><p>对于 $f$，我们有与上面同样的策略，即</p>
-<script type="math/tex; mode=display">
-f_i=\max(a_i,a_i+f_{i-1}).</script>
+h_i&amp;=\max(a_i+g_{i-1},a_i+h_{i-1}),\\
+g_i&amp;=\max_{1\leq j\leq i}\{f_j\},\\
+\end{aligned}
+\]</span></p>
+<p>对于 <span class="math inline">\(f\)</span>，我们有与上面同样的策略，即</p>
+<p><span class="math display">\[
+f_i=\max(a_i,a_i+f_{i-1}).
+\]</span></p>
+
     </div>
 
     

@@ -157,7 +157,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Accepted-Knights-of-the-Round-Table-POJ-2942"><span class="nav-number">1.</span> <span class="nav-text">[Accepted]Knights of the Round Table (POJ 2942)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Road-Construction-POJ-3352"><span class="nav-number">2.</span> <span class="nav-text">[Solved]Road Construction (POJ 3352)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Mining-Your-Own-Business-UVA-1108"><span class="nav-number">3.</span> <span class="nav-text">[Solved]Mining Your Own Business (UVA 1108)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Equivalent-Sets-HDU-3836"><span class="nav-number">4.</span> <span class="nav-text">[Solved]Equivalent Sets (HDU 3836)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Pursuit-For-Artifacts-CF652E"><span class="nav-number">5.</span> <span class="nav-text">[Solved]Pursuit For Artifacts (CF652E)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Museums-Tour-CF1137C"><span class="nav-number">6.</span> <span class="nav-text">[Solved]Museums Tour (CF1137C)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Leaders-CF97E"><span class="nav-number">7.</span> <span class="nav-text">[Solved]Leaders (CF97E)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Simple-Cycles-Edges-CF962F"><span class="nav-number">8.</span> <span class="nav-text">[Solved]Simple Cycles Edges (CF962F)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solved-Caterpillar-CF51F"><span class="nav-number">9.</span> <span class="nav-text">[Solved]Caterpillar (CF51F)</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#acceptedknights-of-the-round-table-poj-2942"><span class="nav-number">1.</span> <span class="nav-text">[Accepted]Knights of the Round Table (POJ 2942)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedroad-construction-poj-3352"><span class="nav-number">2.</span> <span class="nav-text">[Solved]Road Construction (POJ 3352)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedmining-your-own-business-uva-1108"><span class="nav-number">3.</span> <span class="nav-text">[Solved]Mining Your Own Business (UVA 1108)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedequivalent-sets-hdu-3836"><span class="nav-number">4.</span> <span class="nav-text">[Solved]Equivalent Sets (HDU 3836)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedpursuit-for-artifacts-cf652e"><span class="nav-number">5.</span> <span class="nav-text">[Solved]Pursuit For Artifacts (CF652E)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedmuseums-tour-cf1137c"><span class="nav-number">6.</span> <span class="nav-text">[Solved]Museums Tour (CF1137C)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedleaders-cf97e"><span class="nav-number">7.</span> <span class="nav-text">[Solved]Leaders (CF97E)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedsimple-cycles-edges-cf962f"><span class="nav-number">8.</span> <span class="nav-text">[Solved]Simple Cycles Edges (CF962F)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solvedcaterpillar-cf51f"><span class="nav-number">9.</span> <span class="nav-text">[Solved]Caterpillar (CF51F)</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -273,54 +273,63 @@
         <blockquote>
 <p>[Accepted] 表示已经提交并 AC，[Solved] 表示已会做但还没写</p>
 </blockquote>
-<h3 id="Accepted-Knights-of-the-Round-Table-POJ-2942"><a href="#Accepted-Knights-of-the-Round-Table-POJ-2942" class="headerlink" title="[Accepted]Knights of the Round Table (POJ 2942)"></a>[Accepted]Knights of the Round Table (POJ 2942)</h3><p>有 $n$ 个骑士，有 $m$ 对骑士相互憎恨。骑士可能召开圆桌会议，骑士们围绕着圆桌而坐，需要满足</p>
+<h3 id="acceptedknights-of-the-round-table-poj-2942">[Accepted]Knights of the Round Table (POJ 2942)</h3>
+<p>有 <span class="math inline">\(n\)</span> 个骑士，有 <span class="math inline">\(m\)</span> 对骑士相互憎恨。骑士可能召开圆桌会议，骑士们围绕着圆桌而坐，需要满足</p>
 <ul>
-<li>骑士的个数是大于 $1$ 的奇数。</li>
+<li>骑士的个数是大于 <span class="math inline">\(1\)</span> 的奇数。</li>
 <li>任何相邻的一对骑士都不相互憎恨。</li>
 </ul>
 <p>求有多少骑士不可能参加任何圆桌会议。</p>
-<p>$1\le n\le 1\,000$<br>$1\le m\le {n\choose 2}$</p>
+<p><span class="math inline">\(1\le n\le 1\,000\)</span> <span class="math inline">\(1\le m\le {n\choose 2}\)</span></p>
 <p>直接从哪些不能坐在一起来入手不好直接做，于是考虑建出反图，统计出哪些可以参加某个会议，然后取补集即可。</p>
 <p>注意到一个骑士可以参加某个会议当且仅当他被包含在某个简单奇环中，由于我们需要考虑一个简单环，于是我们考虑点双连通分量，注意到在一个点双连通分量中，只要含有一个奇环，那么显然其中的每个点都可以被包含在一个奇环中（考虑将两个环连接要么新加两条边，要么重合一条边，如果是一个奇环，一个偶环，那么一定可以拼成一个大的奇环），于是我们直接找到点双，然后用二分图染色（奇环一定不是二分图）来进行判断。</p>
-<h3 id="Solved-Road-Construction-POJ-3352"><a href="#Solved-Road-Construction-POJ-3352" class="headerlink" title="[Solved]Road Construction (POJ 3352)"></a>[Solved]Road Construction (POJ 3352)</h3><p>有一个岛上有 $n$ 个旅游景点，有 $m$ 条双向道路连接着它们。现在要修建一些额外的道路，使得任意一条道路封闭后游客都能从一个旅游景点到达任意的旅游景点。求最少需要修建的道路数量。</p>
-<p>$3\le n\le 1\,000$<br>$2\le m\le 1\,000$</p>
-<p>边双连通分量缩点，得到 $k$ 棵树，将所有树连成环需要 $k$ 条边，每棵树少了两个叶子（不够就是清零），之后将剩下的叶子两两配对即可，若多出一个叶子还需要多补一条边。</p>
-<h3 id="Solved-Mining-Your-Own-Business-UVA-1108"><a href="#Solved-Mining-Your-Own-Business-UVA-1108" class="headerlink" title="[Solved]Mining Your Own Business (UVA 1108)"></a>[Solved]Mining Your Own Business (UVA 1108)</h3><p>有一张无向图，选一些点涂黑，满足任意删除一个点后（可能是被涂黑的点），每个连通分量都有至少一个黑点。求最少涂黑的点数和方案数。</p>
-<p>$1\le n\le 50\,000$</p>
-<p>因为是删点，考虑点双缩点，得到一棵圆方树，考虑每个方点下面需要一个黑点当且仅当其距离叶子的最远距离为 $1$，特殊的，如果根的度为 $1$，那么它也需要一个黑点；对于一个需要拥有黑点的方点，显然这个黑点可选的方案数是它下面的所有叶子数；于是直接在圆方树上树形 DP 即可。</p>
-<h3 id="Solved-Equivalent-Sets-HDU-3836"><a href="#Solved-Equivalent-Sets-HDU-3836" class="headerlink" title="[Solved]Equivalent Sets (HDU 3836)"></a>[Solved]Equivalent Sets (HDU 3836)</h3><p>给定一张有向图，求至少添加多少条边能使得其强连通。</p>
-<p>$1\le n\le 20\,000$<br>$0\le m\le 50\,000$</p>
+<h3 id="solvedroad-construction-poj-3352">[Solved]Road Construction (POJ 3352)</h3>
+<p>有一个岛上有 <span class="math inline">\(n\)</span> 个旅游景点，有 <span class="math inline">\(m\)</span> 条双向道路连接着它们。现在要修建一些额外的道路，使得任意一条道路封闭后游客都能从一个旅游景点到达任意的旅游景点。求最少需要修建的道路数量。</p>
+<p><span class="math inline">\(3\le n\le 1\,000\)</span> <span class="math inline">\(2\le m\le 1\,000\)</span></p>
+<p>边双连通分量缩点，得到 <span class="math inline">\(k\)</span> 棵树，将所有树连成环需要 <span class="math inline">\(k\)</span> 条边，每棵树少了两个叶子（不够就是清零），之后将剩下的叶子两两配对即可，若多出一个叶子还需要多补一条边。</p>
+<h3 id="solvedmining-your-own-business-uva-1108">[Solved]Mining Your Own Business (UVA 1108)</h3>
+<p>有一张无向图，选一些点涂黑，满足任意删除一个点后（可能是被涂黑的点），每个连通分量都有至少一个黑点。求最少涂黑的点数和方案数。</p>
+<p><span class="math inline">\(1\le n\le 50\,000\)</span></p>
+<p>因为是删点，考虑点双缩点，得到一棵圆方树，考虑每个方点下面需要一个黑点当且仅当其距离叶子的最远距离为 <span class="math inline">\(1\)</span>，特殊的，如果根的度为 <span class="math inline">\(1\)</span>，那么它也需要一个黑点；对于一个需要拥有黑点的方点，显然这个黑点可选的方案数是它下面的所有叶子数；于是直接在圆方树上树形 DP 即可。</p>
+<h3 id="solvedequivalent-sets-hdu-3836">[Solved]Equivalent Sets (HDU 3836)</h3>
+<p>给定一张有向图，求至少添加多少条边能使得其强连通。</p>
+<p><span class="math inline">\(1\le n\le 20\,000\)</span> <span class="math inline">\(0\le m\le 50\,000\)</span></p>
 <p>首先先强连通分量缩点，得到一张 DAG，然后考虑怎样连边是最优的。</p>
-<p>把无入度点作为点集 $S$，把无出度点作为点集 $T$。</p>
-<p>二分图连边表示 $S$ 点（入度为零）可以走到 $T$ 点（出度为零），</p>
+<p>把无入度点作为点集 <span class="math inline">\(S\)</span>，把无出度点作为点集 <span class="math inline">\(T\)</span>。</p>
+<p>二分图连边表示 <span class="math inline">\(S\)</span> 点（入度为零）可以走到 <span class="math inline">\(T\)</span> 点（出度为零），</p>
 <ul>
-<li>先暴力匹配，表示每一个 $S_i$ 尽可能走一个互不相同的 $T_i$ 点，然后所有匹配边从 $T_i$ 向下一个匹配的 $S_{i+1}$ 连一条边，表示从 $S_i\to T_i\to S_{i+1}$，如此往复，最终将最后一个 $T_k$ 连向开始时的 $S_1$，此时形成一个环，是 SCC，然后剩下的没被选上的是不连通的。</li>
-<li>如果是 $S_i$ 点表明他所有可以走到的 $T$ 都被其他 $S$ 走过去了，$T$ 也是一样，能走到他的 $S$ 都走到其他点 $T$ 了，于是上一步得到的 SCC 到剩下的 $T$ 一定有边，剩下的 $S$ 一定到 SCC 有边，就把每一对未匹配的 $T$ 向 $S$ 连一下边，这样匹配的 $T$ 和 $S$ 会形成环，这样可以尽可能多的匹配两边的点；</li>
-<li>这样最后如果还剩下来就随便连了（SCC 连向剩 $S$，剩 $T$ 连向 SCC ）。</li>
+<li>先暴力匹配，表示每一个 <span class="math inline">\(S_i\)</span> 尽可能走一个互不相同的 <span class="math inline">\(T_i\)</span> 点，然后所有匹配边从 <span class="math inline">\(T_i\)</span> 向下一个匹配的 <span class="math inline">\(S_{i+1}\)</span> 连一条边，表示从 <span class="math inline">\(S_i\to T_i\to S_{i+1}\)</span>，如此往复，最终将最后一个 <span class="math inline">\(T_k\)</span> 连向开始时的 <span class="math inline">\(S_1\)</span>，此时形成一个环，是 SCC，然后剩下的没被选上的是不连通的。</li>
+<li>如果是 <span class="math inline">\(S_i\)</span> 点表明他所有可以走到的 <span class="math inline">\(T\)</span> 都被其他 <span class="math inline">\(S\)</span> 走过去了，<span class="math inline">\(T\)</span> 也是一样，能走到他的 <span class="math inline">\(S\)</span> 都走到其他点 <span class="math inline">\(T\)</span> 了，于是上一步得到的 SCC 到剩下的 <span class="math inline">\(T\)</span> 一定有边，剩下的 <span class="math inline">\(S\)</span> 一定到 SCC 有边，就把每一对未匹配的 <span class="math inline">\(T\)</span> 向 <span class="math inline">\(S\)</span> 连一下边，这样匹配的 <span class="math inline">\(T\)</span> 和 <span class="math inline">\(S\)</span> 会形成环，这样可以尽可能多的匹配两边的点；</li>
+<li>这样最后如果还剩下来就随便连了（SCC 连向剩 <span class="math inline">\(S\)</span>，剩 <span class="math inline">\(T\)</span> 连向 SCC ）。</li>
 </ul>
-<p>我们定义从 $T$ 到 $S$ 的边为反向边，这样，会发现前两步左右会将两侧的点一一配对，就都被连上了一条反向边，最后一步每个剩下的点只会有一条边，所以最少连边数量是 $\max(|S|,|T|)$。</p>
-<h3 id="Solved-Pursuit-For-Artifacts-CF652E"><a href="#Solved-Pursuit-For-Artifacts-CF652E" class="headerlink" title="[Solved]Pursuit For Artifacts (CF652E)"></a>[Solved]Pursuit For Artifacts (CF652E)</h3><p>给定一张简单无向连通图，边权为 $0$ 或 $1$，求从 $a$ 到 $b$ 是否存在一条边权和非 $0$ 的且不经过重复边的路径（单次询问）。</p>
-<p>$1\le n\le 300\,000$<br>$0\le m\le 300\,000$</p>
-<p>注意到一条边一定包含于一个点双，对于一个点双内的任意一条边和任意两个点，这两点间一定存在一条简单路径经过这条边，于是我们建出整张图的圆方树，将一个方点的权值定义为它代表的点双连通分量中的边是否存在权值为 $1$ 的边；考虑如何统计每条边在哪个 V-DCC，与点类似，我们只需要将遍历到的边压入栈中即可，每条边只入栈一次，找到 V-DCC 时同时将边弹出；最后将圆点的权值定义为 $0$，然后爆搜查寻即可。</p>
-<p>再来考虑边双怎么做，注意到一条边要么属于一个边双，要么是桥，且每条在边双中的边至少包含于一个简单环中，于是同样对于边双内的一条边和两个点，一定存在一条简单路径经过这条边，于是我们同样将一个缩完后的点的权值定义为这个点双中的所有边权的或，由于每个点一定只包含在同一个边双中于是我们可以直接判断一条边的两点是否在同一点双来得到这一点所在的点双，然后爆搜看路径上是否有边权或点权为 $1$。</p>
-<h3 id="Solved-Museums-Tour-CF1137C"><a href="#Solved-Museums-Tour-CF1137C" class="headerlink" title="[Solved]Museums Tour (CF1137C)"></a>[Solved]Museums Tour (CF1137C)</h3><p>一个国家有 $n$ 个城市，和 $m$ 条单向道路，每周有 $d$ 天。每个城市都有一个博物馆，每天博物馆的开放情况只和是一周中的哪一天有关，即每 $d$ 天一个循环。</p>
-<p>从一周中的第一天，城市 $1$ 开始，每天参观博物馆（如果开放），之后沿着一条边走到下一个城市。求无有个旅行团在城市 1 出发，当天是星期一。每天早上限的时间内最多能参观多少不同的博物馆。</p>
-<p>$1\le n\le 100\,000$<br>$0\le m\le 100\,000$<br>$0\le d\le 50$</p>
-<p>由于 $d$ 的数量不大，考虑将每个点拆成 $d$ 个点，点 $(i,j)$ 表示 $i$ 号点在星期 $j$，于是将原图重新建图，假设原图中存在边 $u\to v$，那么建新边 $(u,i)\to(v,i + 1)$，然后考虑得到的新图，显然在同一个强连通分量中的所有可行的博物馆一定可以在访问这个强连通分量时参观完，于是将每个强连通分量缩点，每个缩完的点的点权为这个强连通分量中所有的可行的博物馆，这个权值可以在统计强连通分量时同时计算，之后我们就是要找一条从 $1$ 开始的最长路。</p>
+<p>我们定义从 <span class="math inline">\(T\)</span> 到 <span class="math inline">\(S\)</span> 的边为反向边，这样，会发现前两步左右会将两侧的点一一配对，就都被连上了一条反向边，最后一步每个剩下的点只会有一条边，所以最少连边数量是 <span class="math inline">\(\max(|S|,|T|)\)</span>。</p>
+<h3 id="solvedpursuit-for-artifacts-cf652e">[Solved]Pursuit For Artifacts (CF652E)</h3>
+<p>给定一张简单无向连通图，边权为 <span class="math inline">\(0\)</span> 或 <span class="math inline">\(1\)</span>，求从 <span class="math inline">\(a\)</span> 到 <span class="math inline">\(b\)</span> 是否存在一条边权和非 <span class="math inline">\(0\)</span> 的且不经过重复边的路径（单次询问）。</p>
+<p><span class="math inline">\(1\le n\le 300\,000\)</span> <span class="math inline">\(0\le m\le 300\,000\)</span></p>
+<p>注意到一条边一定包含于一个点双，对于一个点双内的任意一条边和任意两个点，这两点间一定存在一条简单路径经过这条边，于是我们建出整张图的圆方树，将一个方点的权值定义为它代表的点双连通分量中的边是否存在权值为 <span class="math inline">\(1\)</span> 的边；考虑如何统计每条边在哪个 V-DCC，与点类似，我们只需要将遍历到的边压入栈中即可，每条边只入栈一次，找到 V-DCC 时同时将边弹出；最后将圆点的权值定义为 <span class="math inline">\(0\)</span>，然后爆搜查寻即可。</p>
+<p>再来考虑边双怎么做，注意到一条边要么属于一个边双，要么是桥，且每条在边双中的边至少包含于一个简单环中，于是同样对于边双内的一条边和两个点，一定存在一条简单路径经过这条边，于是我们同样将一个缩完后的点的权值定义为这个点双中的所有边权的或，由于每个点一定只包含在同一个边双中于是我们可以直接判断一条边的两点是否在同一点双来得到这一点所在的点双，然后爆搜看路径上是否有边权或点权为 <span class="math inline">\(1\)</span>。</p>
+<h3 id="solvedmuseums-tour-cf1137c">[Solved]Museums Tour (CF1137C)</h3>
+<p>一个国家有 <span class="math inline">\(n\)</span> 个城市，和 <span class="math inline">\(m\)</span> 条单向道路，每周有 <span class="math inline">\(d\)</span> 天。每个城市都有一个博物馆，每天博物馆的开放情况只和是一周中的哪一天有关，即每 <span class="math inline">\(d\)</span> 天一个循环。</p>
+<p>从一周中的第一天，城市 <span class="math inline">\(1\)</span> 开始，每天参观博物馆（如果开放），之后沿着一条边走到下一个城市。求无有个旅行团在城市 1 出发，当天是星期一。每天早上限的时间内最多能参观多少不同的博物馆。</p>
+<p><span class="math inline">\(1\le n\le 100\,000\)</span> <span class="math inline">\(0\le m\le 100\,000\)</span> <span class="math inline">\(0\le d\le 50\)</span></p>
+<p>由于 <span class="math inline">\(d\)</span> 的数量不大，考虑将每个点拆成 <span class="math inline">\(d\)</span> 个点，点 <span class="math inline">\((i,j)\)</span> 表示 <span class="math inline">\(i\)</span> 号点在星期 <span class="math inline">\(j\)</span>，于是将原图重新建图，假设原图中存在边 <span class="math inline">\(u\to v\)</span>，那么建新边 <span class="math inline">\((u,i)\to(v,i + 1)\)</span>，然后考虑得到的新图，显然在同一个强连通分量中的所有可行的博物馆一定可以在访问这个强连通分量时参观完，于是将每个强连通分量缩点，每个缩完的点的点权为这个强连通分量中所有的可行的博物馆，这个权值可以在统计强连通分量时同时计算，之后我们就是要找一条从 <span class="math inline">\(1\)</span> 开始的最长路。</p>
 <p>现在来考虑这样做会不会算重，即将一个点算多次贡献。</p>
-<p>假如可以从 $(u,i)$ 走到 $(u,j)$，那么意味着原图上从 $u$ 走一条长度为 $(j-i)\bmod d$ 的路径可以从 $u$ 走回 $u$，那么在 $(u,j)$ 顺着这条路径走 $d-1$ 次就可以走到 $(u,i)$，所以两者一定在同一强连通分量中，我们可以在 Tarjan 时直接处理。</p>
+<p>假如可以从 <span class="math inline">\((u,i)\)</span> 走到 <span class="math inline">\((u,j)\)</span>，那么意味着原图上从 <span class="math inline">\(u\)</span> 走一条长度为 <span class="math inline">\((j-i)\bmod d\)</span> 的路径可以从 <span class="math inline">\(u\)</span> 走回 <span class="math inline">\(u\)</span>，那么在 <span class="math inline">\((u,j)\)</span> 顺着这条路径走 <span class="math inline">\(d-1\)</span> 次就可以走到 <span class="math inline">\((u,i)\)</span>，所以两者一定在同一强连通分量中，我们可以在 Tarjan 时直接处理。</p>
 <p>注意 Tarjan 时递归层数可能会很多，<code>inline</code> 或许可以优化？</p>
-<h3 id="Solved-Leaders-CF97E"><a href="#Solved-Leaders-CF97E" class="headerlink" title="[Solved]Leaders (CF97E)"></a>[Solved]Leaders (CF97E)</h3><p>给定一张简单无向图，多次询问两个点之间是否存在长度为奇数的简单路径。</p>
-<p>$1\le n\le 100\,000$<br>$0\le m\le 100\,000$<br>$1\le q\le 100\,000$</p>
+<h3 id="solvedleaders-cf97e">[Solved]Leaders (CF97E)</h3>
+<p>给定一张简单无向图，多次询问两个点之间是否存在长度为奇数的简单路径。</p>
+<p><span class="math inline">\(1\le n\le 100\,000\)</span> <span class="math inline">\(0\le m\le 100\,000\)</span> <span class="math inline">\(1\le q\le 100\,000\)</span></p>
 <p>注意到如果两个点之间存在一条路径，路径上经过了一条在奇环中的边，那么就一定存在一条长度为奇数的简单路径；或者说，只要路径上存在一条在奇环中的边，那么原本这条路径长度的奇偶性就可以被改变；同时注意到图中两点间的任意一条路径，都可以由另一条路径通过用某些环的一部分替换这条路径的一部分得到，于是我们考虑先找到一条初始的路径，再来考虑这条路径是否可以通过经过奇环改变/不改变奇偶性，于是我们考虑先得到原图的一棵生成树。</p>
 <p>考虑在生成树上，如果两个点如果对于 LCA 所处的深度的奇偶性不同，那么两者之间一定存在一条长度为奇数的路径（就是树上的路径），否则我们需要看两者的树上路径上是否存在在奇环中的边，于是我们需要确定每条边是否在奇环中。</p>
 <p>注意到在一个点双连通分量中，只要存在一个奇环，那么这个点双连通分量中的任意一条边都都可以找到一个包含这条边的奇环，于是我们直接求点双连通分量，然后二分图染色判断奇环，然后就可以得到每条边所处的点双连通分量（同上面 CF652E SOL.1 压栈方法），以及每个点双连通分量是否包含奇环。</p>
 <p>然后直接树上倍增即可。</p>
-<h3 id="Solved-Simple-Cycles-Edges-CF962F"><a href="#Solved-Simple-Cycles-Edges-CF962F" class="headerlink" title="[Solved]Simple Cycles Edges (CF962F)"></a>[Solved]Simple Cycles Edges (CF962F)</h3><p>给定一张简单无向图，求哪些边在恰好一个简单环内。</p>
-<p>$1\le n\le 100\,000$<br>$0\le m\le 100\,000$</p>
+<h3 id="solvedsimple-cycles-edges-cf962f">[Solved]Simple Cycles Edges (CF962F)</h3>
+<p>给定一张简单无向图，求哪些边在恰好一个简单环内。</p>
+<p><span class="math inline">\(1\le n\le 100\,000\)</span> <span class="math inline">\(0\le m\le 100\,000\)</span></p>
 <p>由于在同一个点双连通分量中的任意一条边都被包含在至少一个简单环中，且如果一个点双连通分量中包含不只一个简单环，由于点双的性质，于是这多个环中的任意两个环至少需要两条额外的边或至少一条重合的边，这样形成的点双中的任意一条边都会被包含在大于一个简单环中，所以一条边被恰好包含在一个简单环中当且仅当他所在的点双中恰有一个简单环，于是可以直接求出 V-DCC，然后判断每个 V-DCC 的边数和点数是否相等。</p>
-<h3 id="Solved-Caterpillar-CF51F"><a href="#Solved-Caterpillar-CF51F" class="headerlink" title="[Solved]Caterpillar (CF51F)"></a>[Solved]Caterpillar (CF51F)</h3><p>定义毛毛虫是一张<strong>无环图</strong>，满足存在一条路径即可使得每个点离这条路径的距离不超过 $1$。给定一张无向图，现在可以每次合并两个顶点使得图变成毛毛虫。求最少需要的操作数。</p>
-<p>$1\le n\le 2000$<br>$0\le m\le 10^5$</p>
+<h3 id="solvedcaterpillar-cf51f">[Solved]Caterpillar (CF51F)</h3>
+<p>定义毛毛虫是一张<strong>无环图</strong>，满足存在一条路径即可使得每个点离这条路径的距离不超过 <span class="math inline">\(1\)</span>。给定一张无向图，现在可以每次合并两个顶点使得图变成毛毛虫。求最少需要的操作数。</p>
+<p><span class="math inline">\(1\le n\le 2000\)</span> <span class="math inline">\(0\le m\le 10^5\)</span></p>
 <p>由于是一个无环图，所以只要两点间有两条边不相交的路径就一定需要合并，于是一个边双连通分量最后一定会被缩成一个点。</p>
 <p>现在我们来考虑缩点之后得到了一棵树如何处理。对于一棵树，显然骨干必然是去掉叶子后剩下的部分中的一条链，显然这条链的长度越长越好，于是应当选直径，直径之外的点（除了叶子）就顺着树的结构合并到直径上，一定是最优的合并方案，总共合并的次数也就是除了直径和叶子之外的所有点的个数。</p>
 <p>由于图可能不连通，所以还需要把多个毛毛虫拼接，合并的次数就是之前树的数量减一。</p>
