@@ -17,6 +17,29 @@
 ]]></content>
   </entry>
   <entry>
+    <title>「数据结构」李超线段树</title>
+    <url>/2022/01/22/LiChao-Tree/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="唔，暗号错了！你不是自己人 OnO" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="ef4f04c7072ded32b5dccf93cbc448251a4437844b985f145da09be9a0719ce5">b6d1e56d81a230ce2763e9fd702bab908229bf30000e22fb35c42c85010f79f99c6572a94dff6f13284a5f0749d7ab54f0c8f1b7af7bfced79c1881b3c1f4d1a3b46e369e05abea9d76e70116af5784cdd6c3f7c5cb248f9dfd659c52b52acd8e0abb9f3d3b3fe0393a93f174a056f3bdbc5bf6bc10fc952807dc1c29ea493080bcac50fe7a246fecb95c846e33b8c41a5911722eae1c73e16e2a87314c0e3f81161af085c399689491c8c4fd12759bfb75550183c558c61e08d4e9ac36c2dd745062f58c3701ba0b67bce276ec1b40ca19b7ada12579ab714403fc1e3c72c32faf35e135b7b8bddefd50c11a7f4a2965dc6f5f8a7b527e490f8d7ba5f2083003dfcdbbd1411ba60bb6622fbd788df8882396399ad6ec6a8d939434b17990cd4</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">嘿，请说出接头暗号 OvO</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>「DP 浅析」斜率优化</title>
     <url>/2022/01/03/slope-optimization/</url>
     <content><![CDATA[<h2 id="屑在前面">#0.0 屑在前面</h2>
