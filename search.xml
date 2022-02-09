@@ -166,7 +166,7 @@
 <p>采用轻重链剖分，将子树最大的儿子作为重儿子，将虚边分为重虚边与轻虚边，实边以此类推。定义势函数 <span class="math inline">\(\Phi\)</span> 为重虚边的数量。</p>
 <p><code>Access()</code> 过程中有以下两种变化可能：</p>
 <ul>
-<li>势能增加 <span class="math inline">\(1\)</span>，当且仅当选择的实边由重边切换到了轻边，根据轻重链剖分重链的性质，此过程不超过 <span class="math inline">\(\log n\)</span> 次；</li>
+<li>势能增加 <span class="math inline">\(1\)</span>，当且仅当选择的实边由重边切换到了轻边，根据轻重链剖分重链的性质，一次 <code>Access()</code>过程中此过程不超过 <span class="math inline">\(\log n\)</span> 次；</li>
 <li>势能减小 <span class="math inline">\(1\)</span>，当且仅当选择的实边由轻边切换到了重边；</li>
 </ul>
 <p>设 <span class="math inline">\(\sum\Delta\Phi^+\)</span> 表示所有正势能变化量的和，<span class="math inline">\(\sum\Delta\Phi^-\)</span> 表示所有负的势能变化量的和，显然有 <span class="math display">\[
@@ -174,11 +174,11 @@
 \]</span> 于是势能变化总量为 <span class="math display">\[
 \Phi(S_{m})-\Phi(S_0)=\sum\Delta\Phi^-+\sum\Delta\Phi^+\leq n+m\log n
 \]</span> 每次换边的时间复杂度为 <span class="math inline">\(O(1)\)</span>，视为 <span class="math inline">\(1\)</span>，根据定义有 <span class="math display">\[
-\sum\limits_{\Phi_i&gt;0} c_i+\sum\limits_{\Phi_i&lt;0} c_i\leq\log n+\left|\sum\Delta\Phi^-\right|\leq n+m\log n + \log n
+\sum\limits_{\Phi_i&gt;0} c_i+\sum\limits_{\Phi_i&lt;0} c_i\leq m\log n+\left|\sum\Delta\Phi^-\right|\leq n+2\cdot m\log n
 \]</span> 于是有 <span class="math display">\[
 \begin{aligned}
 \sum_{i=1}^m\hat c_i=&amp;\sum_{i=1}^m c_i+\Phi(S_{m})-\Phi(S_0)\\
-\leq&amp;2\cdot(n+m\log n)+\log n\\
+\leq&amp;2\cdot n+3\cdot m\log n\\
 =&amp;O(n+m\log n)
 \end{aligned}
 \]</span> 综上所述，LCT 的时间复杂度为 <span class="math inline">\(O((n+m)\log n)\)</span>.</p>
