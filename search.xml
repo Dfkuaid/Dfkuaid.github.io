@@ -184,11 +184,12 @@
 \]</span> 综上所述，LCT 的时间复杂度为 <span class="math inline">\(O((n+m)\log n)\)</span>.</p>
 <h2 id="参考资料">参考资料</h2>
 <ul>
-<li>[1] 算法导论</li>
+<li>[1] Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein 著, 殷建平, 徐云, 王刚, 刘晓光, 苏明, 邹恒明, 王宏志译, <em>算法导论（原书第 3 版）</em>, 北京: 机械工业出版社, 2013.1.</li>
 <li>[2] <a href="https://www.cnblogs.com/Go7338395/p/14771217.html">势能分析 - Achtoria</a></li>
 <li>[3] <a href="https://www.cnblogs.com/klauralee/p/10926342.html">势能分析（splay分析）- KLLstudio</a></li>
 <li>[4] <a href="http://ljt12138.github.io/2019/08/05/potential_analysis/">势能分析法 - ljt12138</a></li>
 <li>[5] <a href="https://www.cnblogs.com/Mr-Spade/p/9715203.html">伸展树（Splay）复杂度证明 - Mr_Spade</a></li>
+<li>[6] <a href="https://www.cnblogs.com/reverymoon/p/10086216.html">Splay和LCT的复杂度分析 - remoon</a></li>
 </ul>
 ]]></content>
       <categories>
