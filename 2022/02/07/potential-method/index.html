@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/cat.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/cat.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/cat.png">
+  <link rel="mask-icon" href="/images/cat.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dfkuaid.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="「施工中...」势能分析法的简单讲解及应用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="势能分析法">
+<meta property="og:url" content="https://dfkuaid.github.io/2022/02/07/potential-method/index.html">
+<meta property="og:site_name" content="Dfkuaid の 小窝">
+<meta property="og:description" content="「施工中...」势能分析法的简单讲解及应用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/02/08/6i5q4mRDGH9zPMU.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/08/O3koQTDUwYjgnNv.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/09/IMkL7cqUYjQmBwh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/02/09/YebLyF3oD6C7ITl.png">
+<meta property="article:published_time" content="2022-02-07T01:04:10.000Z">
+<meta property="article:modified_time" content="2022-02-09T08:38:14.531Z">
+<meta property="article:author" content="Dfkuaid">
+<meta property="article:tag" content="时间复杂度">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/02/08/6i5q4mRDGH9zPMU.png">
+
+
+<link rel="canonical" href="https://dfkuaid.github.io/2022/02/07/potential-method/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://dfkuaid.github.io/2022/02/07/potential-method/","path":"2022/02/07/potential-method/","title":"势能分析法"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>势能分析法 | Dfkuaid の 小窝</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Dfkuaid の 小窝</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">暖呼呼~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">38</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a></li>
+        <li class="menu-item menu-item-friends"><a href="/friends/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a></li>
+        <li class="menu-item menu-item-goals"><a href="/goals/" rel="section"><i class="fa fa-calendar fa-fw"></i>目标</a></li>
+        <li class="menu-item menu-item-tricks"><a href="/tricks/" rel="section"><i class="fa fa-lightbulb fa-fw"></i>技巧</a></li>
+        <li class="menu-item menu-item-diary"><a href="/diary/" rel="section"><i class="fa fa-book fa-fw"></i>朝话昔事</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E8%87%B4%E6%80%9D%E6%83%B3"><span class="nav-number">1.1.</span> <span class="nav-text">大致思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3"><span class="nav-number">1.3.</span> <span class="nav-text">简单理解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%88%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">栈问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%89%A9%E5%A2%9E%E6%95%B0%E7%BB%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">动态扩增数组问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%B8%E5%B1%95%E6%A0%91splay%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">2.3.</span> <span class="nav-text">伸展树(Splay)的时间复杂度分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lctlink-cut-tree%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">2.4.</span> <span class="nav-text">LCT(Link-Cut Tree)的时间复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dfkuaid"
+      src="/images/head.jpeg">
+  <p class="site-author-name" itemprop="name">Dfkuaid</p>
+  <div class="site-description" itemprop="description">每个人的心里都有一团火，路过的人只看到烟。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dfkuaid" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dfkuaid" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:kuaid_yd@protonmail.com" title="E-Mail → mailto:kuaid_yd@protonmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://dfkuaid.github.io/2022/02/07/potential-method/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpeg">
+      <meta itemprop="name" content="Dfkuaid">
+      <meta itemprop="description" content="每个人的心里都有一团火，路过的人只看到烟。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dfkuaid の 小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          势能分析法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-07 09:04:10" itemprop="dateCreated datePublished" datetime="2022-02-07T09:04:10+08:00">2022-02-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-09 16:38:14" itemprop="dateModified" datetime="2022-02-09T16:38:14+08:00">2022-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+            <div class="post-description">「施工中...」势能分析法的简单讲解及应用。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="概述">概述</h2>
+<h3 id="大致思想">大致思想</h3>
+<p>势能法摊借用了物理学中的概念，还分析将数据结构中的预付代价表示为“势能”，将积攒的势能释放可以支付未来操作的代价，将势能与整个数据结构相关联。</p>
+<h3 id="定义">定义</h3>
+<p>对于一个初始数据结构 <span class="math inline">\(D_0\)</span>，我们将执行 <span class="math inline">\(n\)</span> 个操作，<span class="math inline">\(\forall i\in[1,n]\)</span>，定义 <span class="math inline">\(c_i\)</span> 表示此次操作所花费的实际代价，<span class="math inline">\(D_i\)</span> 表示在 <span class="math inline">\(D_{i-1}\)</span> 的基础上执行第 <span class="math inline">\(i\)</span> 个操作后的结果数据结构。定义<strong>势函数</strong> <span class="math inline">\(\Phi\)</span> 将每个数据结构 <span class="math inline">\(D_i\)</span> 映射到一个实数 <span class="math inline">\(\Phi(D_i)\)</span>，表示数据结构 <span class="math inline">\(D_i\)</span> 的势能。第 <span class="math inline">\(i\)</span> 个操作的摊还代价 <span class="math inline">\(\hat c_i\)</span> 用势函数 <span class="math inline">\(\Phi\)</span> 定义为： <span class="math display">\[
+\hat c_i=c_i+\Phi(D_i)-\Phi(D_{i-1}),
+\]</span> 于是，<span class="math inline">\(n\)</span> 个操作的总摊还代价为 <span class="math display">\[
+\sum\limits_{i=1}^n\hat c_i=\sum\limits_{i=1}^n(c_i+\Phi(D_i)-\Phi(D_{i-1}))=\sum\limits_{i=1}^nc_i+\Phi(D_n)-\Phi(D_0).
+\]</span> 此时，如果能定义一个势函数 <span class="math inline">\(\Phi\)</span>，使得 <span class="math inline">\(\Phi(D_n)\geq\Phi(D_0)\)</span>，那么显然此时总摊还代价 <span class="math inline">\(\sum\limits_{i=1}^n\hat c_i\)</span> 就是总实际代价的一个上界。</p>
+<h3 id="简单理解">简单理解</h3>
+<p>可以有这样一种简单的理解方式：对于 <span class="math inline">\(\Phi(D_i)-\Phi(D_{i-1})&gt;0\)</span>，这时这个操作正在花费额外的代价积累势能，反之，若 <span class="math inline">\(\Phi(D_i)-\Phi(D_{i-1})&lt;0\)</span> 则意味着正在消耗之前积累的势能进行操作，免去了一些代价。</p>
+<p>在算法、数据结构的实际使用过程中，我们并不总能知道我们要进行多少个操作，于是，如果我们能够保证有 <span class="math inline">\(\forall i,\Phi(D_i)\geq\Phi(D_0)\)</span>，就能保证不论多少个操作，最终得到的总摊还代价总是总实际代价的一个上界，也就是保证了所有消耗势能的操作所消耗的势能都已经在其之前通过某些操作被积累。</p>
+<p>显然此时得到的摊还代价取决于我们定义的势函数，但是不论采用的势函数是怎样的，得到的摊还代价总是实际代价的一个上界。在选择势函数时，我们需要考虑我们需要怎样的时间界。</p>
+<h2 id="例题">例题</h2>
+<h3 id="栈问题">栈问题</h3>
+<p>栈有 <span class="math inline">\(\text{POP}\)</span>、<span class="math inline">\(\text{PUSH}\)</span> 和 <span class="math inline">\(\text{MULTIPOP}\)</span> 三种操作，分别是弹出栈顶，压入栈，批量弹出。压入、弹出单个元素的单次时间复杂度为 <span class="math inline">\(O(1)\)</span>，我们假定其为 <span class="math inline">\(1\)</span>。我们将栈的势函数定义为在其中的元素数量，对于初始的空栈，有 <span class="math inline">\(\Phi(D_0)=0\)</span>，显然栈中元素的个数不会少于 <span class="math inline">\(0\)</span> 个，于是必然有 <span class="math display">\[
+\Phi(D_i)\geq0=\Phi(D_0),
+\]</span> 于是，我们此时用 <span class="math inline">\(\Phi\)</span> 定义的总摊还代价是总实际代价的一个上界。我们下面对栈的三个操作分别进行摊还代价分析。</p>
+<p>假设第 <span class="math inline">\(i\)</span> 个操作是 <span class="math inline">\(\text{PUSH}\)</span>，有 <span class="math display">\[
+\hat c_i=c_i+\Phi(D_i)-\Phi(D_{i-1})=1+1=2,
+\]</span> 假设第 <span class="math inline">\(i\)</span> 个操作是 <span class="math inline">\(\text{POP}\)</span>，有 <span class="math display">\[
+\hat c_i=c_i+\Phi(D_i)-\Phi(D_{i-1})=1-1=0,
+\]</span> 假设第 <span class="math inline">\(i\)</span> 个操作是 <span class="math inline">\(\text{MULTIPOP}(k)\)</span>，此时栈中有 <span class="math inline">\(s\)</span> 个元素，那么将弹出 <span class="math inline">\(k&#39;=\min(k,s)\)</span> 个元素，于是有 <span class="math display">\[
+\hat c_i=c_i+\Phi(D_i)-\Phi(D_{i-1})=k&#39;-k&#39;=0,
+\]</span> 综上，每个操作的摊还代价都是 <span class="math inline">\(O(1)\)</span>，于是 <span class="math inline">\(n\)</span> 个操作的总摊还代价应当为 <span class="math inline">\(O(n)\)</span>，此时是总实际代价的上界，于是最坏情况下的总实际代价为 <span class="math inline">\(O(n)\)</span>.</p>
+<h3 id="动态扩增数组问题">动态扩增数组问题</h3>
+<blockquote>
+<p>给定一个数组，其初始大小为 <span class="math inline">\(0\)</span>，支持在数组末尾加入一个元素；如果当前大小为 <span class="math inline">\(0\)</span>，则先开 <span class="math inline">\(1\)</span> 的空间，如果数组元素已满，则先将数组的大小翻倍再插入，开单个空间和插入一个元素的时间视为 <span class="math inline">\(1\)</span>。求操作的平摊复杂度。</p>
+</blockquote>
+<p>容易发现，造成复杂度分析困难的一步是开新空间时的时间复杂度，开新数组时的耗时巨大，但实际进行的操作次数并不多，于是我们希望这一步在分析时能够采用积累的势能进行，也就是说，我们希望这是一个消耗势能的操作。</p>
+<p>于是我们希望定义的势函数能够使得当前处于已满状态的数组的势能最大，为数组的规模，在刚新开完空间后的势能为 <span class="math inline">\(0\)</span>，我们这样定义 <span class="math inline">\(\Phi\)</span>: <span class="math display">\[
+\Phi(D_i)=2\cdot num_i-size_i,
+\]</span> 其中 <span class="math inline">\(num_i\)</span> 当前数组存储的元素个数，而 <span class="math inline">\(size_i\)</span> 为当前数组的规模，显然，这样定义能够满足我们的要求。</p>
+<p>在初始空数组时，其势能为 <span class="math inline">\(0\)</span>，而根据上面描述的数组扩增的算法，显然在任意时刻，数组内元素个数至少为表规模的一半，于是在任意时刻都有 <span class="math inline">\(\Phi(D_i)\geq 0=\Phi(D_0)\)</span>，也就意味着最终可以得到一个实际总代价的上界。</p>
+<p>我们将所有的插入操作分为两种进行讨论：引起了数组扩张与未引起数组扩张。下面用 <span class="math inline">\(\varphi_i\)</span> 表示 <span class="math inline">\(\Phi(D_i)\)</span>.</p>
+<p>未引起数组扩张时，有 <span class="math inline">\(num_{i-1}=num_i-1, size_i=size_{i-1}\)</span>，于是有： <span class="math display">\[
+\begin{aligned}
+\hat c_i&amp;=c_i+\varphi_i-\varphi_{i-1}\\
+&amp;=1+(2\cdot num_i-size_i) - (2\cdot num_{i-1}-size_{i-1})\\
+&amp;=1+2\cdot(num_i-num_{i-1})=1+2=3
+\end{aligned}
+\]</span> 当引起了数组扩张时，首先有一个特例：开始时的第一次插入引起了表扩张，此时是积累势能： <span class="math display">\[
+\begin{aligned}
+\hat c_1&amp;=c_1+\varphi_1-\varphi_{0}\\
+&amp;=1+(2\cdot num_1-size_1) - (2\cdot num_{0}-size_{0})\\
+&amp;=1+1-0=2
+\end{aligned}
+\]</span> 其余的引起表扩张的情况，一定有 <span class="math inline">\(num_i-1=num_{i-1}=size_{i-1}, size_i=2\cdot size_{i-1}\)</span>，于是有： <span class="math display">\[
+\begin{aligned}
+\hat c_i&amp;=c_i+\varphi_i-\varphi_{i-1}\\
+&amp;=num_{i-1}+1+(2\cdot num_i-size_i) - (2\cdot num_{i-1}-size_{i-1})\\
+&amp;=num_i+(2\cdot num_i-2\cdot (num_i - 1))-(2\cdot(num_i - 1)-(num_i-1))\\
+&amp;=num_i+2-(num_i-1)=3
+\end{aligned}
+\]</span> 于是综上所述，每个操作的摊还代价是 <span class="math inline">\(O(1)\)</span>， <span class="math inline">\(n\)</span> 个操作的总摊还代价就是 <span class="math inline">\(O(n)\)</span>.</p>
+<h3 id="伸展树splay的时间复杂度分析">伸展树(Splay)的时间复杂度分析</h3>
+<p>Splay 的各种操作的核心就是 splay 操作，其余的只是常数上的变化。</p>
+<p>记 <span class="math inline">\(x\)</span> 表示一棵有 <span class="math inline">\(n\)</span> 个点的 Splay 上的一个节点，<span class="math inline">\(x&#39;\)</span> 表示操作后的对应节点，<span class="math inline">\(|x|\)</span> 表示 Splay 上 <span class="math inline">\(x\)</span> 的子树大小。一次旋转的时间复杂度为 <span class="math inline">\(O(1)\)</span>，这里视为 <span class="math inline">\(1\)</span>。我们希望用势能函数的变化量抵消掉 Splay 上节点的访问代s价，定义整棵 Splay 的势函数为 <span class="math inline">\(\Phi(S)=\sum\limits_{x\in S}\varphi(x)\)</span>，其中 <span class="math inline">\(\varphi(x)=\log|x|\)</span>.</p>
+<p>对于访问节点带来的时间开销，我们将其均摊到旋转操作中，可以轻易地调整势函数中的常数进行抵消。</p>
+<ol type="1">
+<li>三点一线</li>
+</ol>
+<figure>
+<img src="https://s2.loli.net/2022/02/08/6i5q4mRDGH9zPMU.png" alt="Splay_1.png" /><figcaption aria-hidden="true">Splay_1.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/02/08/O3koQTDUwYjgnNv.png" alt="Splay_2.png" /><figcaption aria-hidden="true">Splay_2.png</figcaption>
+</figure>
+<p>势能变化量为 <span class="math display">\[
+\begin{aligned}
+\Phi_i-\Phi_{i-1}=&amp;\varphi_i(x)+\varphi_i(y)+\varphi_i(z)\\
+&amp;-\varphi_{i-1}(x)-\varphi_{i-1}(y)-\varphi_{i-1}(z)\\
+\leq&amp;\varphi_i(x)-\varphi_{i-1}(x)+\varphi_i(z)-\varphi_{i-1}(y)\\
+\leq&amp;\varphi_i(x)+\varphi_i(z)-2\cdot\varphi_{i-1}(x)
+\end{aligned}
+\]</span> 观察上面的树，不难发现有 <span class="math display">\[
+|x&#39;|\geq|x|+|z&#39;|,
+\]</span> 于是我们可以得到（注意式子与上面不一样） <span class="math display">\[
+\begin{aligned}
+&amp;\varphi_{i-1}(x)+\varphi_{i-1}(z)-2\cdot\varphi_{i}(x)\\
+=&amp;\log\dfrac{|x||z&#39;|}{|x&#39;|^2}=\log\dfrac{|x||z&#39;|}{(|x|+|z&#39;|)^2}\\
+\leq&amp;\log\dfrac{|x||z&#39;|}{2|x||z&#39;|}=\log\dfrac1 2=-1
+\end{aligned}
+\]</span> 于是有 <span class="math display">\[
+\hat c_i=c_i+\Phi_i-\Phi_{i-1}\leq1+3\cdot(\varphi_i(x)-\varphi_{i-1}(x))-1=3\cdot(\varphi_i(x)-\varphi_{i-1}(x)).
+\]</span></p>
+<ol start="2" type="1">
+<li>三点不在同一直线</li>
+</ol>
+<figure>
+<img src="https://s2.loli.net/2022/02/09/IMkL7cqUYjQmBwh.png" alt="Splay_3.png" /><figcaption aria-hidden="true">Splay_3.png</figcaption>
+</figure>
+<figure>
+<img src="https://s2.loli.net/2022/02/09/YebLyF3oD6C7ITl.png" alt="Splay_4.png" /><figcaption aria-hidden="true">Splay_4.png</figcaption>
+</figure>
+<p>势能变化量为 <span class="math display">\[
+\begin{aligned}
+\Phi_i-\Phi_{i-1}=&amp;\varphi_i(x)+\varphi_i(y)+\varphi_i(z)\\
+&amp;-\varphi_{i-1}(x)-\varphi_{i-1}(y)-\varphi_{i-1}(z)\\
+=&amp;\varphi_i(y)+\varphi_{i}(z)-\varphi_{i-1}(x)-\varphi_{i-1}(y)\\
+\end{aligned}
+\]</span> 观察上图，我们可以得到 <span class="math display">\[
+|y&#39;|+|z&#39;|\leq|x&#39;|
+\]</span> 同理可得 <span class="math display">\[
+\varphi_i(y)+\varphi_i(z)-2\cdot\varphi_{i}(x)\leq-1
+\]</span> 于是有 <span class="math display">\[
+\begin{aligned}
+\hat c_i=&amp;c_i+\Phi_i-\Phi_{i-1}\\
+\leq&amp;\varphi_i(y)+\varphi_{i}(z)-\varphi_{i-1}(x)-\varphi_{i-1}(y)\\
+&amp;-(\varphi_i(y)+\varphi_i(z)-2\cdot\varphi_{i}(x))\\
+=&amp;2\cdot \varphi_i(x)-\varphi_{i-1}(x)-\varphi_{i-1}(y)\\
+\leq&amp;2\cdot(\varphi_i(x)-\varphi_{i-1}(x))
+\end{aligned}
+\]</span></p>
+<ol start="3" type="1">
+<li>单次旋转到根</li>
+</ol>
+<p><span class="math display">\[
+\hat c_i=c_i+\Phi_i-\Phi_{i-1}=1+\varphi_i(x)-\varphi_{i-1}(x)
+\]</span></p>
+<p>综上，1. 2. 两种情况的摊还代价就是 <span class="math inline">\(O(\varphi_i(x)-\varphi_{i-1}(x))\)</span>，3. 的摊还代价是 <span class="math inline">\(O(1+\varphi_i(x)-\varphi_{i-1}(x))\)</span>，一次 splay 操作就是若干次 1. 2. 与至多一次 3. 的结合，于是单次 spaly 操作的总摊还代价应当是 <span class="math inline">\(O(1+\varphi_{k}(x)-\varphi_0(x))\leq O(1+\log n)=O(\log n)\)</span>.</p>
+<p>由于其他操作都基于 splay 操作，额外消耗的仅是常数复杂度，可以直接在势函数中用常数平衡，于是一棵 Splay 的各种操作的时间复杂度都可以看作 <span class="math inline">\(O(\log n)\)</span>，将文章开始定义中的式子稍作变形可以得到 <span class="math display">\[
+\sum\limits_{i=1}^nc_i=\sum\limits_{i=1}^n\hat c_i+\Phi(D_0)-\Phi(D_n)
+\]</span> 根据上面的分析，<span class="math inline">\(m\)</span> 次操作的总摊还复杂度为 <span class="math display">\[
+\sum\limits_{i=1}^n\hat c_i=O(m\log n)
+\]</span> 根据这里势函数的定义，有 <span class="math display">\[
+-n\log n\leq \Phi(D_0)-\Phi(D_m)\leq n\log n
+\]</span> 于是有 <span class="math display">\[
+\begin{aligned}
+\sum\limits_{i=1}^nc_i=&amp;\sum\limits_{i=1}^n\hat c_i+\Phi(D_0)-\Phi(D_m)\\
+\leq&amp;O(m\log n) +n\log n\\
+=&amp;O((m+n)\log n)
+\end{aligned}
+\]</span></p>
+<h3 id="lctlink-cut-tree的时间复杂度分析">LCT(Link-Cut Tree)的时间复杂度分析</h3>
+<p><del>咕咕咕</del></p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li>[1] 算法导论</li>
+<li>[2] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Go7338395/p/14771217.html">势能分析 - Achtoria</a></li>
+<li>[3] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/klauralee/p/10926342.html">势能分析（splay分析）- KLLstudio</a></li>
+<li>[4] <a target="_blank" rel="noopener" href="http://ljt12138.github.io/2019/08/05/potential_analysis/">势能分析法 - ljt12138</a></li>
+<li>[5] <a target="_blank" rel="noopener" href="https://www.cnblogs.com/Mr-Spade/p/9715203.html">伸展树（Splay）复杂度证明 - Mr_Spade</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" rel="tag"># 时间复杂度</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/24/LCT/" rel="prev" title="「数据结构」Link-Cut Tree(LCT)">
+                  <i class="fa fa-chevron-left"></i> 「数据结构」Link-Cut Tree(LCT)
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dfkuaid</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"github_id":"Dfkuaid","repo":"commit_for_blogs","client_id":"a60e970d81232433980f","client_secret":"08e596627e7cbff9b465ca374e3201366cfbc4ab","admin_user":"Dfkuaid","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","pagerDirection":"first","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a2bd105ef1900a2f8f27763533468834"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
