@@ -101,7 +101,7 @@ t&lt;\frac{\alpha_ip_i+1}{p_i^{\alpha_i}}
 <p>继续观察暴力所得的数据，注意到，似乎质数都存在一种构造方式，使得前缀积满足 <span class="math inline">\(mul_i\equiv i(\bmod n).\)</span></p>
 <p>即满足 <span class="math display">\[
 mul_i\cdot a_{i+1}\equiv mul_{i+1}(\bmod n),
-\]</span> 换句话讲，如果我们将所求数列扩展到 <span class="math inline">\(\mathbb R\)</span>，那么构造的数列可以是 <span class="math inline">\(1,\frac 2 1,\frac 3 2,\dots,\frac n{n-1}\)</span>，那么，如果我们将上面的实数数列依次取逆元，那么就可以得到一个整数数列，下面证明这个证书数列两两不相同。</p>
+\]</span> 换句话讲，如果我们将所求数列扩展到 <span class="math inline">\(\mathbb R\)</span>，那么构造的数列可以是 <span class="math inline">\(1,\frac 2 1,\frac 3 2,\dots,\frac n{n-1}\)</span>，那么，如果我们将上面的实数数列依次取逆元，那么就可以得到一个整数数列，下面证明这个整数数列两两不相同。</p>
 <p>证明：</p>
 <p>设存在 <span class="math inline">\(a_x=a_y=k(x&lt;y)\)</span>，根据该数列性质，有 <span class="math display">\[
 \begin{aligned}
