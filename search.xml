@@ -19,18 +19,43 @@
   <entry>
     <title>基础构造题题单</title>
     <url>/2022/03/09/%E5%9F%BA%E7%A1%80%E6%9E%84%E9%80%A0%E9%A2%98%E9%A2%98%E5%8D%95/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="唔，暗号错了！你不是自己人 OnO" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="7104908305410ef3ba46d5aab63c3b6e5225129f6a0bcd92953552ff5f98820d">b6d1e56d81a230ce2763e9fd702bab90bb6a3732557f49b5ce5731e4e55b2f57</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">嘿，请说出接头暗号 OvO</span>
-      </label>
-    </div>
-  </div>
+    <content><![CDATA[<h2 id="accepted-atcoder_hitachi2020_c-three">[Accepted] ATcoder_hitachi2020_c ThREE</h2>
+<blockquote>
+<p><strong>考虑何时不合法</strong></p>
+</blockquote>
+<p>考虑什么时候构造出的方案不合法：存在距离为三的点模 <span class="math inline">\(3\)</span> 得到的结果都为 <span class="math inline">\(1\)</span> 或都为 <span class="math inline">\(2\)</span>。于是我们考虑怎么安排使得模三都为 <span class="math inline">\(1\)</span> 的点两两之间没有距离为 <span class="math inline">\(3\)</span> 的，模三都为 <span class="math inline">\(2\)</span> 的点两两之间没有距离为 <span class="math inline">\(3\)</span> 的。</p>
+<p>于是考虑先将原树黑白染色，然后按照如下的方法进行构造：</p>
+<ul>
+<li>如果黑点的数量大于 <span class="math inline">\(\left\lfloor\frac n 3\right\rfloor\)</span> 个且白点的数量大于 <span class="math inline">\(\left\lfloor\frac n 3\right\rfloor\)</span> 个，那么可以直接将所有模 <span class="math inline">\(3\)</span> 同余 <span class="math inline">\(1\)</span> 的数填到黑点上，所有同余 <span class="math inline">\(2\)</span> 的数填到白点上，剩下的点都用同余 <span class="math inline">\(0\)</span> 的数填上，这样显然所有同余 <span class="math inline">\(1\)</span> 或所有同余 <span class="math inline">\(2\)</span> 的数两两之间的距离都是偶数，不可能出现距离为 <span class="math inline">\(3\)</span>.</li>
+<li>若白点的数量小于 <span class="math inline">\(\left\lfloor\frac n 3\right\rfloor\)</span> 个，那么显然有黑点的数量大于等于 <span class="math inline">\(2\left\lfloor\frac n 3\right\rfloor\)</span>，于是我们可以直接让所有的模 <span class="math inline">\(3\)</span> 同余 <span class="math inline">\(1\)</span> 的数与同余 <span class="math inline">\(2\)</span> 的数都填到黑点上，剩下的点都用同余 <span class="math inline">\(0\)</span> 的数补齐。</li>
+<li>若黑点的数量小于 <span class="math inline">\(\left\lfloor\frac n 3\right\rfloor\)</span> 个，与上一种情况基本一致。</li>
+</ul>
+<h2 id="accepted-cf1283f-diy-garland">[Accepted] CF1283F DIY Garland</h2>
+<p>首先不难发现，给出的数列的第一个数一定是树的根。其次，给定的数列已经给出了原树中每一个点的儿子数，于是可以统计出哪些是叶子，然后考虑如何满足给定的边的大小的要求：可以从最小的边开始，将当前已经确定完子树的点中子树价值最小的与该点相连，得到一条边，如果一个点的儿子已经完全确定，那么就把他放到候选的序列中，「候选的序列」可以直接用 <code>priority_queue</code> 解决。显然这样构造一定可以满足要求的边权值大小顺序。</p>
+<h2 id="acceptedpoi2011liz-lollipop">[Accepted]「POI2011」LIZ-Lollipop</h2>
+<div style="width=10px;line_height: 1px;">
+<a href=https://dfkuaid.github.io/2022/03/01/Luogu3514/ style="text-decoration:none;"> <font face="黑体" size=6> <b>「题解」Luogu3514 [POI2011]LIZ-Lollipop</b> </font> <font face="黑体" size=2> <br>  发表于 2022-03-01 Dfkuaid<br> </font> <font face="黑体" size=6> </font> <font face="FangSong" size=4> 摘要： Luogu3514 [POI2011]LIZ-Lollipop 题解 <br> </font>
+<p align="right">
+<font face="黑体" size=4> 阅读全文   <br> <u>   &gt;&gt;   </u>   <br> </font>
+</p>
+<p></a></p>
 </div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+<hr />
+<h2 id="accepted-luogu3599-koishi-loves-construction">[Accepted] Luogu3599 Koishi Loves Construction</h2>
+<div style="width=10px;line_height: 1px;">
+<a href=https://dfkuaid.github.io/2022/03/06/Luogu3599/ style="text-decoration:none;"> <font face="黑体" size=6> <b>「题解」Luogu3599 Koishi Loves Construction</b> </font> <font face="黑体" size=2> <br>  发表于 2022-03-06 Dfkuaid<br> </font> <font face="黑体" size=6> </font> <font face="FangSong" size=4> 摘要： Luogu3599 Koishi Loves Construction 题解 <br> </font>
+<p align="right">
+<font face="黑体" size=4> 阅读全文   <br> <u>   &gt;&gt;   </u>   <br> </font>
+</p>
+<p></a></p>
+</div>
+<hr />
+<h2 id="accepted-cf1311e-construct-the-binary-tree">[Accepted] CF1311E Construct the Binary Tree</h2>
+<blockquote>
+<p><strong>最值分析</strong></p>
+</blockquote>
+<p>咕咕咕</p>
+]]></content>
       <categories>
         <category>题单</category>
       </categories>
