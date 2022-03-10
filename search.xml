@@ -31,8 +31,12 @@
   </div>
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>题单</category>
+      </categories>
       <tags>
-        <tag>题单</tag>
+        <tag>思维</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
