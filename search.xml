@@ -54,7 +54,9 @@
 <blockquote>
 <p><strong>最值分析</strong></p>
 </blockquote>
-<p>咕咕咕</p>
+<p>首先题目要求我们判断给出的数能否被构造，于是我们考虑找到一个节点数能构造的数的范围，即最大值与最小值。首先，比较显然的是最大值一定是一条链，而最小值一定是一棵完全二叉树。</p>
+<p>找到了最值，接下来就考虑如何构造范围内的每一个值。</p>
+<p>我们考虑从一棵完全二叉树逐渐向链进行过渡，于是不妨先建出一棵基础的完全二叉树：令 <span class="math inline">\(x\)</span> 的父节点为 <span class="math inline">\(\left\lfloor\frac n 2\right\rfloor\)</span>。然后选择一条最长的链，可以直接选择 <span class="math inline">\(1,2,2^2,2^3,\dots,2^t\)</span>，之后从大到小枚举每一个节点，显然我们将一个节点 <span class="math inline">\(x\)</span> 链到当前链底 <span class="math inline">\(y\)</span> 下面，可以使答案增大 <span class="math inline">\(d_y-d_x+1\)</span>（<span class="math inline">\(d_x\)</span> 表示 <span class="math inline">\(x\)</span> 的深度），假设当前剩余要补足的数 <span class="math inline">\(rest\)</span> 小于 <span class="math inline">\(d_y-d_x+1\)</span>，那么我们可以直接将这个节点挂在 <span class="math inline">\(y\)</span> 向上 <span class="math inline">\(|rest-(d_y-d_x+1)|\)</span> 层下，显然被挂的节点一定在链上，且仅有一个儿子，此时一定可以满足要求，时间复杂度为 <span class="math inline">\(O(n)\)</span>.</p>
 ]]></content>
       <categories>
         <category>题单</category>
