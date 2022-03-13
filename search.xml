@@ -69,12 +69,15 @@
 <p>首先题目要求我们判断给出的数能否被构造，于是我们考虑找到一个节点数能构造的数的范围，即最大值与最小值。首先，比较显然的是最大值一定是一条链，而最小值一定是一棵完全二叉树。</p>
 <p>找到了最值，接下来就考虑如何构造范围内的每一个值。</p>
 <p>我们考虑从一棵完全二叉树逐渐向链进行过渡，于是不妨先建出一棵基础的完全二叉树：令 <span class="math inline">\(x\)</span> 的父节点为 <span class="math inline">\(\left\lfloor\frac n 2\right\rfloor\)</span>。然后选择一条最长的链，可以直接选择 <span class="math inline">\(1,2,2^2,2^3,\dots,2^t\)</span>，之后从大到小枚举每一个节点，显然我们将一个节点 <span class="math inline">\(x\)</span> 链到当前链底 <span class="math inline">\(y\)</span> 下面，可以使答案增大 <span class="math inline">\(d_y-d_x+1\)</span>（<span class="math inline">\(d_x\)</span> 表示 <span class="math inline">\(x\)</span> 的深度），假设当前剩余要补足的数 <span class="math inline">\(rest\)</span> 小于 <span class="math inline">\(d_y-d_x+1\)</span>，那么我们可以直接将这个节点挂在 <span class="math inline">\(y\)</span> 向上 <span class="math inline">\(|rest-(d_y-d_x+1)|\)</span> 层下，显然被挂的节点一定在链上，且仅有一个儿子，此时一定可以满足要求，时间复杂度为 <span class="math inline">\(O(n)\)</span>.</p>
-<h2 id="arc103---distance-sums">ARC103 - Distance Sums</h2>
+<h2 id="accepted-arc103---distance-sums">[Accepted] ARC103 - Distance Sums</h2>
 <blockquote>
 <p><a href="https://atcoder.jp/contests/arc103/tasks/arc103_d">题目链接</a> | 明明就是 D 题却偏偏要标 F 的屑</p>
 </blockquote>
-<p>首先，不难注意到，给出的距离中的最小者一定是树的重心。</p>
-<p>咕咕咕</p>
+<p>首先，不难注意到，给出的距离中的最小者一定是树的重心，最大者一定是树的某一个叶子。</p>
+<p>同时，我们注意到，当选定此树的一个根之后，我们就可以由一个节点 <span class="math inline">\(u\)</span> 的 <span class="math inline">\(d\)</span> 推出他父亲 <span class="math inline">\(v\)</span> 的 <span class="math inline">\(d\)</span>： <span class="math display">\[
+d_v=d_u+size_u-(n-size_u)=d_u+2\cdot size_u-n,
+\]</span> 从上式不难看出，一个节点的父亲的 <span class="math inline">\(d\)</span> 一定小于该节点，同样，根据上面这个式子，假如我们已经知道了一个节点的 <span class="math inline">\(size\)</span>，我们一定可以推出其父亲的 <span class="math inline">\(d\)</span>，由于题目规定了 <span class="math inline">\(i\)</span> 与 <span class="math inline">\(d_i\)</span> 一一对应，于是我们可以尝试对此进行二分查找，假如不存在查询的 <span class="math inline">\(d\)</span>，那么显然不存在可行构造。这样，找到 <span class="math inline">\(x\)</span> 的父亲之后，就可以更新其父亲的 <span class="math inline">\(size\)</span>，逐步构建出整棵树。</p>
+<p>在上面的过程中，我们只是得到了每一个节点到其父节点变化的 <span class="math inline">\(\Delta d\)</span>，并不知道构造出的树的节点的距离和是否满足要求，那么我们需要进行检查，同样根据递推式，只需要一个点满足，那么整棵树都满足。不妨直接选择重心，构建出的树到重心的距离和显然就是各子树大小的和。</p>
 ]]></content>
       <categories>
         <category>题单</category>
