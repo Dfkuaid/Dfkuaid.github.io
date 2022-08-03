@@ -119,6 +119,22 @@
 <p>一般为<strong>静息状态</strong>，负责吞噬死亡的细胞尸体，仅有少量 MHC Ⅱ 型分子。</p>
 <p>受到细胞因子（如由 Th 细胞或 NK 细胞分泌的 <span class="math inline">\(\gamma\)</span> 干扰素（IFN-<span class="math inline">\(\gamma\)</span>））刺激后进入<strong>致敏状态</strong>，对病原体有较好的杀伤性，MHC Ⅱ 型分子表达上升，可发挥 APCs 的作用。</p>
 <p>直接从入侵者处接受信息可进入<strong>超活化</strong>状态，如脂多糖分子（LPS）或甘露糖。此时细胞体积增大，停止增殖，吞噬能力增强，可分泌<strong>肿瘤坏死因子（TNF）</strong>，TNF 可杀灭被病毒感染的细胞或癌细胞，也可激活其他免疫系统细胞。溶酶体数量增加，活性氧分子（过氧化物）增加。</p>
+<h4 id="中性粒细胞">中性粒细胞</h4>
+<p>寿命仅有 5 天左右，程序性死亡（凋亡），不是 APCs</p>
+<p>被激活的巨噬细胞会释放出<strong>白细胞介素（IL-1）</strong>和 TNF，血管内皮细胞接受后，会合成<strong>选凝素（SEL）</strong>，可以与中性粒细胞表面<strong>选凝素配体（SLIG）</strong>结合，使其减速，C5a 或 LPS 可使中性粒细胞合成<strong>整合素（INT）</strong>，INT 与血管内表皮细胞表面的<strong>细胞间黏附分子（ICAM）</strong>结合停止漂流，在化学趋化因子（C5a 或 f-Met 肽）的影响下，可以进入组织。</p>
+<p>f-Met 为甲酰甲硫氨基酸，是细菌蛋白的特别启动子氨基酸，巨噬细胞吞噬细菌后会释放 f-Met 肽。</p>
+<p>SEL-SLIG、INT-ICAM 都有不同的家族，但只有相对应的两种可以相互结合。于是可以保证正确的免疫细胞在正确的位置脱离血液。</p>
+<h4 id="自然杀伤细胞nk-细胞">自然杀伤细胞（NK 细胞）</h4>
+<p>淋巴细胞，存活时间较短，平常大部分存在于血液、脾和肝。</p>
+<p>两个重要角色：</p>
+<ul>
+<li>收到攻击信号后释放帮助防御的细胞因子</li>
+<li>通过诱导自杀摧毁肿瘤细胞、病毒感染细胞、细菌、寄生虫和真菌。</li>
+</ul>
+<p>通过穿孔蛋白将“自杀”酶如颗粒酶 B 转运到靶细胞内部，通过表面 Fas 配体与靶细胞表面 Fas 蛋白结合诱导凋亡。</p>
+<p>细胞表面 MHC Ⅰ 抑制 NK 细胞杀伤，靶细胞特异表面分子与其表面受体结合传递杀伤信号，是否杀伤取决于两者信号比例。</p>
+<p>NK 细胞处于静息状态有一定杀伤能力，可以产生一定细胞因子，可以被特异性分子如 LPS，INF-<span class="math inline">\(\alpha\)</span>，INF-<span class="math inline">\(\beta\)</span> 激活，后两者仅当细胞被特定病毒感染后释放。</p>
+<p>释放的 INF-<span class="math inline">\(\gamma\)</span> 可以致敏巨噬细胞，超活化的巨噬细胞可释放 TNF 和 IL-12，促进 NK 细胞产生 INF-<span class="math inline">\(\gamma\)</span>。同时 NK 细胞可分泌名为 IL-2 的生长因子，在收到 TNF 刺激后，NK 细胞表面 IL-2 受体数量增多，迅速增殖。</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
