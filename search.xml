@@ -4278,11 +4278,11 @@ f_i=\dfrac{f_j\cdot R_j}{R_j\cdot a_j+b_j}\cdot a_i+\dfrac{f_j}{R_j\cdot a_j+b_j
       </tags>
   </entry>
   <entry>
-    <title>⌈读书笔记⌋免疫学概览</title>
-    <url>/2022/08/03/overview-of-Immunology/</url>
+    <title>⌈读书笔记⌋How the Immune System Works</title>
+    <url>/2022/08/03/How-the-Immune-System-Works/</url>
     <content><![CDATA[<h2 id="chapter-0.-屑在前面">Chapter 0. 屑在前面</h2>
 <p>在颓废时读的一些书，简单做下笔记。</p>
-<p>开始时读的是《免疫学概览（第四版）》，感觉翻译质量不高，后来找到了原书第六版进行阅读。</p>
+<p>开始时读的是《免疫学概览（第四版）》，感觉翻译质量不高，后来找到了原书（<em>How the Immune System Works</em>）第六版进行阅读。</p>
 <h2 id="chapter-1.-概述">Chapter 1. 概述</h2>
 <p>整个免疫系统是一个包含很多成员的“集团”，而且这些成员间还存在相互作用。在研究其中任意一个成员时，须关注整体。</p>
 <h3 id="固有免疫系统">固有免疫系统</h3>
@@ -4365,6 +4365,9 @@ f_i=\dfrac{f_j\cdot R_j}{R_j\cdot a_j+b_j}\cdot a_i+\dfrac{f_j}{R_j\cdot a_j+b_j
 <h4 id="凝集素激活">凝集素激活</h4>
 <p><strong>甘露糖结合凝集素（MBL）</strong>，主要在肝中合成，血液、组织中浓度一般。</p>
 <p>甘露糖常见于酵母菌、病毒、许多细菌、寄生虫表面，MBL 可与其结合，在血液中，MBL 亦可结合一种称为 <strong>MBL 相关丝氨酸蛋白酶</strong>的蛋白质。在与目标结合后促进 C3 分解形成 C3b，进行补体级联反应。</p>
+<h3 id="抗体依赖型激活">抗体依赖型激活</h3>
+<p>血液中许多补体蛋白结合形成 C1 大分子，C1 本身与抑制剂相结合，不能激活补体级联反应，但当多个 C1 聚集，抑制剂会脱落，从而可以产生 C3 转换酶，促进 C3 转变为 C3b，进行补体级联反应。</p>
+<p>抗体 Fab 区与抗原结合后，C1 可以与 Fc 区结合，多个 C1 聚集可发生上述反应。</p>
 <h4 id="补体其他功能">补体其他功能</h4>
 <p><strong>修饰入侵者表面</strong>：C3b 在表面可以被血清素分解成 iC3b，对产生 MAC 不具有活性，但可使目标易被捕获，帮助吞噬细胞吞噬。</p>
 <p><strong>片段能充当化学趋化剂</strong>（把免疫系统其他成员吸引到战场）：C3、C5 分解产生的 C3a 和 C5a 游离在血液中可激活巨噬细胞和中性粒细胞，被称为<strong>过敏毒素</strong>。</p>
@@ -4398,6 +4401,16 @@ f_i=\dfrac{f_j\cdot R_j}{R_j\cdot a_j+b_j}\cdot a_i+\dfrac{f_j}{R_j\cdot a_j+b_j
 <p>通过穿孔蛋白将“自杀”酶如颗粒酶 B 转运到靶细胞内部，通过表面 Fas 配体与靶细胞表面 Fas 蛋白结合诱导凋亡。</p>
 <p>细胞表面 MHC Ⅰ 传递抑制 NK 细胞杀伤信号，靶细胞特异表面分子与其表面受体结合传递杀伤信号，是否杀伤取决于两者信号比例。</p>
 <p>NK 细胞处于静息状态有一定杀伤能力，可以产生一定细胞因子，可以被特异性分子如 LPS，IFN-<span class="math inline">\(\alpha\)</span>，IFN-<span class="math inline">\(\beta\)</span> 激活，后两者仅当细胞被特定病毒感染后释放。</p>
+<h3 id="干扰素系统">干扰素系统</h3>
+<p>当<strong>模式识别受体（PRR）</strong>检测到病毒攻击，细胞会分泌“警告蛋白” IFN-α 和 IFN-β，可以干扰病毒繁衍。</p>
+<p>IFN-α 和 IFN-β 称为 Ⅰ 类干扰素，与 Ⅱ 类干扰素如 INF-γ 区分。</p>
+<p>多数细胞可分泌 Ⅰ 类干扰素且在表面具有相应受体，当受到病毒攻击，释放干扰素，</p>
+<ul>
+<li><p>与自身抗体结合，可促进细胞内抗病毒分子的合成；</p></li>
+<li><p>与周围细胞表面受体结合，促进抗病毒基因表达，做好凋亡准备；</p></li>
+</ul>
+<p>当周围细胞接受到信号，如果接下来遭到病毒攻击，会立即凋亡，否则会正常进行生命活动，</p>
+<p><strong>浆细胞树突状细胞（pDC）</strong>可用模式识别受体 TLR7 和 TLR9 识别病毒 RNA 和 DNA，任意一个识别后，会用细胞内一半以上的蛋白制造能力制造干扰素，因而在病毒早期感染的固有免疫系统的防御中起重要作用。</p>
 <h3 id="协同">协同</h3>
 <p>NK 细胞释放的 IFN-<span class="math inline">\(\gamma\)</span> 可以致敏巨噬细胞，超活化的巨噬细胞可释放 TNF 和 IL-12，促进 NK 细胞产生 IFN-<span class="math inline">\(\gamma\)</span>。同时 NK 细胞可分泌名为 IL-2 的生长因子，在收到 TNF 刺激后，NK 细胞表面 IL-2 受体数量增多，迅速增殖。</p>
 <p>被 C3b 修饰的病原体，与巨噬细胞表面 C3b 结合后可产生与 LPS 类似效果，激活的巨噬细胞可以制造 C3、B、D 等补体蛋白。</p>
@@ -4436,6 +4449,196 @@ f_i=\dfrac{f_j\cdot R_j}{R_j\cdot a_j+b_j}\cdot a_i+\dfrac{f_j}{R_j\cdot a_j+b_j
 <p><strong>分裂素激活（多克隆激活）</strong>：</p>
 <p>抗原（这里称作分裂素）与 B 细胞表面分子（非 BRCs）大量结合，与这些分子相连的 BRCs 可发生交联，使 B 细胞被激活。</p>
 <p>一些寄生虫会利用表面特殊结构使 B 细胞错误激活，迷惑免疫系统。</p>
+<h3 id="抗体类型">抗体类型</h3>
+<p><strong>抗体类型和功能是由其恒定区决定的。</strong></p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/L79QSMeR8OsNBCr.png" alt="table.png" /><figcaption aria-hidden="true">table.png</figcaption>
+</figure>
+<h4 id="igg-抗体">IgG 抗体</h4>
+<p>IgG 抗体（γ-球蛋白）的主要形态：</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/r6PtoAmLfwk3vYj.png" alt="IgG.png" /><figcaption aria-hidden="true">IgG.png</figcaption>
+</figure>
+<p>IgG 抗体有许多不同的亚型，其 Fc 区有细微不同，因而功能有所不同。</p>
+<p>IgG1 擅长结合和调理入侵者，Mφ 和中性粒细胞表面有 IgG1 的 Fc 区域受体。</p>
+<p>IgG3 易于与补体结合。NK 细胞表面有 IgG3 Fc 区域受体，可以使 NK 细胞接近目标，且加强 NK 细胞的杀伤能力，这一过程称为“<strong>抗体依赖的细胞毒性</strong>”（ADCC），由抗体识别目标，NK 细胞执行杀伤。</p>
+<p>IgG 抗体中寿命最长，可经由血液由母体进入胎儿体内提供保护，是<em>血液</em>中含量最丰富的抗体。</p>
+<h4 id="igm-抗体">IgM 抗体</h4>
+<p>IgM 是 B 细胞主要的默认抗体类型（少量为 IgD，不清楚免疫作用），如同 5 个 IgG 抗体拼接：</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/WEX36rTgv8InyQL.png" alt="IgM.png" /><figcaption aria-hidden="true">IgM.png</figcaption>
+</figure>
+<p>可以同时有多个 C1 补体分子与 IgM 结合，于是可进行补体级联反应。</p>
+<h4 id="iga-抗体">IgA 抗体</h4>
+<p>IgA 抗体是人体中含量最丰富的抗体，主要用于保护人体的粘膜。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/AeZI3Y6OKVfurSp.png" alt="IgA.png" /><figcaption aria-hidden="true">IgA.png</figcaption>
+</figure>
+<p>尾部结构有助于 IgA 抗体将病原体穿过粘膜上皮细胞运出体外，同时使 IgA 抗体在酸、酶条件下耐用。</p>
+<p>IgA 抗体可以很容易将病原体聚成大的簇，然后通过粘液的方式排出体外。</p>
+<p>IgA 抗体不具有固定补体的能力，主要作为被动抗体。</p>
+<p>富含于母乳中，可覆盖婴儿肠胃粘膜起保护作用。</p>
+<h4 id="ige-抗体">IgE 抗体</h4>
+<p>IgE 抗体与过敏反应相关。</p>
+<p>肥大细胞（Mast Cell）可以吞噬病原体，可释放细胞因子吸引巨噬细胞、中性粒细胞等，遇到寄生虫时，可发生<strong>脱颗粒</strong>，其“颗粒”含有大量化学活性物质如组胺，可杀死寄生虫。</p>
+<p>IgE 可与肥大细胞表面 IgE 受体结合，特异性的 IgE 与特定寄生虫表面抗原大量结合，使肥大细胞表面 IgE 受体发生交联，引发肥大细胞脱颗粒，从而精准杀灭寄生虫。IgE 抗体可以与嗜酸性粒细胞、嗜碱性粒细胞结合发挥引导杀灭寄生虫作用。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/gQUNSKBXt785JjG.png" alt="IgE.png" /><figcaption aria-hidden="true">IgE.png</figcaption>
+</figure>
+<p>IgE 抗体可使相关细胞仅针对寄生虫起作用，而对自身组织副作用较小。</p>
+<h3 id="类型转换">类型转换</h3>
+<p>多数 B 细胞的初始默认抗体类型为 IgM（少量为 IgD，不清楚相关免疫作用）。</p>
+<p>当需要转换时（收到 Th 细胞释放的相关细胞因子），B 细胞将改变其编码固有区的 DNA，剪去 IgM 的恒定区，粘贴一份对应的恒定区基因。</p>
+<p>编码 IgM 和 IgD 的 Fc 区 mRNA 相同，但产生的抗体类型不同，原因不明。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/VrIfRzMiNhT6xcg.png" alt="example.png" /><figcaption aria-hidden="true">example.png</figcaption>
+</figure>
+<p>上图 B 细胞由 IgM 转换为 IgG.</p>
+<div class="note warning"><p>B 细胞的类型转换是否仅发生一次？</p>
+</div>
+<p>通过类型转换，可以使 B 细胞产生应对不同类型病原体的特定类型抗体，产生更好的防御效果。</p>
+<h3 id="体细胞高突变">体细胞高突变</h3>
+<p>正常细胞基因突变几率较小，在一个细胞周期中每一亿个碱基中仅有一个碱基发生突变，在 B 细胞包含 V、D、J 基因的部分，突变发生率大大提高，大概每 1000 个碱基就有一个发生突变，被称为<strong>体细胞高突变</strong>，发生在 V、D、J 基因选择及类型转换完毕后。</p>
+<p>突变后的 B 细胞会进行选择，具有与特定抗原更强的亲和力的 B 细胞会被保留并有机会与 Th 细胞进行共刺激以激活。亲和力差的会被诱导细胞凋亡。因此通过体细胞高突变可以使对于特定抗原的 B 细胞的 BCRs 和抗体得到升级，将会有更高的亲和力。整个过程被称为<strong>亲和力成熟</strong>。</p>
+<h3 id="职业选择">职业选择</h3>
+<p>B 细胞最后需选择成为<strong>记忆 B 细胞</strong>或<strong>浆细胞</strong>，选择机制不明确。</p>
+<p>没有 Th 细胞参与激活的 B 细胞无法成为记忆 B 细胞，因而 CD40L 与 CD40 共受体蛋白在成为记忆 B 细胞过程中有重要作用。</p>
+<h2 id="chapter-4.-抗原呈递">Chapter 4. 抗原呈递</h2>
+<h3 id="mhc-ⅰ-分子">MHC Ⅰ 分子</h3>
+<h4 id="结构">结构</h4>
+<p>MHC Ⅰ 分子结合槽两端封闭，呈递的肽链必须与适合结合槽，多数为 8 到 9 个氨基酸长，两端固定在 MHC Ⅰ 分子上，中间可因适应长度而微凸。</p>
+<p>每个人的每条 6 号染色体上有三个 MHC Ⅰ 相关基因（HLA-A, HLA-B, HLA-C），总共有 6 个。</p>
+<p>每个 HLA Ⅰ 蛋白与 β2 微球蛋白配对来组成完整的 MHC Ⅰ 分子。</p>
+<p>（<strong>多样性</strong>）人类总共有约 1500 种不同的基因编码这三种 HLA Ⅰ 分子，而编码 β2 微球蛋白的基因仅有一种。</p>
+<p>HLA-A, HLA-B, HLA-C 分子的不同变体之间仅有几个氨基酸不同。</p>
+<div class="note info"><p>每个人的细胞里有 6 种不同的编码 HLA Ⅰ 蛋白的基因，因而可以组成 6 种不同的 MHC Ⅰ 蛋白，每种编码 HLA Ⅰ 蛋白的基因具有多样性。</p>
+</div>
+<p>每种 MHC Ⅰ 分子对呈递肽链末端氨基酸有特定的要求，对肽链中部氨基酸无要求。</p>
+<p>每个细胞可产生 6 种不同的 MHC Ⅰ 分子，可扩大呈递抗原的广泛性。</p>
+<p>每种 MHC Ⅰ 分子可呈递大量不同的满足与其结合槽两端特定氨基酸“合适”的抗原。</p>
+<h4 id="呈递">呈递</h4>
+<p>MHC Ⅰ 呈递细胞<strong>内源性蛋白</strong>，将所有在细胞内合成的蛋白展示在细胞表面。</p>
+<p>每个正常人的一般体细胞表面约有 100,000 个 MHC Ⅰ 分子，仅在细胞表面保留约一天后会被新的 MHC Ⅰ 分子替换，因而保证展示的内源性蛋白都为当前合成的。</p>
+<p>CTLs 可通过表面 TCRs 及 CD8 共受体与 MHC Ⅰ 结合以判断靶细胞是否被病原体感染或癌变。</p>
+<p>细胞内合成的因错误而无法正确折叠的蛋白质或正常剪切过程中损耗的蛋白质会被细胞质内蛋白酶体随机切成肽链，大部分肽链会被进一步裂解为氨基酸，少量肽链会被特定的转运蛋白（TAP1 和 TAP2）运输到内质网（ER）内，TAP1 和 TAP2 更倾向于与长度为 8-16 个氨基酸、有正确的C 端的肽链结合。</p>
+<p>转运到 ER 中后，肽链被 MHC Ⅰ 分子选择，然后经高尔基体运输到细胞表面。</p>
+<p>所有的展示在细胞表面的蛋白都是新合成的，保证免疫系统能对感染快速反应。</p>
+<p>在有些细胞中，错误蛋白质的剪切并不是随机进行的。当有 IFN-γ 与巨噬细胞表面受体结合，MΦ 的 LMP2, LMP7, MECL1 蛋白表达量上升，会取代正常蛋白酶体的三个部分，使其更倾向在疏水性氨基酸后裁剪。</p>
+<p>因而在 APCs 中，蛋白酶体可被修改来剪切出特定的肽链，提高抗原呈递的效率。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/dNESlVmxHp2hUCu.png" alt="MHC-i_presentation.png" /><figcaption aria-hidden="true">MHC-i_presentation.png</figcaption>
+</figure>
+<div class="note warning"><p>这样的“错误蛋白质”与本身正常蛋白质不应该存在区别吗？</p>
+<p>由错误合成而不能折叠的蛋白质剪切成的肽链为什么不会被识别为抗原？</p>
+<p>还是说，在训练免疫耐受时，也是用这样“错误的蛋白质”进行的训练？然而错误的产生是随机的，如何保证不会识别免疫耐受提供的肽链的 CTLs 同样不会识别组织细胞提呈的内源性蛋白？</p>
+<div class="note info">
+<p>
+一些猜测：TCRs 识别抗原要求达到一定亲和力才发出激活 CTLs 的抗原信号，而“错误肽链”大部分与正常肽链相同，仅有少数几个乃至没有氨基酸与正常蛋白肽链不同，于是同一 CTL 上的 TCRs 对于这两者的亲和力应当相似，因而如果一 CTL 可以被这些“错误肽链”激活，那么也可以被自身抗原耐受性测试时提供的肽链激活，因而被诱导凋亡。
+</p>
+<p>
+于是遗留下来的 CTLs 都不会被这些提呈的肽链激活。
+</p>
+</div>
+</div>
+<h4 id="逻辑">逻辑</h4>
+<p><strong>为什么不能直接像 B 细胞一样可以被游离的抗原激活？</strong></p>
+<ol type="1">
+<li><p>CTLs 的目标就是感染的细胞，细胞外的病原体 CTLs 无能为力，如果漂浮在血液中的抗原就可以激活 CTLs，这会造成浪费。同时如果有细胞表面有已经死亡的病原体碎片附着，而本身没有被感染，那么可能会被“伤及无辜”。</p></li>
+<li><p>有一些病原体感染细胞后，不会在细胞表面表达出特异性的抗原，如果没有抗原呈递，免疫系统无法发现这些感染细胞的病原体。</p></li>
+<li><p>B 细胞 BCRs 识别同样具有缺陷：大部分抗原是复杂的，可识别的表位可能在抗原内部，因而识别可能存在困难。CTLs 接受抗原提呈都是修剪好的肽链，表位直接暴露。</p></li>
+</ol>
+<p><strong>为什么 MHC Ⅱ 分子要具有多样性？</strong></p>
+<ol type="1">
+<li><p>保证对于一种病毒，所有人类中至少有一部分人的 MHC Ⅰ 分子能够与其肽链结合并呈递。</p></li>
+<li><p>对于个人，六种不同的 MHC Ⅰ 分子使得能够增加抗原呈递成功的概率。</p></li>
+</ol>
+<h3 id="mhc-ⅱ-分子">MHC Ⅱ 分子</h3>
+<h4 id="结构-1">结构</h4>
+<p>由位于 6 号染色体上的 HLA-D 基因编码，总共有约 700 种不同的等位基因。</p>
+<p>MHC Ⅱ 分子结合槽两端开放，一般结合的肽链长度为 13-25 个氨基酸，锚定肽的关键氨基酸沿结合槽间隔排列。</p>
+<h4 id="呈递-1">呈递</h4>
+<p>MHC Ⅱ 分子负责呈递<strong>外源性蛋白</strong>。</p>
+<p>两条蛋白（α 链和 β 链）组成 MHC Ⅱ 分子，被转运到 ER 中与<strong>不动链</strong>结合，作用：</p>
+<ol type="1">
+<li><p>防止 MHC Ⅱ 分子与 ER 中其他肽链结合；</p></li>
+<li><p>引导 MHC Ⅱ 分子穿过高尔基体进入细胞质中称为<strong>内体</strong>的特殊囊泡。</p></li>
+</ol>
+<p>外源性蛋白经吞噬体带入胞内，与内体结合，内体中的酶会将蛋白切割为肽链。不动链除了与 MHC Ⅱ 分子结合槽结合的被称为 <strong>CLIP</strong> 的部分都被切割，MHC Ⅱ 分子不会被切割，猜测是被巧妙折叠导致酶所喜好的剪切点都被藏起。之后蛋白 <strong>HLA-DM</strong> 被运入内体，催化 CLIP 分解，使外源性肽链可以装载到 MHC Ⅱ 分子上，同时竞争性与 MHC Ⅱ 分子结合，保证只有紧密结合的肽才会被展示到细胞表面。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/aRE4WXFfvVzuqwK.png" alt="MHC-ii_presentation.png" /><figcaption aria-hidden="true">MHC-ii_presentation.png</figcaption>
+</figure>
+<h4 id="逻辑-1">逻辑</h4>
+<p><strong>为什么要有 MHC Ⅱ 分子的抗原呈递？</strong></p>
+<ol type="1">
+<li><p>MHC Ⅱ 分子提呈外源性蛋白，保证了不感染细胞的病原体对于 Th 细胞的激活；</p></li>
+<li><p>保证 Th 细胞被激活时确实有安全问题产生，Th 细胞的激活必须经由 APCs 的同意，保证 Th 细胞不会对自身组织细胞发生反应；</p></li>
+<li><p>提呈肽链的方式可以使能识别的抗原数量大大增加，不会因表位折叠在蛋白质中而不被发现。</p></li>
+</ol>
+<h3 id="抗原呈递细胞apcs">抗原呈递细胞（APCs）</h3>
+<p>在 T 细胞激活时，必须要识别出 MHC 分子上提呈的抗原，同时接收到 APCs 提供的共刺激信号。</p>
+<p>APCs 能同时提供足量的 MHC 分子及共刺激信号。</p>
+<p>常见的共刺激信号由 APC 表面的 B7 蛋白插入 T 细胞表面的 CD28 蛋白中发出。</p>
+<h4 id="树突状细胞dcs">树突状细胞（DCs）</h4>
+<p>大量存在于组织中。正常情况下摄取周围内环境中组织液再排出，此时表达一定 B7 及少量 MHC 分子，不擅长提呈抗原。</p>
+<p>会被如 TNF、IFN-α、IFN-β 激活，也可被自身 PRRs 激活。</p>
+<p>激活后大量摄入周围组织液以获取足够抗原，约持续 6h，释放大量细胞因子（趋化因子）使血液中的单核细胞进入组织成为 DCs，之后离开组织，进入附近的淋巴结，寻找能够识别表面抗原的 T 细胞。此时表达大量 MHC Ⅱ 分子和 MHC Ⅰ 分子。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/d9tMz8UW1meVvHD.png" alt="DCs.png" /><figcaption aria-hidden="true">DCs.png</figcaption>
+</figure>
+<p>在开始移动后会停止对抗原的采样，到达淋巴结后最多存活一周，保证提供的抗原信息都是最新的，同时 T 细胞的激活数量取决于激活的 DCs 数量。</p>
+<p>DCs 的真正作用是作为固有免疫系统和调节性免疫系统之间的一座桥。</p>
+<h4 id="激活的-mφ">激活的 MΦ</h4>
+<p>巨噬细胞仅在激活后表达足量 MHC 分子及共刺激蛋白。</p>
+<p>激活后的巨噬细胞参与战斗，在组织内为后续赶到的 T 细胞再次提供抗原刺激和共刺激信号。</p>
+<h4 id="激活的-b-细胞">激活的 B 细胞</h4>
+<p>原初 B 细胞仅表达少量 MHC Ⅱ 分子且不表达 B7 共刺激蛋白。</p>
+<p>当被激活后，表面 MHC Ⅱ 分子和 B7 蛋白表达量上调。</p>
+<p>特点：可针对一种特定抗原进行呈递，在 BCRs 与抗原结合后，BCRs 与抗原会一同被带入细胞内，然后对抗原进行加工，并由 MHC Ⅱ 分子提呈到细胞表面。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/dPjK8DoSu5FRNO3.png" alt="B_Cell_Presentation.png" /><figcaption aria-hidden="true">B_Cell_Presentation.png</figcaption>
+</figure>
+<p>在入侵刚开始时，DCs 是最重要的 APCs；在防御时，MΦ 在前线提供刺激信号；在感染后期或同种病原体的再次感染，有过经验的 B 细胞是及其重要的 APCs.</p>
+<h3 id="交叉呈递">交叉呈递</h3>
+<p>有些 APCs 可以将外源性蛋白通过 MHC Ⅰ 分子呈递给 CTLs.</p>
+<p>意义猜测：如果一种病原体可以不感染 APCs 但可感染人体内其他细胞来繁殖，此时交叉呈递可以使免疫系统有机会激活 CTLs.</p>
+<p>同样，也存在 APCs 可以将内源性蛋白通过 MHC Ⅱ 分子呈递到细胞表面。</p>
+<div class="note info"><p>在 T 细胞自我耐受测试（阴性测试）中胸腺髓质上皮细胞可以通过自噬自身体内细胞器的形式将内源性蛋白通过 HMC Ⅱ 型分子呈递到细胞表面。</p>
+</div>
+<h3 id="非经典-mhc-分子">非经典 MHC 分子</h3>
+<p>CD1 是一种非经典 MHC 分子，同样由一条重链与一个 β 微球蛋白结合而成，可与脂质结合。CD1 分子可以对细胞内不同隔间的脂质取样，并提成到细胞表面来激活 T 细胞。</p>
+<h3 id="器官移植">器官移植</h3>
+<p>CTLs 可识别细胞上的 MHC 分子，若识别为“外来者”会杀死，尤其偏好于移植器官的血管。</p>
+<h2 id="chapter-5.-t-细胞激活">Chapter 5. T 细胞激活</h2>
+<h3 id="tcrs">TCRs</h3>
+<p>TCRs 有两种类型：αβ 型和 γδ 型。每个类型都由两条蛋白质组成，决定蛋白质链的 DNA 通过类似 BCRs 模块随意选择组成，对 T 细胞和 B 细胞相关 DNA 都是由蛋白质 RAG1 和 RAG2 通过再 DNA 中产生双链断裂来启动基因片段的拼接。</p>
+<p>对于<em>大部分</em> T 细胞，一个细胞上的所有 TCRs 是相同的。</p>
+<h4 id="传统-t-细胞">传统 T 细胞</h4>
+<p>超过 95% 的 T 细胞有 αβ TCRs 且表达 CD4/CD8 共受体分子。</p>
+<p>既识别 MHC 提呈的抗原也识别 MHC 分子。</p>
+<p><em>不能</em>像 B 细胞一样进行体细胞高突变来改变 TCRs.</p>
+<h4 id="非传统-t-细胞">非传统 T 细胞</h4>
+<p>拥有 γδ TCRs，一般不表达 CD4/CD8 共受体分子。</p>
+<p>常见于肠道、子宫、舌头等与外界接触的地方，多样性较差。处于不同位置的非传统 T 细胞在重排时倾向于选择特定的组合。识别非呈递抗原，部分受体可识别处在压力下的蛋白（MICA、MICB），推测非传统 T 细胞可能用来杀死在感染下变得“紧张”的细胞。</p>
+<p>在老鼠的皮下发现非传统 T 细胞，但没有在人的皮下发现，提示不能单纯把人看作大号的老鼠。</p>
+<p>另一种非传统 T 细胞为 <strong>NKT 细胞</strong>（Natural Killer T Cells），正常人血液中只有 1% 为该类型。</p>
+<p>在胸腺中发现的 NKT 细胞表达 αβ 受体，且用于识别 CD1 呈递的脂质而非蛋白质。</p>
+<p>具体对于免疫的作用不明。</p>
+<h3 id="t-细胞传导信号">T 细胞传导信号</h3>
+<p>需要两部分：识别抗原的 αβ TCPs，细胞内部传递信息的 CD3 复合蛋白，由四种不同的 γ、δ、ε、ζ 蛋白（此处 γ、δ 蛋白与上面 γδ TCRs 中的蛋白不是同种）。</p>
+<p>CD3 处理信号功能复杂，具体机制未明确。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/Ls7qEegZ2OypJfc.png" alt="TCRs_alphabeta.png" /><figcaption aria-hidden="true">TCRs_alphabeta.png</figcaption>
+</figure>
+<h3 id="cd4-与-cd8-共受体">CD4 与 CD8 共受体</h3>
+<p>T 细胞进入胸腺后，开始时同时表达 CD4 和 CD8 蛋白，被称为 <strong>CD4<sup>+</sup>CD8<sup>+</sup></strong> 或 <strong>double-positive cells(DP cells)</strong>，在通过阳性测试后确定单个表达蛋白，成为 <strong>single-positive cells(SP cells)</strong> CD4<sup>+</sup> T cell 或 CD8<sup>+</sup> T cell，CD4 仅识别 MHC Ⅰ 型分子，CD8 识别 MHC Ⅱ 型分子。</p>
+<p>当 TRCs 识别了 MHC 分子提呈的抗原后，CD4/CD8 分子就与 MHC 分子结合，起到固定与稳定 TCR-MHC-多肽三者间的相互作用，从而加强 TCRs 发出的信号。</p>
+<p>DP 细胞向 SP 细胞转换的推测：当 CD4 与 CD8 其中一者与相应 MHC 分子结合后，会下调另一者的表达。</p>
+<figure>
+<img src="https://s2.loli.net/2022/08/08/pUDlWx8KP2NXu9i.png" alt="CD4CD8.png" /><figcaption aria-hidden="true">CD4CD8.png</figcaption>
+</figure>
+<h3 id="共刺激">共刺激</h3>
+<p>原初 T 细胞激活仅靠 TCRs 需要过量的抗原刺激，而共刺激分子如 B7-CD28 可以将所需的抗体刺激下调到 1%。而有经验的 T 细胞激活时对于共刺激信号的需求大大降低。</p>
+<p>在体内的多数情况下，若原初 T 细胞接触到抗原刺激后，一段时间内没有共刺激信号激活，会进入“失效状态”，最终会凋亡。</p>
 ]]></content>
       <categories>
         <category>读书笔记</category>
